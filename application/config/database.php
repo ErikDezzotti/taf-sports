@@ -73,16 +73,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
-// Detectar ambiente: local vs produção (XCloud.host + EasyPanel MySQL)
-$is_production = (ENVIRONMENT === 'production');
+// ============================================================================
+// DETECÇÃO INTELIGENTE DE AMBIENTE (3 Níveis de Prioridade)
+// ============================================================================
+// Prioridade 1: Usar variáveis de ambiente diretas do servidor (XCloud.host)
+// Prioridade 2: Detectar por ENVIRONMENT (production/development)
+// Prioridade 3: Fallback para localhost (desenvolvimento local)
+
+// Verificar se existem variáveis de ambiente do banco
+$has_env_vars = isset($_SERVER['DB_HOST']) && !empty($_SERVER['DB_HOST']);
+
+if ($has_env_vars) {
+	// PRODUÇÃO: Usar variáveis de ambiente do XCloud.host
+	$db_hostname = $_SERVER['DB_HOST'];
+	$db_port = isset($_SERVER['DB_PORT']) ? $_SERVER['DB_PORT'] : 3306;
+	$db_username = $_SERVER['DB_USERNAME'];
+	$db_password = $_SERVER['DB_PASSWORD'];
+	$db_database = $_SERVER['DB_DATABASE'];
+} elseif (ENVIRONMENT === 'production') {
+	// PRODUÇÃO: Fallback para hardcoded (caso variáveis de ambiente não existam)
+	$db_hostname = 'apps.anky.com.br';
+	$db_port = 21306;
+	$db_username = 'tafdb';
+	$db_password = 'taf-db-pass2025';
+	$db_database = 'taf-database';
+} else {
+	// DESENVOLVIMENTO: Localhost
+	$db_hostname = '127.0.0.1';
+	$db_port = 3306;
+	$db_username = 'root';
+	$db_password = '';
+	$db_database = 'sitetaf';
+}
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => $is_production ? 'apps.anky.com.br' : '127.0.0.1', // Host externo EasyPanel ou Local
-	'username' => $is_production ? 'tafdb' : 'root', // Usuario do banco
-	'password' => $is_production ? 'taf-db-pass2025' : '', // Senha (vazia no MySQL local)
-	'database' => $is_production ? 'taf-database' : 'sitetaf', // Nome do banco
-	'port' => $is_production ? 21306 : 3306, // Porta externa EasyPanel (21306) ou Local (3306)
+	'hostname' => $db_hostname,
+	'username' => $db_username,
+	'password' => $db_password,
+	'database' => $db_database,
+	'port' => $db_port,
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
