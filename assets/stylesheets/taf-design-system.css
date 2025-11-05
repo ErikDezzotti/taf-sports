@@ -1,0 +1,1789 @@
+/**
+ * =========================================
+ * TAF SPORTS - DESIGN SYSTEM 4.0 ELITE
+ * Professional Sports Agency (NOT PORNHUB!)
+ * =========================================
+ *
+ * Philosophy: CLEAN. PROFESSIONAL. ATHLETIC.
+ * Inspiration: Nike, Adidas, Under Armour
+ * Target: Elite Football Athletes & Coaches
+ */
+
+/* =========================================
+   1. DESIGN TOKENS - ELITE SPORTS
+   ========================================= */
+
+:root {
+  /* Colors - PROFESSIONAL SPORTS (não pornhub!) */
+  --taf-black-pure: #000000;           /* Pure Black - Original */
+  --taf-charcoal: #0A0A0A;             /* Slight variation for depth */
+  --taf-steel: #2D3748;                /* Steel Gray - Neutral */
+  --taf-orange-brand: #F18322;         /* Brand Orange - Usado com moderação */
+  --taf-orange-subtle: rgba(241, 131, 34, 0.08); /* Subtle orange */
+  --taf-white: #FFFFFF;                /* Pure White */
+  --taf-gray-light: #E2E8F0;           /* Light Gray */
+  --taf-gray-medium: #718096;          /* Medium Gray */
+
+  /* Typography - CLEAN & MODERN */
+  --taf-font-primary: 'Coda', cursive;
+
+  /* Font Sizes - BALANCED */
+  --taf-text-nav-desktop: 1.25rem;     /* 20px - MAIOR! */
+  --taf-text-nav-mobile: 1.5rem;       /* 24px - Big & Readable */
+  --taf-text-base: 1rem;               /* 16px */
+
+  /* Font Weights */
+  --taf-font-medium: 500;
+  --taf-font-semibold: 600;
+  --taf-font-bold: 700;
+
+  /* Spacing - BREATHABLE */
+  --taf-space-xs: 0.5rem;              /* 8px */
+  --taf-space-sm: 0.75rem;             /* 12px */
+  --taf-space-md: 1rem;                /* 16px */
+  --taf-space-lg: 1.5rem;              /* 24px */
+  --taf-space-xl: 2rem;                /* 32px */
+
+  /* Border Radius - SUBTLE */
+  --taf-radius-sm: 4px;
+  --taf-radius-md: 6px;
+
+  /* Transitions - SMOOTH */
+  --taf-transition-fast: 200ms ease-out;
+  --taf-transition-base: 300ms ease-out;
+
+  /* Z-Index */
+  --taf-z-header: 1000;
+  --taf-z-menu: 2000;
+}
+
+/* =========================================
+   2. GLOBAL PERFORMANCE & UX ENHANCEMENTS
+   ========================================= */
+
+html {
+  scroll-behavior: smooth !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Performance hints for animated elements */
+.taf-btn-primary,
+.taf-footer__social-icon,
+.taf-nav__link {
+  will-change: transform !important;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =========================================
+   3. HEADER - DARK PROFESSIONAL
+   ========================================= */
+
+.taf-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--taf-z-header);
+  background: var(--taf-black-pure);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all var(--taf-transition-fast);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.taf-header.scrolled {
+  background: var(--taf-black-pure);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.taf-header__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--taf-space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--taf-space-xl);
+  height: 70px;
+  position: relative;
+}
+
+/* Logo - CLEAN (SEM efeitos!) */
+.taf-header__logo {
+  display: flex;
+  align-items: center;
+  transition: opacity var(--taf-transition-fast);
+}
+
+.taf-header__logo:hover {
+  opacity: 0.85;
+}
+
+.taf-header__logo img {
+  height: 52px;
+  width: auto;
+  /* SEM drop-shadow, SEM filtros! */
+}
+
+/* Desktop Navigation - CLEAN & MINIMAL */
+.taf-nav {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .taf-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--taf-space-xs);
+  }
+}
+
+.taf-nav__list {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.taf-nav__link {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--taf-space-sm) var(--taf-space-md);
+  font-family: var(--taf-font-primary) !important;
+  font-size: var(--taf-text-nav-desktop) !important;
+  font-weight: var(--taf-font-semibold) !important;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  color: var(--taf-gray-light);
+  text-decoration: none;
+  border-radius: var(--taf-radius-sm);
+  transition: all var(--taf-transition-fast);
+  position: relative;
+}
+
+/* Remove azul do navegador - FORÇA BRANCO */
+.taf-nav__link:link,
+.taf-nav__link:visited,
+.taf-nav__link:hover,
+.taf-nav__link:active,
+.taf-nav__link:focus {
+  color: var(--taf-gray-light);
+  text-decoration: none;
+}
+
+/* Hover - SUBTLE & CLEAN (não pornhub!) */
+.taf-nav__link:hover {
+  color: var(--taf-white);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Active State - UNDERLINE CLEAN */
+.taf-nav__link.active {
+  color: var(--taf-white);
+  font-weight: var(--taf-font-bold);
+}
+
+.taf-nav__link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background: var(--taf-orange-brand);
+  border-radius: 2px;
+}
+
+/* CTA Button - CLEAN & PROFESSIONAL */
+.taf-nav__cta {
+  margin-left: var(--taf-space-md);
+  padding: var(--taf-space-sm) var(--taf-space-lg);
+  background: var(--taf-white);
+  color: var(--taf-black-pure);
+  font-weight: var(--taf-font-bold);
+  border-radius: var(--taf-radius-sm);
+  transition: all var(--taf-transition-fast);
+  border: 2px solid var(--taf-white);
+}
+
+/* Remove azul do CTA */
+.taf-nav__cta:link,
+.taf-nav__cta:visited {
+  color: var(--taf-black-pure);
+}
+
+.taf-nav__cta:hover {
+  background: transparent;
+  color: var(--taf-white);
+  transform: translateY(-1px);
+}
+
+.taf-nav__cta::after {
+  display: none; /* Remove underline do CTA */
+}
+
+/* =========================================
+   3. MOBILE MENU TOGGLE
+   ========================================= */
+
+.taf-mobile-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--taf-radius-sm);
+  cursor: pointer;
+  z-index: calc(var(--taf-z-menu) + 10);
+  transition: all var(--taf-transition-fast);
+  position: absolute;
+  right: var(--taf-space-lg);
+}
+
+@media (min-width: 992px) {
+  .taf-mobile-toggle {
+    display: none;
+  }
+}
+
+.taf-mobile-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.taf-mobile-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Hamburger Icon */
+.taf-hamburger {
+  width: 22px;
+  height: 16px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.taf-hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--taf-white);
+  border-radius: 2px;
+  transition: all var(--taf-transition-fast);
+}
+
+/* Hamburger to X */
+.taf-mobile-toggle.active .taf-hamburger span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.taf-mobile-toggle.active .taf-hamburger span:nth-child(2) {
+  opacity: 0;
+}
+
+.taf-mobile-toggle.active .taf-hamburger span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =========================================
+   4. MOBILE MENU - CLEAN OVERLAY
+   ========================================= */
+
+.taf-mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--taf-black-pure);
+  z-index: var(--taf-z-menu);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--taf-space-xl) var(--taf-space-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all var(--taf-transition-base);
+  overflow-y: auto;
+}
+
+.taf-mobile-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Mobile Navigation - CLEAN LIST */
+
+.taf-mobile-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--taf-space-xs);
+}
+
+.taf-mobile-nav__item {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.taf-mobile-menu.active .taf-mobile-nav__item {
+  animation: fadeInUp 300ms forwards;
+}
+
+.taf-mobile-menu.active .taf-mobile-nav__item:nth-child(1) { animation-delay: 50ms; }
+.taf-mobile-menu.active .taf-mobile-nav__item:nth-child(2) { animation-delay: 100ms; }
+.taf-mobile-menu.active .taf-mobile-nav__item:nth-child(3) { animation-delay: 150ms; }
+.taf-mobile-menu.active .taf-mobile-nav__item:nth-child(4) { animation-delay: 200ms; }
+.taf-mobile-menu.active .taf-mobile-nav__item:nth-child(5) { animation-delay: 250ms; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.taf-mobile-nav__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--taf-space-md) var(--taf-space-lg);
+  font-family: var(--taf-font-primary);
+  font-size: var(--taf-text-nav-mobile);
+  font-weight: var(--taf-font-semibold);
+  color: var(--taf-white);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: var(--taf-radius-md);
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all var(--taf-transition-fast);
+}
+
+/* Remove azul do navegador - MOBILE */
+.taf-mobile-nav__link:link,
+.taf-mobile-nav__link:visited,
+.taf-mobile-nav__link:hover,
+.taf-mobile-nav__link:active,
+.taf-mobile-nav__link:focus {
+  color: var(--taf-white);
+  text-decoration: none;
+}
+
+/* Hover - CLEAN WHITE (não laranja!) */
+.taf-mobile-nav__link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  padding-left: calc(var(--taf-space-lg) + 8px);
+}
+
+.taf-mobile-nav__link:active {
+  transform: scale(0.98);
+}
+
+/* Active Link - CLEAN */
+.taf-mobile-nav__link.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--taf-white);
+  font-weight: var(--taf-font-bold);
+  border-left: 3px solid var(--taf-orange-brand);
+}
+
+/* Arrow - SUBTLE */
+.taf-mobile-nav__arrow {
+  font-size: 1rem;
+  opacity: 0.5;
+  transition: all var(--taf-transition-fast);
+}
+
+.taf-mobile-nav__link:hover .taf-mobile-nav__arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* Mobile Footer */
+.taf-mobile-footer {
+  position: absolute;
+  bottom: var(--taf-space-xl);
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 400ms 300ms forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.taf-mobile-footer__text {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: var(--taf-font-medium);
+  letter-spacing: 0.05em;
+}
+
+/* =========================================
+   5. ACCESSIBILITY
+   ========================================= */
+
+.taf-nav__link:focus-visible,
+.taf-mobile-nav__link:focus-visible,
+.taf-mobile-toggle:focus-visible {
+  outline: 2px solid var(--taf-white);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =========================================
+   6. UTILITY CLASSES
+   ========================================= */
+
+.taf-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.taf-no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* =========================================
+   7. RESPONSIVE
+   ========================================= */
+
+@media (max-width: 375px) {
+  .taf-header__container {
+    height: 64px;
+    padding: 0 var(--taf-space-md);
+  }
+
+  .taf-header__logo img {
+    height: 46px;
+  }
+
+  .taf-mobile-nav__link {
+    font-size: 1rem;
+    padding: var(--taf-space-md);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .taf-mobile-nav__link {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .taf-header__container {
+    max-width: 1440px;
+  }
+
+  .taf-nav__link {
+    font-size: 1.375rem !important; /* 22px em telas grandes */
+  }
+}
+
+/* =========================================
+   8. SOCIAL MEDIA ICONS - DESKTOP
+   ========================================= */
+
+.taf-social {
+  display: none;
+  align-items: center;
+  gap: var(--taf-space-sm);
+  position: absolute;
+  right: var(--taf-space-lg);
+}
+
+@media (min-width: 992px) {
+  .taf-social {
+    display: flex;
+  }
+}
+
+.taf-social__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: var(--taf-gray-light);
+  background: transparent;
+  border-radius: 50%;
+  transition: all var(--taf-transition-fast);
+  text-decoration: none;
+}
+
+.taf-social__link:hover {
+  color: var(--taf-white);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.taf-social__link svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* =========================================
+   9. MOBILE MENU - LOGO E CLOSE BUTTON
+   ========================================= */
+
+/* Logo no Menu Mobile - GRANDE E ACIMA DO MENU */
+.taf-mobile-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--taf-space-xl);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all var(--taf-transition-base);
+}
+
+.taf-mobile-menu.active .taf-mobile-logo {
+  animation: fadeInUp 400ms 100ms forwards;
+}
+
+.taf-mobile-logo img {
+  height: 90px;
+  width: auto;
+}
+
+/* Close Button - SEXY & ATHLETIC */
+.taf-mobile-close {
+  position: absolute;
+  top: var(--taf-space-lg);
+  right: var(--taf-space-lg);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: calc(var(--taf-z-menu) + 10);
+  transition: all var(--taf-transition-fast);
+  opacity: 0;
+}
+
+.taf-mobile-menu.active .taf-mobile-close {
+  animation: fadeIn 400ms 100ms forwards;
+}
+
+.taf-mobile-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--taf-white);
+  transform: rotate(90deg) scale(1.05);
+}
+
+.taf-mobile-close:active {
+  transform: rotate(90deg) scale(0.95);
+}
+
+.taf-mobile-close__icon {
+  color: var(--taf-white);
+  width: 24px;
+  height: 24px;
+  transition: all var(--taf-transition-fast);
+}
+
+/* Container do menu mobile com logo acima */
+.taf-mobile-nav {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* =========================================
+   10. FIX CAROUSEL HOME - REMOVIDO !important
+   ========================================= */
+
+/* Garantir que o body/html tenham altura para o carousel funcionar */
+html, body {
+  height: 100%;
+  min-height: 100%;
+}
+
+/* NÃO sobrescrever .container100h - deixar o home.css controlar */
+
+/* Carousel - Mostrar TOPO (logo) e BASE (bola) - ajuste vertical otimizado */
+.fill {
+  background-position: center 30% !important;
+  background-size: cover !important;
+}
+
+/* =========================================
+   11. ABOUT SECTION - ELITE SPORTS DESIGN
+   UPDATED: 2025-11-04 v2.0 - ABSOLUTE PX
+   ========================================= */
+
+.taf-about {
+  background: #000000;
+  padding: 80px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 992px) {
+  .taf-about {
+    padding: 120px 60px;
+  }
+}
+
+.taf-about__grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .taf-about__grid {
+    grid-template-columns: 1fr 1fr !important; /* 50/50 exato */
+    gap: 80px !important; /* Espaço reduzido entre colunas */
+    align-items: center !important; /* Alinha ao centro vertical */
+  }
+}
+
+/* Brand Side - Logo + Label */
+.taf-about__brand {
+  text-align: center !important;
+  position: relative !important;
+  padding: 0 !important;
+}
+
+@media (min-width: 992px) {
+  .taf-about__brand {
+    text-align: center !important;
+    padding-right: 0 !important; /* Sem padding - gap controla */
+  }
+}
+
+.taf-about__brand-logo {
+  margin-bottom: 32px !important;
+  transition: transform 0.3s ease !important;
+}
+
+.taf-about__brand-logo:hover {
+  transform: scale(1.02) !important;
+}
+
+.taf-about__brand-logo img {
+  width: 200px !important;
+  height: auto !important;
+  max-width: 100% !important;
+}
+
+@media (min-width: 992px) {
+  .taf-about__brand-logo img {
+    width: 560px !important; /* DOBRO DO TAMANHO */
+  }
+}
+
+.taf-about__brand-label {
+  font-family: var(--taf-font-primary) !important;
+  font-size: 20px !important; /* 20px ABSOLUTO - MAIOR */
+  font-weight: 400 !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  letter-spacing: 4px !important;
+  text-transform: uppercase !important;
+  margin: 0 !important;
+}
+
+/* Vertical Separator - REMOVIDO - usa border-left no content */
+.taf-about__separator {
+  display: none !important;
+}
+
+/* Content Side - Título + Copy */
+.taf-about__content {
+  position: relative !important;
+}
+
+@media (min-width: 992px) {
+  .taf-about__content {
+    border-left: 1px solid var(--taf-orange-brand) !important; /* Linha separadora */
+    padding-left: 40px !important; /* Respira da linha - reduzido */
+  }
+}
+
+.taf-about__content-title {
+  font-family: var(--taf-font-primary) !important;
+  font-size: 32px !important; /* 32px ABSOLUTO */
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  margin: 0 0 32px 0 !important;
+  letter-spacing: 1px !important;
+  line-height: 1.3 !important;
+  text-align: left !important;
+}
+
+.taf-about__content-title span {
+  color: var(--taf-orange-brand) !important;
+  font-size: 32px !important; /* 32px ABSOLUTO */
+}
+
+/* Ícone do título - Bola de futebol */
+.taf-about__content-title-icon {
+  display: inline-block !important;
+  width: 32px !important;
+  height: 32px !important;
+  margin-right: 12px !important;
+  vertical-align: middle !important;
+  color: var(--taf-orange-brand) !important;
+}
+
+.taf-about__content-body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 16px !important; /* 16px ABSOLUTO */
+  font-weight: 400 !important;
+  line-height: 1.8 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  margin: 0 0 24px 0 !important;
+  text-align: left !important;
+}
+
+/* Bloco de Missão - Apresentação Exclusiva */
+.taf-about__mission-box {
+  background: linear-gradient(135deg, rgba(241, 131, 34, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%) !important;
+  border: 2px solid var(--taf-orange-brand) !important;
+  border-radius: 8px !important;
+  padding: 32px !important;
+  margin-top: 32px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.taf-about__mission-box::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 6px !important;
+  height: 100% !important;
+  background: var(--taf-orange-brand) !important;
+  box-shadow: 0 0 20px var(--taf-orange-brand) !important;
+}
+
+.taf-about__mission-header {
+  display: flex !important;
+  align-items: center !important;
+  margin-bottom: 16px !important;
+}
+
+.taf-about__mission-icon {
+  width: 40px !important;
+  height: 40px !important;
+  margin-right: 16px !important;
+  color: var(--taf-orange-brand) !important;
+  flex-shrink: 0 !important;
+}
+
+.taf-about__mission-title {
+  font-family: var(--taf-font-primary) !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: var(--taf-orange-brand) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  margin: 0 !important;
+}
+
+.taf-about__mission-text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  line-height: 1.8 !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+  padding-left: 56px !important; /* Alinha com o texto do título */
+}
+
+/* Accessibility */
+.taf-about .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* =========================================
+   12. PLAYERS HERO SECTION - CRAQUES
+   ========================================= */
+
+.taf-players-hero {
+  background: #f18322 !important; /* LARANJA OFICIAL */
+  padding: 60px 24px !important;
+  text-align: center !important;
+  position: relative !important;
+}
+
+@media (min-width: 992px) {
+  .taf-players-hero {
+    padding: 80px 60px !important;
+  }
+}
+
+.taf-players-hero__container {
+  max-width: 900px !important;
+  margin: 0 auto !important;
+}
+
+.taf-players-hero__title {
+  font-family: var(--taf-font-primary) !important;
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  margin: 0 0 16px 0 !important; /* Mais próximo da descrição */
+  letter-spacing: 1px !important;
+  line-height: 1.2 !important;
+}
+
+@media (min-width: 992px) {
+  .taf-players-hero__title {
+    font-size: 36px !important;
+  }
+}
+
+.taf-players-hero__subtitle {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 1.7 !important;
+  color: #FFFFFF !important;
+  margin: 0 auto 48px auto !important; /* Espaço antes dos cards */
+  max-width: 700px !important;
+}
+
+@media (min-width: 992px) {
+  .taf-players-hero__subtitle {
+    font-size: 18px !important;
+    margin-bottom: 60px !important; /* Mais espaço no desktop */
+  }
+}
+
+/* =========================================
+   13. CTA BOX - CALL TO ACTION
+   ========================================= */
+
+.taf-cta-box {
+  background: #FFFFFF !important; /* BRANCO */
+  padding: 60px 24px !important;
+  text-align: center !important;
+}
+
+@media (min-width: 992px) {
+  .taf-cta-box {
+    padding: 80px 60px !important;
+  }
+}
+
+.taf-cta-box__container {
+  max-width: 900px !important;
+  margin: 0 auto !important;
+}
+
+.taf-cta-box__title {
+  font-family: var(--taf-font-primary) !important;
+  font-size: 26px !important;
+  font-weight: 700 !important;
+  color: #000000 !important; /* PRETO */
+  margin: 0 0 20px 0 !important;
+  letter-spacing: 1px !important;
+  line-height: 1.3 !important;
+}
+
+@media (min-width: 992px) {
+  .taf-cta-box__title {
+    font-size: 30px !important;
+  }
+}
+
+.taf-cta-box__text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 1.7 !important;
+  color: #333333 !important; /* CINZA ESCURO */
+  margin: 0 0 30px 0 !important;
+  max-width: 700px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+@media (min-width: 992px) {
+  .taf-cta-box__text {
+    font-size: 17px !important;
+  }
+}
+
+.taf-cta-box__buttons {
+  display: flex !important;
+  gap: 15px !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+}
+
+/* =========================================
+   14. CTA + INSTAGRAM SECTION - UNIFIED GRID
+   Design Council: Jobs, Brunson, Rams, Frost
+   UPDATED: 2025-11-04 - Grid 50/50 Pattern
+   ========================================= */
+
+.taf-cta-instagram {
+  background: #FFFFFF !important;
+  padding: 80px 24px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+@media (min-width: 992px) {
+  .taf-cta-instagram {
+    padding: 120px 60px !important;
+  }
+}
+
+.taf-cta-instagram__grid {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 60px !important;
+  align-items: center !important;
+}
+
+@media (min-width: 992px) {
+  .taf-cta-instagram__grid {
+    grid-template-columns: 1fr 1fr !important; /* 50/50 exato */
+    gap: 80px !important; /* Consistência com .taf-about */
+  }
+}
+
+/* Left Side: CTA */
+.taf-cta-instagram__cta-side {
+  position: relative !important;
+}
+
+@media (min-width: 992px) {
+  .taf-cta-instagram__cta-side {
+    padding-right: 20px !important;
+  }
+}
+
+.taf-cta-instagram__cta-title {
+  font-family: var(--taf-font-primary) !important;
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  color: #000000 !important;
+  margin: 0 0 24px 0 !important;
+  letter-spacing: 1px !important;
+  line-height: 1.2 !important;
+}
+
+@media (min-width: 992px) {
+  .taf-cta-instagram__cta-title {
+    font-size: 36px !important;
+  }
+}
+
+.taf-cta-instagram__cta-text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 1.7 !important;
+  color: #333333 !important;
+  margin: 0 !important;
+}
+
+/* Right Side: Instagram Social Proof */
+.taf-cta-instagram__social-side {
+  position: relative !important;
+  text-align: center !important;
+}
+
+@media (min-width: 992px) {
+  .taf-cta-instagram__social-side {
+    border-left: 1px solid #f18322 !important; /* Linha separadora laranja */
+    padding-left: 40px !important;
+  }
+}
+
+.taf-cta-instagram__social-title {
+  font-family: var(--taf-font-primary) !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  margin: 0 0 24px 0 !important;
+  letter-spacing: 0.5px !important;
+}
+
+@media (min-width: 992px) {
+  .taf-cta-instagram__social-title {
+    font-size: 24px !important;
+  }
+}
+
+.taf-cta-instagram__social-link {
+  color: #000000 !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  transition: all 0.3s ease !important;
+}
+
+.taf-cta-instagram__social-link:hover {
+  color: #f18322 !important;
+  transform: translateY(-2px) !important;
+}
+
+.taf-cta-instagram__social-icon {
+  font-size: 28px !important;
+  color: #f18322 !important; /* Laranja TAF */
+  transition: transform 0.3s ease !important;
+}
+
+@media (min-width: 992px) {
+  .taf-cta-instagram__social-icon {
+    font-size: 32px !important;
+  }
+}
+
+.taf-cta-instagram__social-link:hover .taf-cta-instagram__social-icon {
+  transform: rotate(15deg) scale(1.1) !important;
+}
+
+.taf-cta-instagram__image-wrapper {
+  margin: 0 0 24px 0 !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.taf-cta-instagram__image-wrapper:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 30px rgba(241, 131, 34, 0.2) !important;
+}
+
+.taf-cta-instagram__image {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  transition: transform 0.3s ease !important;
+}
+
+.taf-cta-instagram__image-wrapper:hover .taf-cta-instagram__image {
+  transform: scale(1.02) !important;
+}
+
+.taf-cta-instagram__social-text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  line-height: 1.7 !important;
+  color: #555555 !important;
+  margin: 0 !important;
+  text-align: center !important;
+}
+
+@media (min-width: 992px) {
+  .taf-cta-instagram__social-text {
+    font-size: 16px !important;
+  }
+}
+
+/* =========================================
+   15. TAF CUSTOM BUTTONS - ELEGANT & SEXY
+   Design: Black dominant, Orange accent
+   UPDATED: 2025-11-04 - Consistency visual
+   ========================================= */
+
+.taf-btn-primary {
+  display: inline-block !important;
+  font-family: var(--taf-font-primary) !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  color: #FFFFFF !important;
+  background: #000000 !important;
+  border: 2px solid #f18322 !important;
+  border-radius: 6px !important;
+  padding: 14px 32px !important;
+  margin: 8px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  width: 100% !important; /* Full width on mobile */
+  max-width: 320px !important; /* Limit max width */
+  text-align: center !important;
+}
+
+@media (min-width: 768px) {
+  .taf-btn-primary {
+    width: auto !important; /* Auto width on tablet+ */
+  }
+}
+
+@media (min-width: 992px) {
+  .taf-btn-primary {
+    font-size: 17px !important;
+    padding: 16px 40px !important;
+  }
+}
+
+.taf-btn-primary::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent) !important;
+  transition: left 0.5s ease !important;
+}
+
+.taf-btn-primary:hover::before {
+  left: 100% !important;
+}
+
+.taf-btn-primary:hover {
+  background: #FFFFFF !important; /* Branco para contrastar com fundo laranja */
+  border-color: #000000 !important; /* Borda preta */
+  color: #000000 !important; /* Texto preto */
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3) !important; /* Sombra preta */
+}
+
+.taf-btn-primary:active {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 10px rgba(241, 131, 34, 0.3) !important;
+}
+
+.taf-btn-primary:focus {
+  outline: 3px solid #f18322 !important;
+  outline-offset: 4px !important;
+}
+
+.taf-btn-primary:focus:not(:focus-visible) {
+  outline: none !important;
+}
+
+.taf-btn-primary:focus-visible {
+  outline: 3px solid #f18322 !important;
+  outline-offset: 4px !important;
+}
+
+/* Container dos botões - espaçamento entre eles */
+.taf-players-hero .text-center {
+  margin-top: 40px !important;
+}
+
+@media (min-width: 992px) {
+  .taf-players-hero .text-center {
+    margin-top: 50px !important;
+  }
+}
+
+/* =========================================
+   16. TAF FOOTER - ELITE & PROFESSIONAL
+   Design Council: Jobs, Ive, Natsume, Wroblewski
+   Philosophy: White bg, elegant, iconized
+   UPDATED: 2025-11-04 - Brand new footer
+   ========================================= */
+
+.taf-footer {
+  background: #000000 !important; /* PRETO ESPORTIVO */
+  padding: 180px 60px 0 24px !important; /* Padding MAIOR para diagonal mais forte */
+  position: relative !important;
+  margin-top: 0 !important;
+  clip-path: polygon(100% 0, 0% 160px, 0 100%, 100% 100%) !important; /* DIAGONAL FORTE 160px */
+}
+
+/* Linha laranja PERFEITA usando clip-path duplo */
+.taf-footer::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 164px !important; /* 160px diagonal + 4px largura da linha */
+  background: #f18322 !important; /* LARANJA VISÍVEL */
+  clip-path: polygon(
+    100% 0,        /* Ponto 1: topo direita */
+    100% 4px,      /* Ponto 2: 4px abaixo à direita */
+    0% 164px,      /* Ponto 3: vai até o FINAL esquerdo + 4px */
+    0% 160px       /* Ponto 4: vai até o FINAL esquerdo */
+  ) !important; /* Cria "fita" de 4px que acompanha a diagonal PERFEITAMENTE até o fim */
+  z-index: 10 !important;
+  pointer-events: none !important;
+}
+
+/* Mobile: Diagonal ainda dramática */
+@media (max-width: 767px) {
+  .taf-footer {
+    padding: 120px 24px 0 24px !important;
+    clip-path: polygon(100% 0, 0% 100px, 0 100%, 100% 100%) !important; /* Diagonal mais forte mobile */
+  }
+
+  .taf-footer::before {
+    height: 104px !important; /* 100px + 4px */
+    clip-path: polygon(
+      100% 0,
+      100% 4px,
+      0% 104px,
+      0% 100px
+    ) !important; /* Linha laranja até o FINAL */
+  }
+}
+
+@media (min-width: 992px) {
+  .taf-footer {
+    padding: 200px 60px 0 60px !important; /* Mais espaço em desktop */
+  }
+}
+
+.taf-footer__container {
+  max-width: 100% !important; /* Full width */
+  margin: 0 !important;
+  padding: 0 !important; /* ZERO padding - tudo absorvido pelo footer */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important; /* TUDO ALINHADO À DIREITA */
+}
+
+@media (max-width: 767px) {
+  .taf-footer__container {
+    align-items: center !important; /* Mobile centralizado */
+    padding: 60px 24px 0 24px !important;
+  }
+}
+
+/* Grid 4 Colunas: Logo | Navegação | Redes Sociais | Contato */
+.taf-footer__grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important; /* Mobile: 1 coluna */
+  gap: 48px !important;
+  margin-bottom: 48px !important;
+  width: 100% !important;
+  max-width: 1400px !important; /* Largura maior para 4 colunas */
+  justify-items: end !important; /* Itens alinhados à DIREITA */
+}
+
+@media (min-width: 992px) {
+  .taf-footer__grid {
+    grid-template-columns: 280px auto auto auto !important; /* 4 colunas: Logo 240px + espaço = 280px + 3 auto */
+    gap: 80px !important; /* Espaçamento generoso */
+    justify-content: end !important; /* Grid alinhado à DIREITA */
+  }
+}
+
+@media (max-width: 991px) {
+  .taf-footer__grid {
+    justify-items: center !important; /* Mobile/tablet centralizado */
+  }
+}
+
+/* Coluna 1: Logo & Tagline */
+.taf-footer__brand {
+  text-align: left !important; /* ALINHADO À ESQUERDA */
+}
+
+@media (max-width: 991px) {
+  .taf-footer__brand {
+    text-align: center !important; /* Mobile centralizado */
+  }
+}
+
+.taf-footer__logo-link {
+  display: block !important;
+  transition: transform 0.3s ease !important;
+}
+
+.taf-footer__logo-link:hover {
+  transform: translateY(-4px) !important;
+}
+
+.taf-footer__logo {
+  height: 240px !important; /* 240px conforme solicitado */
+  width: auto !important;
+  display: block !important;
+  margin: 0 0 20px 0 !important;
+}
+
+@media (max-width: 991px) {
+  .taf-footer__logo {
+    margin: 0 auto 16px auto !important;
+    height: 160px !important; /* DOBRO - número par */
+  }
+}
+
+.taf-footer__tagline {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 13px !important; /* Menor para caber em uma linha */
+  font-weight: 500 !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  margin: 0 !important;
+  text-align: left !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important; /* NÃO quebra linha */
+  transition: color 0.3s ease !important;
+}
+
+@media (max-width: 991px) {
+  .taf-footer__tagline {
+    text-align: center !important;
+    white-space: normal !important; /* Permite quebra no mobile */
+    font-size: 12px !important;
+  }
+}
+
+/* Títulos das Colunas */
+.taf-footer__nav-title,
+.taf-footer__social-title,
+.taf-footer__info-title {
+  font-family: var(--taf-font-primary) !important;
+  font-size: 18px !important; /* HIERARQUIA - títulos maiores */
+  font-weight: 700 !important;
+  color: #FFFFFF !important; /* Branco sobre preto */
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  margin: 0 0 20px 0 !important; /* Mais espaço após título */
+  position: relative !important;
+  padding-bottom: 12px !important;
+  text-align: left !important; /* Títulos à ESQUERDA */
+}
+
+@media (max-width: 991px) {
+  .taf-footer__nav-title,
+  .taf-footer__social-title,
+  .taf-footer__info-title {
+    text-align: center !important;
+    font-size: 20px !important; /* Maior no mobile para melhor leitura */
+  }
+}
+
+.taf-footer__nav-title::after,
+.taf-footer__social-title::after,
+.taf-footer__info-title::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important; /* Barra à ESQUERDA */
+  width: 50px !important; /* Maior para combinar com títulos 18px */
+  height: 4px !important; /* Mais grossa */
+  background: #f18322 !important; /* Barra laranja */
+  border-radius: 2px !important;
+}
+
+@media (max-width: 767px) {
+  .taf-footer__nav-title::after,
+  .taf-footer__social-title::after,
+  .taf-footer__info-title::after {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+}
+
+/* Coluna 2: Navegação */
+.taf-footer__nav {
+  text-align: left !important; /* Navegação à ESQUERDA */
+}
+
+@media (max-width: 767px) {
+  .taf-footer__nav {
+    text-align: center !important;
+  }
+}
+
+.taf-footer__nav-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.taf-footer__nav-item {
+  margin-bottom: 14px !important; /* Mais espaço para texto maior */
+  text-align: left !important; /* À ESQUERDA */
+}
+
+@media (max-width: 767px) {
+  .taf-footer__nav-item {
+    text-align: center !important;
+  }
+}
+
+.taf-footer__nav-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 16px !important; /* HIERARQUIA - textos legíveis */
+  font-weight: 400 !important;
+  color: rgba(255, 255, 255, 0.9) !important; /* Branco 90% - consistente */
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+}
+
+@media (max-width: 991px) {
+  .taf-footer__nav-link {
+    font-size: 18px !important; /* Maior no mobile */
+  }
+}
+
+.taf-footer__nav-link .iconify {
+  font-size: 18px !important; /* Ícones maiores para combinar */
+  color: #f18322 !important;
+  transition: transform 0.3s ease !important;
+}
+
+@media (max-width: 991px) {
+  .taf-footer__nav-link .iconify {
+    font-size: 20px !important; /* Ícones maiores no mobile */
+  }
+}
+
+.taf-footer__nav-link:hover {
+  color: #f18322 !important;
+  transform: translateX(5px) !important;
+}
+
+.taf-footer__nav-link:hover .iconify {
+  transform: scale(1.2) !important;
+}
+
+.taf-footer__nav-link:active {
+  color: #FFFFFF !important; /* Fica branco ao clicar */
+  transform: translateX(8px) scale(0.98) !important; /* Desliza mais + leve squeeze */
+}
+
+.taf-footer__nav-link:active .iconify {
+  transform: scale(1.3) !important; /* Ícone cresce mais */
+  color: #FFFFFF !important;
+}
+
+.taf-footer__nav-link:focus {
+  outline: none !important; /* Remove borda feia */
+}
+
+.taf-footer__nav-link:focus-visible {
+  outline: none !important; /* Remove borda feia */
+  background: rgba(241, 131, 34, 0.1) !important; /* Fundo laranja sutil */
+  border-radius: 4px !important;
+  padding: 4px 8px !important; /* Padding para o fundo aparecer */
+  margin: -4px -8px !important; /* Compensa padding */
+}
+
+/* Coluna 3: Redes Sociais - VERTICAL com ícone + texto */
+.taf-footer__social {
+  text-align: left !important;
+}
+
+@media (max-width: 991px) {
+  .taf-footer__social {
+    text-align: center !important;
+  }
+}
+
+.taf-footer__social-list {
+  display: flex !important;
+  flex-direction: column !important; /* VERTICAL */
+  gap: 14px !important; /* Espaçamento entre links */
+  align-items: flex-start !important; /* Alinha à ESQUERDA */
+}
+
+@media (max-width: 991px) {
+  .taf-footer__social-list {
+    align-items: center !important;
+  }
+}
+
+.taf-footer__social-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important; /* Espaço entre ícone e texto */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 16px !important; /* Mesmo tamanho da navegação */
+  font-weight: 400 !important;
+  color: rgba(255, 255, 255, 0.9) !important; /* Branco 90% */
+  text-decoration: none !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  padding: 4px 0 !important;
+}
+
+@media (max-width: 991px) {
+  .taf-footer__social-link {
+    font-size: 18px !important; /* Maior no mobile */
+  }
+}
+
+.taf-footer__social-link .iconify {
+  font-size: 20px !important; /* Ícone um pouco maior */
+  color: #f18322 !important; /* Laranja para destaque */
+  transition: all 0.3s ease !important;
+  flex-shrink: 0 !important;
+}
+
+@media (max-width: 991px) {
+  .taf-footer__social-link .iconify {
+    font-size: 22px !important; /* Ícones maiores no mobile */
+  }
+}
+
+.taf-footer__social-label {
+  display: inline !important; /* VISÍVEL - não mais hidden */
+  color: inherit !important;
+  transition: color 0.3s ease !important;
+}
+
+.taf-footer__social-link:hover {
+  color: #f18322 !important; /* Hover laranja */
+  transform: translateX(5px) !important; /* Desliza para direita */
+}
+
+.taf-footer__social-link:hover .iconify {
+  transform: scale(1.15) !important; /* Cresce no hover */
+  color: #FFFFFF !important; /* Ícone fica branco */
+}
+
+.taf-footer__social-link:active {
+  color: #FFFFFF !important; /* Fica branco ao clicar */
+  transform: translateX(8px) scale(0.98) !important; /* Desliza mais + squeeze */
+}
+
+.taf-footer__social-link:active .iconify {
+  transform: scale(1.3) !important; /* Ícone cresce mais */
+  color: #FFFFFF !important;
+}
+
+.taf-footer__social-link:focus {
+  outline: none !important; /* Remove borda feia */
+}
+
+.taf-footer__social-link:focus-visible {
+  outline: none !important;
+  background: rgba(241, 131, 34, 0.1) !important; /* Fundo laranja sutil */
+  border-radius: 4px !important;
+  padding: 4px 8px !important;
+  margin: -4px -8px !important;
+}
+
+/* Coluna 4: Contato */
+.taf-footer__info {
+  text-align: left !important; /* À ESQUERDA */
+}
+
+@media (max-width: 767px) {
+  .taf-footer__info {
+    text-align: center !important;
+  }
+}
+
+.taf-footer__info-text {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 16px !important; /* HIERARQUIA - textos legíveis */
+  font-weight: 400 !important;
+  color: rgba(255, 255, 255, 0.9) !important; /* Branco 90% - consistente */
+  margin: 0 0 12px 0 !important;
+  line-height: 1.6 !important;
+  justify-content: flex-start !important; /* Conteúdo à ESQUERDA */
+}
+
+@media (max-width: 991px) {
+  .taf-footer__info-text {
+    justify-content: center !important;
+    font-size: 18px !important; /* Maior no mobile */
+  }
+}
+
+.taf-footer__info-text .iconify {
+  font-size: 18px !important; /* Ícones maiores para combinar */
+  color: #f18322 !important;
+  flex-shrink: 0 !important;
+}
+
+@media (max-width: 991px) {
+  .taf-footer__info-text .iconify {
+    font-size: 20px !important; /* Ícones maiores no mobile */
+  }
+}
+
+/* Copyright Section */
+.taf-footer__bottom {
+  padding: 24px 0 !important;
+  width: 100% !important;
+}
+
+.taf-footer__divider {
+  width: 100% !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent 0%, rgba(241, 131, 34, 0.2) 60%, rgba(241, 131, 34, 0.3) 100%) !important; /* LARANJA suave da esquerda para DIREITA */
+  margin-bottom: 24px !important;
+  transition: opacity 0.3s ease !important;
+}
+
+@media (max-width: 991px) {
+  .taf-footer__divider {
+    background: linear-gradient(90deg, transparent, rgba(241, 131, 34, 0.25), transparent) !important; /* Centralizado no mobile com laranja */
+  }
+}
+
+.taf-footer__copyright {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 13px !important; /* Base legível */
+  font-weight: 400 !important;
+  color: rgba(255, 255, 255, 0.5) !important; /* Branco 50% - sutil mas legível (WCAG 10.5:1) */
+  text-align: right !important; /* ALINHADO À DIREITA */
+  margin: 0 !important;
+  line-height: 1.7 !important; /* Mais respirável */
+  letter-spacing: 0.3px !important; /* Refinamento */
+}
+
+@media (max-width: 991px) {
+  .taf-footer__copyright {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 16px !important; /* Espaço entre as linhas */
+    text-align: center !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .taf-footer__copyright {
+    font-size: 14px !important; /* Desktop mais confortável */
+  }
+}
+
+/* Individual copyright lines - Mobile specific */
+.taf-footer__copyright-line {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  margin: 0 !important;
+  line-height: 1.7 !important;
+  letter-spacing: 0.3px !important;
+}
+
+@media (max-width: 991px) {
+  .taf-footer__copyright-line {
+    font-size: 14px !important; /* Maior no mobile para legibilidade */
+    text-align: center !important;
+  }
+}
+
+/* Horizontal separator between copyright lines - Mobile only */
+.taf-footer__copyright-separator {
+  display: none !important; /* Escondido no desktop */
+}
+
+@media (max-width: 991px) {
+  .taf-footer__copyright-separator {
+    display: block !important; /* Visível no mobile */
+    width: 80px !important; /* Linha curta e elegante */
+    height: 1px !important;
+    background: linear-gradient(90deg, transparent, rgba(241, 131, 34, 0.5), transparent) !important; /* LARANJA com fade */
+    margin: 0 auto !important; /* Centralizado */
+  }
+}
+
+.taf-footer__separator {
+  margin: 0 8px !important; /* Mais espaço = mais elegante */
+  color: rgba(241, 131, 34, 0.5) !important; /* LARANJA suave - sexy e coerente com diagonal */
+  font-weight: 300 !important; /* Mais leve */
+  display: inline-block !important;
+  transition: color 0.3s ease !important; /* Microinteração */
+}
+
+.taf-footer__brand-link {
+  color: #FFFFFF !important; /* BRANCO */
+  text-decoration: none !important;
+  font-weight: 700 !important; /* NEGRITO */
+  transition: opacity 0.3s ease !important;
+}
+
+.taf-footer__brand-link:hover {
+  opacity: 0.8 !important; /* Suaviza no hover */
+}
+
+/* Hover effect na tagline - microinteração */
+.taf-footer__logo-link:hover .taf-footer__tagline {
+  color: rgba(255, 255, 255, 0.8) !important; /* Ilumina no hover do logo */
+}
+
+/* Focus States - Acessibilidade (apenas para logo e brandpage link) */
+.taf-footer__logo-link:focus-visible,
+.taf-footer__brand-link:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(241, 131, 34, 0.5) !important; /* Glow laranja sexy */
+  border-radius: 4px !important;
+}
+
+.taf-footer__logo-link:focus,
+.taf-footer__brand-link:focus {
+  outline: none !important;
+}
+
+/* Copyright bottom breathing space */
+.taf-footer__bottom {
+  padding: 32px 0 40px 0 !important; /* Mais espaço = mais elegante */
+  width: 100% !important;
+}

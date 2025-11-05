@@ -1,0 +1,144 @@
+// Import Bootstrap Compass integration
+
+$break-medium: 1200px;
+$break-small: 990px;
+$break-small-menu: 765px;
+
+@import "bootstrap-compass";
+
+// Import custom Bootstrap variables
+@import "bootstrap-variables";
+
+// Import Bootstrap for Sass
+@import "bootstrap";
+
+
+header {
+	background-color:black;
+	font-family: 'Economica', sans-serif;
+}
+
+
+html,body{height:100%;}
+
+
+.logo {
+	margin-top:-8px;
+}
+
+//TITULOS
+
+
+
+.tituloPreto,h1,h2 {
+	font-family: 'Coda', cursive;
+	color:black;
+	font-size:33px;
+	text-align: center;
+	padding-top:20px;
+    padding-bottom:20px;
+}
+
+
+.tituloBranco {
+	@extend .tituloPreto;
+	color:white;
+	padding-top:30px;
+}
+
+.preto {
+	color:black !important;
+	text-shadow: none !important;
+}
+
+
+//MENU
+.navbar {
+
+}
+
+.navbar-default {
+	background-color: black;
+	border:none;
+	border-color:none;
+}
+
+.navbar-default .navbar-collapse {
+	border-color:black;
+	margin-top:18px;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+	color:white;
+	background-color:black;
+}
+.navbar-nav > li > a {
+	font-size:20px;
+	font-weight: bold;
+}
+.nav > li > a {
+	padding: 15px 31px;
+	@media screen and (max-width: $break-medium) {
+	padding: 15px 18px;
+	}
+	@media screen and (max-width: $break-small) {
+	padding: 15px 10px;
+	}
+	@media screen and (max-width: $break-small-menu) {
+	padding: 15px 24px;
+	}
+
+	
+}
+.navbar-toggle {
+	margin-top:25px;
+	margin-bottom:22px;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+	background-color:black;
+	color:white;
+}
+.dropdown-menu {
+	background-color:black;
+	padding-top:20px;
+	@media screen and (max-width: $break-small-menu) {
+	padding-top:0px;
+	}
+}
+
+.dropdown-menu > li > a {
+	color:white;
+	padding:10px 20px;
+}
+
+hr {
+	-webkit-margin-before: 0.1em;
+    -webkit-margin-after: 0.1em;
+    margin:0px;
+}
+//FIM MENU
+
+
+.redes {
+	img {
+		margin-top:15px;
+		margin-left:2px;
+	}
+	@media screen and (max-width: $break-small) {
+	display:none;
+	}
+	@media screen and (max-width: $break-small-menu) {
+	display:none;
+	}
+}
+
+.telefone {
+	font-size:19px;
+	color:white;
+	font-weight: bold;
+}
+
+footer {
+	background-color:black;
+	padding:15px;
+}

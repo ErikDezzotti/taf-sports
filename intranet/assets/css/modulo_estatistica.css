@@ -1,0 +1,182 @@
+p {
+  color:white;
+}
+.boxJogador {
+  background-color:white;
+  padding:5px;
+  -webkit-box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.42);
+-moz-box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.42);
+box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.42);
+margin-bottom:29px;
+}  
+@media screen and (max-width: $break-small) {
+  .boxJogador{
+width:280px;
+margin:0 auto;
+margin-bottom:20px;
+}
+}
+
+  .borda {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f49627+0,b05719+100 */
+background: #f49627; /* Old browsers */
+background: -moz-linear-gradient(top,  #f49627 0%, #b05719 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #f49627 0%,#b05719 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #f49627 0%,#b05719 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f49627', endColorstr='#b05719',GradientType=0 ); /* IE6-9 */
+    padding:5px;
+
+  }
+
+    .posicao {
+background-image:url("../img/bgfaixa1.png");
+background-position: right;
+background-repeat: no-repeat;
+color:white;
+text-align: left;
+font-size:11px;
+font-weight: bold;
+text-transform: uppercase;
+  }
+.escudo {
+    position: absolute;
+    padding-left:5px;
+  }
+.escudo img {
+      height: 60px;
+      width: auto;
+      margin-top:-95px;
+    
+}
+
+.nome {
+background-image:url("../img/bgfaixa2.png");
+background-position: right;
+background-repeat: no-repeat;
+color:white;
+padding:5px;
+font-size:13px;
+font-weight: bold;
+text-align: center;
+text-transform: uppercase;
+  }
+
+  .imgCliente {
+width:100%;
+height:150px;
+object-fit: cover;
+object-position: center top;
+background-color: white;
+
+@media screen and (max-width: $break-small) {
+width:260px;
+}
+@media screen and (max-width: $break-small-menu) {
+width:100%;
+height:290px;
+}
+}
+
+.boxBuscar {
+  padding-top:20px;
+  padding-bottom:20px;
+  background-color:#222222;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+.btn-default {
+  color:black;
+}
+.btn-default:hover {
+  color:#222222;
+}
+
+.itemMenu {
+  background-color:white;
+  padding:20px;
+  text-align: center;
+  width: 100%;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  padding-top:30px;
+}
+.itemMenu i {
+  color:black;
+}
+.itemMenu a {
+  font-size:16px;
+  color:black;
+  padding-top:10px;
+  font-weight: bold;
+}
+
+.itemMenuP {
+  background-color:#C2C2C2;
+  padding:20px;
+  text-align: center;
+  width: 100%;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  padding-top:30px;
+}
+.itemMenuP i {
+  color:black;
+}
+.itemMenuP a {
+  font-size:16px;
+  color:black;
+  padding-top:10px;
+  font-weight: bold;
+}
+
+.bgBranco {
+  background-color:white;
+  padding-top:20px;
+  padding-bottom:20px;
+}
+
+.bgpasta {
+  width: 100%;
+  padding:10px;
+  background-color:#F2F2F2;
+  min-height: 58px;
+  margin-bottom:10px;
+}
+
+.bgCinza .btn-group {
+  position: absolute;
+  margin-top:-44px;
+}
+
+.itemMenuP .btn-group {
+  text-align: center;
+  margin-top:0px;
+}
+
+.bgupload {
+  width: 100%;
+  padding:10px;
+  background-color:#f49627;
+  min-height: 58px;
+  margin-bottom:10px;
+}
+
+.bgprogresso {
+  width: 100%;
+  padding:10px;
+  min-height: 58px;
+  margin-bottom:10px;
+}
+
+.img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+object-position: center top;
+}
+
+.progress { position:relative; width:400px; border: 1px solid #ddd; padding: 1px; border-radius: 3px; }
+.bar { background-color: #B4F5B4; width:0%; height:20px; border-radius: 3px; }
+.percent { position:absolute; display:inline-block; top:3px; left:48%; }

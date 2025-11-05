@@ -1,0 +1,49 @@
+.itemMenu {
+  background-color:white;
+  padding:20px;
+  text-align: center;
+  width: 100%;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  padding-top:30px;
+}
+.itemMenu i {
+  color:black;
+}
+.itemMenu a {
+  font-size:16px;
+  color:black;
+  padding-top:10px;
+  font-weight: bold;
+}
+
+.itemMenu2 {
+  background-color:white;
+  padding:10px;
+  text-align: center;
+  width: 100%;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  padding-bottom:40px;
+  margin-bottom:15px;
+}
+.itemMenu2 i {
+  color:black;
+  float:left;
+}
+.itemMenu2 span {
+  font-size:16px;
+  padding-top:5px;
+  padding-left: 10px;
+  color:black;
+  font-weight: bold;
+  float:left;
+}
+
+
+.bgbranco {
+  background-color: white;
+}
+

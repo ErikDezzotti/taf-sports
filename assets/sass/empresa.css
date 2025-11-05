@@ -1,0 +1,127 @@
+.container100h {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0px;
+  padding-right: 0px;
+  background: url("../img/bg1.jpg");
+  background-position: center;
+  background-size: 100%; }
+
+.container100 {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0px;
+  padding-right: 0px; }
+
+.fundoTitulo {
+  min-height: 175px;
+  width: 100%;
+  background: url("../img/tempresa.png");
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat; }
+  @media screen and (max-width: 1200px) {
+    .fundoTitulo {
+      background-size: cover; } }
+  @media screen and (max-width: 990px) {
+    .fundoTitulo {
+      background-size: cover; } }
+  @media screen and (max-width: 765px) {
+    .fundoTitulo {
+      background-size: cover; } }
+  .fundoTitulo h1 {
+    font-size: 32px;
+    font-weight: bold;
+    padding-top: 65px; }
+
+.bg {
+  padding-top: 35px;
+  padding-bottom: 35px; }
+
+.estrutura {
+  background: white; }
+
+.empresa {
+  width: 100%;
+  height: 100%;
+  min-height: 100%; }
+
+.equipe {
+  width: 100%;
+  background-image: url("../img/bgequipe2.jpg");
+  background-position: bottom center;
+  background-size: cover; }
+  @media screen and (max-width: 765px) {
+    .equipe {
+      display: none; } }
+
+.equipeMob {
+  display: none; }
+  @media screen and (max-width: 765px) {
+    .equipeMob {
+      background-image: url("../img/bgequipe2.jpg");
+      background-position: top center;
+      background-size: cover;
+      display: block;
+      width: 100%;
+      height: auto; } }
+
+.itemEquipe {
+  min-height: 240px; }
+  .itemEquipe .conteudo {
+    font-size: 12px; }
+
+.carousel-control.left {
+  background: none; }
+
+.carousel-control.right {
+  background: none; }
+
+.carousel-control {
+  width: 5%; }
+
+.branco {
+  color: white; }
+
+.itemEquipe {
+  width: 100%;
+  margin-top: 35px; }
+  .itemEquipe .foto {
+    float: left;
+    width: 35%;
+    margin-top: 20px; }
+    @media screen and (max-width: 1200px) {
+      .itemEquipe .foto {
+        width: 45%; } }
+    @media screen and (max-width: 990px) {
+      .itemEquipe .foto {
+        width: 25%; } }
+    @media screen and (max-width: 765px) {
+      .itemEquipe .foto {
+        width: 100%;
+        text-align: center; } }
+    .itemEquipe .foto img {
+      width: 128px;
+      height: 128px; }
+  .itemEquipe .conteudo {
+    float: left;
+    width: 65%;
+    padding-left: 5%;
+    color: white; }
+    @media screen and (max-width: 1200px) {
+      .itemEquipe .conteudo {
+        width: 55%; } }
+    @media screen and (max-width: 990px) {
+      .itemEquipe .conteudo {
+        width: 75%; } }
+    @media screen and (max-width: 765px) {
+      .itemEquipe .conteudo {
+        width: 100%;
+        text-align: center; } }
+    .itemEquipe .conteudo h3 {
+      color: white; }
+    .itemEquipe .conteudo .funcao {
+      color: orange; }
+  .itemEquipe .redes {
+    float: left;
+    width: 100%; }

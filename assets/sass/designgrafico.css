@@ -1,0 +1,32 @@
+.container100h {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0px;
+  padding-right: 0px; }
+
+.designgrafico {
+  width: 100%;
+  background-color: white;
+  padding-top: 35px;
+  font-size: 17px; }
+
+.fundoTitulo {
+  min-height: 175px;
+  width: 100%;
+  background: url("../img/tdesign.png");
+  background-position: top center;
+  background-size: 100%;
+  background-repeat: no-repeat; }
+  @media screen and (max-width: 1200px) {
+    .fundoTitulo {
+      background-size: cover; } }
+  @media screen and (max-width: 990px) {
+    .fundoTitulo {
+      background-size: cover; } }
+  @media screen and (max-width: 765px) {
+    .fundoTitulo {
+      background-size: cover; } }
+  .fundoTitulo h1 {
+    font-size: 32px;
+    font-weight: bold;
+    padding-top: 65px; }

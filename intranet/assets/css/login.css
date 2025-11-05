@@ -1,0 +1,23 @@
+body {
+  background-color:black;
+}
+
+.logo-name {
+  color:#333333;
+}
+
+.btn-primary {
+  background-color:orange;
+  border-color:orange;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary,
+.btn-primary:active:focus,
+.btn-primary:active:hover,
+.btn-primary.active:hover {
+  background-color:#d28415;
+  border-color:#d28415;
+}

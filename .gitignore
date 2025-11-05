@@ -1,0 +1,33 @@
+# CodeIgniter
+application/cache/*
+!application/cache/index.html
+application/logs/*
+!application/logs/index.html
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Backups
+docs/backup/
+*.backup
+system.backup-3.1.4/
+
+# Sensitive
+.env
+*.key
+*.pem
+
+# Database dumps (opcional - você decide se quer versionar)
+# *.sql
+
+# Temp files
+*.tmp
+*.log

@@ -1,0 +1,141 @@
+.container100h {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 30px; }
+
+.releases {
+  width: 100%;
+  background-color: white; }
+
+.fundoTitulo {
+  min-height: 175px;
+  width: 100%;
+  background: url("../img/treleases.png");
+  background-position: top center;
+  background-size: 100%;
+  background-repeat: no-repeat; }
+  @media screen and (max-width: 1200px) {
+    .fundoTitulo {
+      background-size: cover; } }
+  @media screen and (max-width: 990px) {
+    .fundoTitulo {
+      background-size: cover; } }
+  @media screen and (max-width: 765px) {
+    .fundoTitulo {
+      background-size: cover; } }
+  .fundoTitulo h1 {
+    font-size: 32px;
+    font-weight: bold;
+    padding-top: 65px; }
+
+.fdata {
+  position: absolute;
+  z-index: 9998;
+  margin-top: 0px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 80px 80px 0 0;
+  border-color: orange transparent transparent transparent; }
+
+.data {
+  color: black;
+  position: absolute;
+  z-index: 9999;
+  margin-top: 0px;
+  font-size: 16px;
+  font-weight: bold;
+  -webkit-transform: rotate(316deg);
+  -moz-transform: rotate(316deg);
+  -o-transform: rotate(316deg);
+  writing-mode: lr-tb;
+  margin-top: 17px;
+  margin-left: 10px; }
+
+.fader {
+  font-family: 'Coda', cursive;
+  /* Giving equal sizes to each element */
+  width: 100%;
+  height: 250px;
+  background-color: orange;
+  /* Positioning elements in lines */
+  display: inline-block;
+  /* This is necessary for position:absolute to work as desired */
+  position: relative;
+  /* Preventing zoomed images to grow outside their elements */
+  overflow: hidden; }
+  @media screen and (max-width: 990px) {
+    .fader {
+      height: 350px; } }
+  @media screen and (max-width: 765px) {
+    .fader {
+      height: 200px; } }
+
+.fader img {
+  /* Stretching the images to fill whole elements */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  /* Preventing blank space below the image */
+  line-height: 0;
+  /* A one-second transition was to disturbing for me */
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease; }
+
+.fader img:hover {
+  /* Making images appear bigger and transparent on mouseover */
+  opacity: 0.5;
+  width: 110%;
+  height: 110%; }
+
+.tituloNoticia {
+  position: absolute;
+  z-index: 9999;
+  width: 100%;
+  height: 65px;
+  margin-top: 185px;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: white;
+  text-transform: uppercase; }
+  @media screen and (max-width: 1200px) {
+    .tituloNoticia {
+      height: 70px;
+      margin-top: 180px; } }
+  @media screen and (max-width: 990px) {
+    .tituloNoticia {
+      margin-top: 300px; } }
+  @media screen and (max-width: 765px) {
+    .tituloNoticia {
+      margin-top: 130px; } }
+
+.buscaRelease {
+  background-color: orange;
+  padding: 20px;
+  margin-bottom: 30px; }
+  .buscaRelease .titulo {
+    font-size: 20px;
+    font-weight: bold; }
+  .buscaRelease .form-control {
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px; }
+    @media screen and (max-width: 990px) {
+      .buscaRelease .form-control {
+        margin-bottom: 15px; } }
+
+.bordaRelease {
+  border: medium solid black;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 380px;
+  height: auto; }

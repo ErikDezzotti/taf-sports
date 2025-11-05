@@ -1,0 +1,396 @@
+$break-medium: 1200px;
+$break-small: 990px;
+$break-small-menu: 765px;
+.container100h{
+margin-right: auto;
+margin-left: auto;
+padding-left: 0px;
+padding-right: 0px;
+height:100%;
+@media screen and (max-width: $break-small-menu) {
+    height: 250px; }
+}
+.containerMin100h{
+margin-right: auto;
+margin-left: auto;
+padding-left: 0px;
+padding-right: 0px;
+min-height:100%;
+}
+.container100{
+margin-right: auto;
+margin-left: auto;
+padding-left: 0px;
+padding-right: 0px;
+min-height:100%;
+}
+.containernada{
+margin-right: auto;
+margin-left: auto;
+padding-left: 0px;
+padding-right: 0px;
+}
+.home1{
+width:100%;
+height:100%;
+min-height:100%;
+background-image:url("../img/home/bg1.jpg");
+background-position: top center;
+background-size: cover;
+@media screen and (max-width: $break-small-menu) {
+   display:none;
+    }
+}
+.bannerMob {
+    display: none;
+    @media screen and (max-width: $break-small-menu) {
+        background-image:url("../img/home/bg1.jpg");
+background-position: top center;
+background-size: cover;
+   display:block;
+   width: 100%;
+   height:auto;
+    }
+}
+.home2{
+width:100%;
+background-image:url("../img/home/bg2.jpg");
+background-position: top center;
+background-size: cover;
+@media screen and (max-width: $break-small-menu) {
+   display:none;
+    }
+}
+.clientesMob {
+  display: none;
+    @media screen and (max-width: $break-small-menu) {
+        background-image:url("../img/home/bg2.jpg");
+background-position: top center;
+background-size: cover;
+   display:block;
+   width: 100%;
+   height:auto;
+    }   
+}
+.home3{
+width:100%;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f2f2f2+0,ffffff+100 */
+background: #f2f2f2; /* Old browsers */
+background: -moz-linear-gradient(top,  #f2f2f2 0%, #ffffff 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #f2f2f2 0%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #f2f2f2 0%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+
+padding-bottom:25px;
+}
+
+.fader {
+    font-family: 'Coda', cursive;
+/* Giving equal sizes to each element */
+width:    100%;
+height:   250px;
+
+@media screen and (max-width: $break-small) {
+    height: 350px;
+    }
+    @media screen and (max-width: $break-small-menu) {
+   height: 200px;
+    }
+background-color:orange;
+/* Positioning elements in lines */
+display:  inline-block;
+
+/* This is necessary for position:absolute to work as desired */
+position: relative;
+
+/* Preventing zoomed images to grow outside their elements */
+overflow: hidden; }
+.fader img {
+/* Stretching the images to fill whole elements */
+width: 100%;
+height:100%;
+object-fit: cover;
+object-position: center top;
+/* Preventing blank space below the image */
+line-height: 0;
+/* A one-second transition was to disturbing for me */
+-webkit-transition: all 0.3s ease;
+-moz-transition:    all 0.3s ease;
+-o-transition:      all 0.3s ease;
+-ms-transition:     all 0.3s ease;
+transition:         all 0.3s ease; }
+.fader img:hover {
+/* Making images appear bigger and transparent on mouseover */
+opacity: 0.5;
+width:   110%;
+height:  110%; }
+.fdata {
+     position: absolute;
+    z-index: 9998;
+     margin-top:0px;
+width: 0;
+height: 0;
+border-style: solid;
+border-width: 80px 80px 0 0;
+border-color: orange transparent transparent transparent;
+}
+.data {
+    color:black;
+    position: absolute;
+    z-index: 9999;
+     margin-top:0px;
+    font-size:16px;
+    font-weight: bold;
+    -webkit-transform: rotate(316deg);
+-moz-transform: rotate(316deg);
+-o-transform: rotate(316deg);
+writing-mode: lr-tb;
+margin-top:17px;
+margin-left:10px;
+}
+.tituloNoticia {
+    position: absolute;
+    z-index: 9999;
+    width: 100%;
+    height:50px;
+    margin-top:200px;
+    background-color: rgba(0,0,0,0.8);
+    padding:10px;
+    padding-top:5px;
+    padding-bottom:5px;
+    color:white;
+    text-transform: uppercase;
+     @media screen and (max-width: $break-medium) {
+    height:70px;
+    margin-top: 180px;
+    }
+    @media screen and (max-width: $break-small) {
+    margin-top: 300px;
+    }
+     @media screen and (max-width: $break-small-menu) {
+  margin-top: 130px;
+    }
+   
+}
+.home4{
+width:100%;
+height:680px;
+background-image: url("../img/fundo5.jpg");
+background-position: center;
+background-size: cover;
+@media screen and (max-width: $break-small-menu) {
+  height: auto;
+    }
+.esquerda {
+    padding-top:15px;
+    padding-bottom:15px;
+    @media screen and (max-width: $break-small-menu) {
+    background-color:#25809f;
+    }
+    .item {
+    float:left;
+    margin-left:10px;
+    width: 200px;
+    @media screen and (max-width: $break-small-menu) {
+        width: 100%;
+    margin:0 auto;
+       text-align: center;
+       
+       p {
+        text-align: center;
+       }
+    }
+    #Insta {
+        width: 200px;
+        @media screen and (max-width: $break-small-menu) {
+    margin:0 auto;
+    width: 100%;
+    text-align: center;
+    }
+        img {
+            width: 60px;
+            height: 60px;
+            float:left;
+            margin:3px;
+              @media screen and (max-width: $break-small-menu) {
+      float:none;
+    }
+
+        }
+    }
+}
+}
+.direita {
+
+    padding-top:360px;
+    color:white;
+    h2 {
+        display: none;
+    }
+    @media screen and (max-width: $break-small-menu) {
+    padding-top:20px;
+    padding-bottom:20px;
+    background-color:black;
+    h2 {
+        display:block;
+        color:white;
+    }
+    }
+    .depoimento {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+}
+h3 {
+    margin:0;
+    padding:0;
+    font-weight: bold;
+    font-size:16px;
+    padding-top:10px;
+    color:orange;
+}
+p {
+    font-size:18px;
+}
+}
+}
+.home5{
+width:100%;
+    
+    background-image:url("../img/bgequipe2.jpg");
+    background-position:bottom center;
+    background-size: cover;
+    @media screen and (max-width: $break-small-menu) {
+   display:none;
+    }
+}
+
+.equipeMob {
+     display: none;
+    @media screen and (max-width: $break-small-menu) {
+        background-image:url("../img/bgequipe2.jpg");
+background-position: top center;
+background-size: cover;
+   display:block;
+   width: 100%;
+   height:auto;
+    }   
+}
+//Carousel Banners
+.carousel-control.left {
+background:none;
+}
+.carousel-control.right {
+    background:none;
+}
+.carousel-control {
+width:5%;
+}
+.carousel,.item,.active{height:100%;}
+.carousel-inner{height:100%;}
+.fill{width:100%;
+height:100%;
+background-position:center;
+background-size:cover;
+@media screen and (max-width: $break-small-menu) {
+    background-size: 100% 100%;
+    }
+}
+/* faster sliding speed */
+.carousel-inner > .item {
+-webkit-transition: 0.3s ease-in-out left;
+-moz-transition: 0.3s ease-in-out left;
+-o-transition: 0.3s ease-in-out left;
+transition: 0.3s ease-in-out left;
+}
+/* keep full widget on smaller screens */
+@media (max-width: 767px) {
+body {
+padding-left: 0;
+padding-right: 0;
+}
+}
+//Carousel fade
+.carousel-fade {
+.carousel-inner {
+.item {
+transition-property: opacity;
+}
+.item,
+.active.left,
+.active.right {
+opacity: 0;
+}
+.active,
+.next.left,
+.prev.right {
+opacity: 1;
+}
+.next,
+.prev,
+.active.left,
+.active.right {
+left: 0;
+transform: translate3d(0, 0, 0);
+}
+}
+.carousel-control {
+z-index: 2;
+}
+
+}
+
+
+.itemEquipe {
+    width: 100%;
+    margin-top:35px;
+    min-height: 240px;
+    .foto {
+        float:left;
+        width: 35%;
+        margin-top:20px;
+@media screen and (max-width: $break-medium) {
+    width: 45%;
+    }
+@media screen and (max-width: $break-small) {
+    width: 25%;
+    }
+@media screen and (max-width: $break-small-menu) {
+    width: 100%;
+    text-align:center;
+    }
+        img {
+            width: 128px;
+            height: 128px;
+        }
+    }
+    .conteudo {
+        float:left;
+        width: 65%;
+        padding-left:5%;
+        color:white;
+        font-size:12px;
+@media screen and (max-width: $break-medium) {
+    width: 55%;
+    }
+ @media screen and (max-width: $break-small) {
+    width: 75%;
+    }
+@media screen and (max-width: $break-small-menu) {
+    width: 100%;
+    text-align:center;
+    }
+        h3 {
+            color:white;
+        }
+        .funcao {
+            color:orange;
+        }
+    }
+    .redes {
+        float:left;
+        width: 100%;
+    }
+}
+
+

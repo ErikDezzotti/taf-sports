@@ -1,0 +1,40 @@
+$break-medium: 1200px;
+$break-small: 990px;
+$break-small-menu: 765px;
+
+.container100h{
+	  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.designgrafico{
+    width:100%;
+    background-color: white;
+     padding-top:35px;
+    font-size:17px;
+}
+
+.fundoTitulo {
+    min-height: 175px;
+    width: 100%;
+    background: url("../img/tdesign.png");
+    background-position:top center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    @media screen and (max-width: $break-medium) {
+    background-size:cover;
+    }
+      @media screen and (max-width: $break-small) {
+    background-size:cover;
+    }
+       @media screen and (max-width: $break-small-menu) {
+    background-size:cover;
+    }
+h1 {
+      font-size:32px;
+      font-weight: bold;
+      padding-top:65px;
+    }
+}

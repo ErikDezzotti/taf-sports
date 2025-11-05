@@ -1,0 +1,129 @@
+.container100h {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0px;
+  padding-right: 0px; }
+
+.fundoTitulo {
+  min-height: 175px;
+  width: 100%;
+  background: url("../img/tcriacao.png");
+  background-position: top center;
+  background-size: 100%;
+  background-repeat: no-repeat; }
+  @media screen and (max-width: 1200px) {
+    .fundoTitulo {
+      background-size: cover; } }
+  @media screen and (max-width: 990px) {
+    .fundoTitulo {
+      background-size: cover; } }
+  @media screen and (max-width: 765px) {
+    .fundoTitulo {
+      background-size: cover; } }
+  .fundoTitulo h1 {
+    font-size: 32px;
+    font-weight: bold;
+    padding-top: 65px; }
+
+.criacaodesites {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  padding-top: 35px;
+  padding-bottom: 35px; }
+
+.tituloPortfolio {
+  padding-bottom: 10px; }
+
+.portfolio {
+  width: 100%;
+  height: 100%;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b3b6ba+0,e6e9ed+100 */
+  background: #b3b6ba;
+  /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #b3b6ba 0%, #e6e9ed 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #b3b6ba 0%, #e6e9ed 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #b3b6ba 0%, #e6e9ed 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3b6ba', endColorstr='#e6e9ed',GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */ }
+  .portfolio .telaDisplay {
+    background-image: url("../img/imac.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 800px;
+    height: 550px;
+    background-size: contain;
+    margin: 0 auto; }
+    @media screen and (max-width: 765px) {
+      .portfolio .telaDisplay {
+        width: 360px;
+        height: 250px; } }
+  .portfolio .sites {
+    margin-left: 96px;
+    margin-top: 30px;
+    background-color: red;
+    width: 590px;
+    height: 369px;
+    position: absolute;
+    z-index: 9999; }
+    @media screen and (max-width: 765px) {
+      .portfolio .sites {
+        width: 270px;
+        height: 170px;
+        margin-left: 40px;
+        margin-top: 15px; } }
+  .portfolio .itemSite {
+    width: 590px;
+    height: 369px;
+    object-fit: cover;
+    object-position: center top; }
+    @media screen and (max-width: 765px) {
+      .portfolio .itemSite {
+        width: 270px;
+        height: 170px; } }
+
+.carousel, .item, .active {
+  height: 100%; }
+
+.carousel-inner {
+  height: 100%; }
+
+.fill {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover; }
+
+/* faster sliding speed */
+.carousel-inner > .item {
+  -webkit-transition: 0.3s ease-in-out left;
+  -moz-transition: 0.3s ease-in-out left;
+  -o-transition: 0.3s ease-in-out left;
+  transition: 0.3s ease-in-out left; }
+
+/* keep full widget on smaller screens */
+@media (max-width: 767px) {
+  body {
+    padding-left: 0;
+    padding-right: 0; } }
+.carousel-fade .carousel-inner .item {
+  transition-property: opacity; }
+.carousel-fade .carousel-inner .item,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  opacity: 0; }
+.carousel-fade .carousel-inner .active,
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1; }
+.carousel-fade .carousel-inner .next,
+.carousel-fade .carousel-inner .prev,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  transform: translate3d(0, 0, 0); }
+.carousel-fade .carousel-control {
+  z-index: 2; }
