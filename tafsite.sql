@@ -8,6 +8,9 @@
 --   4. Segurança (senha admin alterada, sessões limpas)
 --
 -- IMPORTAR APENAS ESTE ARQUIVO! Não precisa de mais nada!
+
+-- Seleciona o banco de dados correto para importação
+USE `taf-database`;
 -- ================================================================================
 -- Data: 2025-11-05
 -- Projeto: TAF Sports - Assessoria Esportiva

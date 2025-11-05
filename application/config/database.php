@@ -91,9 +91,9 @@ if ($has_env_vars) {
 	$db_password = $_SERVER['DB_PASSWORD'];
 	$db_database = $_SERVER['DB_DATABASE'];
 } elseif (ENVIRONMENT === 'production') {
-	// PRODUÇÃO: Fallback para hardcoded (caso variáveis de ambiente não existam)
-	$db_hostname = 'apps.anky.com.br';
-	$db_port = 21306;
+	// PRODUÇÃO: Fallback para MySQL local do XCloud.host
+	$db_hostname = 'localhost';
+	$db_port = 3306;
 	$db_username = 'tafdb';
 	$db_password = 'taf-db-pass2025';
 	$db_database = 'taf-database';
