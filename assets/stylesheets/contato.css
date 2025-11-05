@@ -1,1 +1,811 @@
-.container100h{margin-right:auto;margin-left:auto;padding-left:0px;padding-right:0px;min-height:100%;background:url("../img/bg-contato.jpg")}.contato{width:100%;padding-top:35px;font-size:17px}.fundoTitulo{min-height:175px;width:100%;background:url("../img/assessoria.png");background-position:top center;background-size:100%;background-repeat:no-repeat;background-repeat:no-repeat}@media screen and (max-width: 1200px){.fundoTitulo{background-size:cover}}@media screen and (max-width: 990px){.fundoTitulo{background-size:cover}}@media screen and (max-width: 765px){.fundoTitulo{background-size:cover}}.fundoTitulo h1{font-size:32px;font-weight:bold;padding-top:65px}
+/**
+ * =========================================================================
+ * TAF SPORTS - CONTACT PAGE STYLES v2.0 ELITE
+ * Professional Sports Agency Contact Experience
+ * =========================================================================
+ *
+ * Design Council: Steve Jobs, Jony Ive, Leo Natsume, Luke Wroblewski
+ * Philosophy: ELEGANT. SEXY. PROFESSIONAL. STRATEGIC.
+ * Inspiration: Nike Contact Pages, Apple Support, Under Armour
+ *
+ * ICP: Elite Athletes (16-35), Coaches (30-55), Parents
+ * Value: Trust, Professionalism, Confidence, Accessibility
+ */
+
+/* =========================================================================
+   1. DESIGN TOKENS (seguindo taf-design-system.css)
+   ========================================================================= */
+
+:root {
+  /* Colors - TAF Brand */
+  --taf-black: #000000;
+  --taf-orange: #F18322;
+  --taf-white: #FFFFFF;
+  --taf-gray-light: #E2E8F0;
+  --taf-gray-medium: #718096;
+  --taf-gray-dark: #2D3748;
+
+  /* Form States */
+  --success-green: #10B981;
+  --error-red: #EF4444;
+  --warning-yellow: #F59E0B;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* Typography */
+  --font-primary: 'Coda', cursive;
+  --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* Borders */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  /* Transitions */
+  --transition-fast: 200ms ease-out;
+  --transition-base: 300ms ease-out;
+  --transition-slow: 500ms ease-out;
+}
+
+/* =========================================================================
+   2. BANNER HEADER - Imagem do Topo (pedido do cliente)
+   ========================================================================= */
+
+.taf-contact-banner {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.taf-contact-banner__image {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .taf-contact-banner__image {
+    height: 350px;
+  }
+}
+
+@media (min-width: 992px) {
+  .taf-contact-banner__image {
+    height: 400px;
+  }
+}
+
+.taf-contact-banner__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(241, 131, 34, 0.3) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.taf-contact-banner__content {
+  text-align: center;
+  padding: var(--space-lg);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.taf-contact-banner__title {
+  font-family: var(--font-primary);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--taf-white);
+  margin: 0 0 var(--space-md) 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .taf-contact-banner__title {
+    font-size: 42px;
+  }
+}
+
+@media (min-width: 992px) {
+  .taf-contact-banner__title {
+    font-size: 48px;
+  }
+}
+
+.taf-contact-banner__icon {
+  font-size: 40px;
+  color: var(--taf-orange);
+}
+
+@media (min-width: 992px) {
+  .taf-contact-banner__icon {
+    font-size: 48px;
+  }
+}
+
+.taf-contact-banner__subtitle {
+  font-family: var(--font-system);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--taf-white);
+  margin: 0;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .taf-contact-banner__subtitle {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 992px) {
+  .taf-contact-banner__subtitle {
+    font-size: 20px;
+  }
+}
+
+/* =========================================================================
+   3. CONTACT SECTION - Main Container
+   ========================================================================= */
+
+.taf-contact {
+  background: var(--taf-white);
+  padding: var(--space-3xl) var(--space-lg);
+  position: relative;
+}
+
+@media (min-width: 992px) {
+  .taf-contact {
+    padding: 80px 60px;
+  }
+}
+
+/* Intro Text (do banco de dados) */
+.taf-contact__intro {
+  max-width: 900px;
+  margin: 0 auto var(--space-2xl) auto;
+  text-align: center;
+}
+
+.taf-contact__intro-text {
+  font-family: var(--font-system);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--taf-gray-dark);
+  line-height: 1.7;
+  margin: 0 0 var(--space-md) 0;
+}
+
+@media (min-width: 768px) {
+  .taf-contact__intro-text {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 992px) {
+  .taf-contact__intro-text {
+    font-size: 18px;
+  }
+}
+
+/* =========================================================================
+   4. GRID LAYOUT - Form (Left) + Info (Right) - 50/50 como home
+   ========================================================================= */
+
+.taf-contact__grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+@media (min-width: 992px) {
+  .taf-contact__grid {
+    grid-template-columns: 1fr 1fr; /* 50/50 exato como home */
+    gap: 80px;
+  }
+}
+
+/* =========================================================================
+   5. ALERT MESSAGES - Success & Error
+   ========================================================================= */
+
+.taf-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-lg);
+  border: 2px solid;
+  animation: slideDown 400ms ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.taf-alert--success {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: var(--success-green);
+}
+
+.taf-alert--error {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: var(--error-red);
+}
+
+.taf-alert__icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.taf-alert--success .taf-alert__icon {
+  color: var(--success-green);
+}
+
+.taf-alert--error .taf-alert__icon {
+  color: var(--error-red);
+}
+
+.taf-alert__content {
+  flex: 1;
+}
+
+.taf-alert__title {
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--taf-black);
+  margin: 0 0 4px 0;
+  display: block;
+}
+
+.taf-alert__message {
+  font-family: var(--font-system);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--taf-gray-dark);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* =========================================================================
+   6. FORM STYLING - Inputs, Labels, Validation
+   ========================================================================= */
+
+.taf-form {
+  width: 100%;
+}
+
+/* Form Group - Field Container */
+.taf-form__group {
+  margin-bottom: var(--space-lg);
+  position: relative;
+}
+
+/* Labels com Ícones */
+.taf-form__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-system);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--taf-black);
+  margin-bottom: var(--space-xs);
+}
+
+.taf-form__label-icon {
+  color: var(--taf-orange);
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.taf-form__optional {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--taf-gray-medium);
+  font-style: italic;
+}
+
+/* Inputs & Textarea */
+.taf-form__input,
+.taf-form__textarea {
+  width: 100%;
+  padding: 14px var(--space-md);
+  font-size: 16px;
+  font-family: var(--font-system);
+  color: var(--taf-black);
+  background: var(--taf-white);
+  border: 2px solid var(--taf-gray-light);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+  outline: none;
+  appearance: none;
+}
+
+.taf-form__textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+/* Placeholder Styling */
+.taf-form__input::placeholder,
+.taf-form__textarea::placeholder {
+  color: var(--taf-gray-medium);
+  opacity: 0.7;
+}
+
+/* Hover State */
+.taf-form__input:hover:not(:disabled),
+.taf-form__textarea:hover:not(:disabled) {
+  border-color: var(--taf-orange);
+}
+
+/* Focus State - Microinteração */
+.taf-form__input:focus,
+.taf-form__textarea:focus {
+  border-color: var(--taf-orange);
+  box-shadow: 0 0 0 4px rgba(241, 131, 34, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Valid State */
+.taf-form__group.valid .taf-form__input,
+.taf-form__group.valid .taf-form__textarea {
+  border-color: var(--success-green);
+  background: rgba(16, 185, 129, 0.02);
+}
+
+/* Error State */
+.taf-form__group.error .taf-form__input,
+.taf-form__group.error .taf-form__textarea {
+  border-color: var(--error-red);
+  background: rgba(239, 68, 68, 0.02);
+}
+
+/* Shake Animation para Erro */
+.taf-form__group.shake {
+  animation: shake 500ms ease-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+  20%, 40%, 60%, 80% { transform: translateX(8px); }
+}
+
+/* Helper Text */
+.taf-form__helper {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-system);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--taf-gray-medium);
+  line-height: 1.4;
+  transition: color var(--transition-fast);
+}
+
+.taf-form__group.error .taf-form__helper {
+  color: var(--error-red);
+}
+
+.taf-form__group.valid .taf-form__helper {
+  color: var(--success-green);
+}
+
+/* Validation Icon (aparece com JavaScript) */
+.taf-form__validation-icon {
+  display: none;
+  position: absolute;
+  right: var(--space-md);
+  top: 44px; /* Alinha com o input */
+  font-size: 20px;
+  pointer-events: none;
+  transition: all var(--transition-fast);
+}
+
+.taf-form__group.valid .taf-form__validation-icon {
+  display: block;
+  color: var(--success-green);
+  animation: popIn 300ms ease-out;
+}
+
+.taf-form__group.error .taf-form__validation-icon {
+  display: block;
+  color: var(--error-red);
+  animation: popIn 300ms ease-out;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =========================================================================
+   7. SUBMIT BUTTON - Segue padrão .taf-btn-primary do design system
+   ========================================================================= */
+
+.taf-btn-submit {
+  width: 100%;
+  margin-top: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 17px;
+  padding: 16px var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  .taf-btn-submit {
+    width: auto;
+    min-width: 280px;
+  }
+}
+
+.taf-btn-submit__icon {
+  font-size: 20px;
+  transition: transform var(--transition-base);
+}
+
+.taf-btn-submit:hover .taf-btn-submit__icon {
+  transform: translateX(4px);
+}
+
+/* Footer Text - Confiança */
+.taf-form__footer-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  font-family: var(--font-system);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--taf-gray-medium);
+  margin-top: var(--space-lg);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.taf-form__footer-text .iconify {
+  color: var(--success-green);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+/* =========================================================================
+   8. INFO SIDEBAR - Telefone, Email, Endereço
+   ========================================================================= */
+
+.taf-contact__info-side {
+  position: relative;
+}
+
+.taf-contact__info-title {
+  font-family: var(--font-primary);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--taf-black);
+  margin: 0 0 var(--space-xl) 0;
+  letter-spacing: 0.5px;
+  text-align: left;
+  position: relative;
+  padding-bottom: var(--space-sm);
+}
+
+.taf-contact__info-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--taf-orange);
+  border-radius: 2px;
+}
+
+@media (max-width: 991px) {
+  .taf-contact__info-title {
+    text-align: center;
+  }
+
+  .taf-contact__info-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* =========================================================================
+   9. CONTACT CARDS - Ícone + Info
+   ========================================================================= */
+
+.taf-contact-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  background: rgba(241, 131, 34, 0.03);
+  border: 1px solid rgba(241, 131, 34, 0.1);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+}
+
+.taf-contact-card:hover {
+  background: rgba(241, 131, 34, 0.05);
+  border-color: rgba(241, 131, 34, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.taf-contact-card__icon-wrapper {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--taf-white);
+  border: 2px solid var(--taf-orange);
+  border-radius: 50%;
+  transition: all var(--transition-base);
+}
+
+.taf-contact-card:hover .taf-contact-card__icon-wrapper {
+  background: var(--taf-orange);
+  transform: scale(1.1) rotate(5deg);
+}
+
+.taf-contact-card__icon {
+  font-size: 28px;
+  color: var(--taf-orange);
+  transition: color var(--transition-base);
+}
+
+.taf-contact-card:hover .taf-contact-card__icon {
+  color: var(--taf-white);
+}
+
+.taf-contact-card__content {
+  flex: 1;
+}
+
+.taf-contact-card__title {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--taf-black);
+  margin: 0 0 var(--space-xs) 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.taf-contact-card__text {
+  font-family: var(--font-system);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--taf-gray-dark);
+  margin: 0 0 var(--space-xs) 0;
+  line-height: 1.6;
+}
+
+.taf-contact-card__link {
+  color: var(--taf-black);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.taf-contact-card__link:hover {
+  color: var(--taf-orange);
+}
+
+.taf-contact-card__link--map {
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: var(--space-xs);
+}
+
+.taf-contact-card__link--map .iconify {
+  font-size: 16px;
+}
+
+.taf-contact-card__helper {
+  display: block;
+  font-family: var(--font-system);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--taf-gray-medium);
+  font-style: italic;
+  margin-top: 4px;
+}
+
+/* =========================================================================
+   10. SOCIAL PROOF BOX - Redes Sociais
+   ========================================================================= */
+
+.taf-contact-social {
+  padding: var(--space-xl);
+  background: var(--taf-black);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  margin-top: var(--space-xl);
+}
+
+.taf-contact-social__title {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--taf-white);
+  margin: 0 0 var(--space-lg) 0;
+  letter-spacing: 0.5px;
+}
+
+.taf-contact-social__links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.taf-contact-social__link {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: var(--taf-white);
+  text-decoration: none;
+  transition: all var(--transition-base);
+}
+
+.taf-contact-social__link .iconify {
+  font-size: 24px;
+}
+
+.taf-contact-social__link:hover {
+  background: var(--taf-orange);
+  border-color: var(--taf-orange);
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 8px 20px rgba(241, 131, 34, 0.4);
+}
+
+/* =========================================================================
+   11. ACCESSIBILITY & RESPONSIVE
+   ========================================================================= */
+
+/* Focus Visible States */
+.taf-form__input:focus-visible,
+.taf-form__textarea:focus-visible,
+.taf-btn-submit:focus-visible,
+.taf-contact-card__link:focus-visible,
+.taf-contact-social__link:focus-visible {
+  outline: 3px solid var(--taf-orange);
+  outline-offset: 3px;
+}
+
+/* Reduce Motion for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .taf-form__input,
+  .taf-form__textarea {
+    border-width: 3px;
+  }
+
+  .taf-alert {
+    border-width: 3px;
+  }
+}
+
+/* Mobile Optimization */
+@media (max-width: 375px) {
+  .taf-contact {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .taf-contact-banner__title {
+    font-size: 28px;
+  }
+
+  .taf-form__label {
+    font-size: 15px;
+  }
+
+  .taf-form__input,
+  .taf-form__textarea {
+    font-size: 16px; /* Previne zoom no iOS */
+  }
+}
+
+/* =========================================================================
+   12. LOADING STATES (opcional - para futuro)
+   ========================================================================= */
+
+.taf-btn-submit[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.taf-btn-submit.loading {
+  position: relative;
+  color: transparent;
+}
+
+.taf-btn-submit.loading::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--taf-white);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 600ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================================
+   FIM - TAF SPORTS CONTACT PAGE v2.0
+   ========================================================================= */
