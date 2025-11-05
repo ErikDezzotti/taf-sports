@@ -26,6 +26,7 @@ class Home extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('Home_model', 'banco');
+		$this->load->library('session');  // ✅ Session para flashdata
 
 		// ✅ REFATORAÇÃO: Dados base carregados uma única vez
 		// Antes: Cada método duplicava estas 4-5 linhas
