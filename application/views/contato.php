@@ -30,11 +30,13 @@ $conf = !empty($config) ? $config[0] : new stdClass();
 					<div class="row">
 						<div class="col-md-8 col-xs-12">
 							<?php if (!empty($paginas)): ?>
-							<p><?php
+							<?php
 								foreach($paginas as $pg) {
-									echo html_escape($pg->conteudo);
+									// ⚠️ ATENÇÃO: conteúdo já é HTML (vem do banco)
+									// Não usar html_escape aqui pois quebraria a formatação
+									echo $pg->conteudo;
 								}
-							?></p>
+							?>
 							<?php endif; ?>
 
 							<?php if ($this->session->flashdata('success')): ?>
