@@ -92,7 +92,7 @@ if ($has_env_vars) {
 	$db_database = $_SERVER['DB_DATABASE'];
 } elseif (ENVIRONMENT === 'production') {
 	// PRODUÇÃO: Fallback para MySQL local do XCloud.host
-	$db_hostname = 'localhost';
+	$db_hostname = '127.0.0.1';  // TCP/IP em vez de Unix socket
 	$db_port = 3306;
 	$db_username = 'tafdb';
 	$db_password = 'taf-db-pass2025';
