@@ -25,6 +25,11 @@ system.backup-3.1.4/
 *.key
 *.pem
 
+# MySQL local data (NÃO versionar!)
+.mysql-data/
+*.sock
+*.pid
+
 # Database dumps (opcional - você decide se quer versionar)
 # *.sql
 
