@@ -98,9 +98,9 @@ if ($has_env_vars) {
 	$db_password = 'taf-db-pass2025';
 	$db_database = 'taf-database';
 } else {
-	// DESENVOLVIMENTO: Localhost
+	// DESENVOLVIMENTO: Localhost (MySQL rodando na porta 3307 no projeto)
 	$db_hostname = '127.0.0.1';
-	$db_port = 3306;
+	$db_port = 3307;
 	$db_username = 'root';
 	$db_password = '';
 	$db_database = 'sitetaf';
