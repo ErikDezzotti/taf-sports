@@ -73,16 +73,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
-// Detectar ambiente: local vs produção (EasyPanel)
+// Detectar ambiente: local vs produção (XCloud.host + EasyPanel MySQL)
 $is_production = (ENVIRONMENT === 'production');
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => $is_production ? 'taf-sports_taf-database' : '127.0.0.1', // EasyPanel ou Local (127.0.0.1 força TCP)
+	'hostname' => $is_production ? 'apps.anky.com.br' : '127.0.0.1', // Host externo EasyPanel ou Local
 	'username' => $is_production ? 'tafdb' : 'root', // Usuario do banco
 	'password' => $is_production ? 'taf-db-pass2025' : '', // Senha (vazia no MySQL local)
 	'database' => $is_production ? 'taf-database' : 'sitetaf', // Nome do banco
-	'port' => $is_production ? 3306 : 3306, // Porta MySQL
+	'port' => $is_production ? 21306 : 3306, // Porta externa EasyPanel (21306) ou Local (3306)
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
