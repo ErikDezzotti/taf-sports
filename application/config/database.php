@@ -80,6 +80,10 @@ $query_builder = TRUE;
 // Prioridade 2: Detectar por ENVIRONMENT (production/development)
 // Prioridade 3: Fallback para localhost (desenvolvimento local)
 
+// AUTO-DETECÇÃO: Verifica se é localhost ou produção pelo hostname
+$host = $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'] ?? 'localhost';
+$is_local = (strpos($host, 'localhost') !== false || strpos($host, '127.0.0.1') !== false);
+
 // Verificar se existem variáveis de ambiente do banco
 $has_env_vars = isset($_SERVER['DB_HOST']) && !empty($_SERVER['DB_HOST']);
 
@@ -90,20 +94,20 @@ if ($has_env_vars) {
 	$db_username = $_SERVER['DB_USERNAME'];
 	$db_password = $_SERVER['DB_PASSWORD'];
 	$db_database = $_SERVER['DB_DATABASE'];
-} elseif (ENVIRONMENT === 'production') {
-	// PRODUÇÃO: Fallback para MySQL local do XCloud.host
-	$db_hostname = 'localhost';  // Confirmado pelo debug: localhost funciona!
-	$db_port = 3306;
-	$db_username = 'tafdb';
-	$db_password = 'taf-db-pass2025';
-	$db_database = 'taf-database';
-} else {
+} elseif ($is_local) {
 	// DESENVOLVIMENTO: Localhost (MySQL rodando na porta 3307 no projeto)
 	$db_hostname = '127.0.0.1';
 	$db_port = 3307;
 	$db_username = 'root';
 	$db_password = '';
 	$db_database = 'sitetaf';
+} else {
+	// PRODUÇÃO: XCloud.host ou qualquer servidor remoto
+	$db_hostname = 'localhost';  // Confirmado pelo debug: localhost funciona!
+	$db_port = 3306;
+	$db_username = 'tafdb';
+	$db_password = 'taf-db-pass2025';
+	$db_database = 'taf-database';
 }
 
 $db['default'] = array(
