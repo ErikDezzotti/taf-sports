@@ -14,7 +14,21 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'https://SEU-DOMINIO.com/'; // Substitua pelo dominio do EasyPanel (com https:// e barra final)
+$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+$host   = $_SERVER['HTTP_HOST'] ?? ($_SERVER['SERVER_NAME'] ?? 'localhost');
+
+// Complementa com a porta quando não for a padrão (ex.: localhost:8000)
+if (strpos($host, ':') === FALSE && isset($_SERVER['SERVER_PORT'])) {
+	$port = $_SERVER['SERVER_PORT'];
+	$needs_port = ($scheme === 'http'  && $port !== '80')
+		|| ($scheme === 'https' && $port !== '443');
+
+	if ($needs_port) {
+		$host .= ':' . $port;
+	}
+}
+
+$config['base_url'] = $scheme . '://' . rtrim($host, '/') . '/';
 
 /*
 |--------------------------------------------------------------------------

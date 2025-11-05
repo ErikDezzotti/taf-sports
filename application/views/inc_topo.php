@@ -192,7 +192,7 @@ foreach($config as $conf) { }
             <a href="<?=base_url();?>clientes"
                class="taf-nav__link <?php if($pagina == "clientes") { echo 'active'; } ?>"
                aria-current="<?php if($pagina == "clientes") { echo 'page'; } ?>">
-              Jogadores
+              Clientes
             </a>
           </li>
           <li class="taf-nav__item">
@@ -300,7 +300,7 @@ foreach($config as $conf) { }
           <a href="<?=base_url();?>clientes"
              class="taf-mobile-nav__link <?php if($pagina == "clientes") { echo 'active'; } ?>"
              aria-current="<?php if($pagina == "clientes") { echo 'page'; } ?>">
-            Jogadores
+            Clientes
             <span class="taf-mobile-nav__arrow" aria-hidden="true">→</span>
           </a>
         </li>

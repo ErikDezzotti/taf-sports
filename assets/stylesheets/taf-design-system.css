@@ -1708,6 +1708,11 @@ html, body {
 
 @media (min-width: 992px) {
   .taf-footer__copyright {
+    display: flex !important;
+    flex-direction: row !important; /* Lado a lado no desktop */
+    align-items: center !important;
+    justify-content: flex-end !important; /* Alinhado à direita */
+    gap: 12px !important; /* Espaço entre texto e separador */
     font-size: 14px !important; /* Desktop mais confortável */
   }
 }
@@ -1730,18 +1735,29 @@ html, body {
   }
 }
 
-/* Horizontal separator between copyright lines - Mobile only */
+/* Separator between copyright lines */
 .taf-footer__copyright-separator {
-  display: none !important; /* Escondido no desktop */
+  display: inline-block !important; /* Visível no desktop como "|" */
+  color: rgba(241, 131, 34, 0.6) !important; /* LARANJA suave */
+  font-weight: 300 !important;
+  margin: 0 !important;
+}
+
+.taf-footer__copyright-separator::before {
+  content: '|' !important; /* Separador vertical no desktop */
 }
 
 @media (max-width: 991px) {
+  .taf-footer__copyright-separator::before {
+    content: '' !important; /* Remove o "|" no mobile */
+  }
+
   .taf-footer__copyright-separator {
-    display: block !important; /* Visível no mobile */
-    width: 80px !important; /* Linha curta e elegante */
+    display: block !important; /* Linha horizontal no mobile */
+    width: 80px !important;
     height: 1px !important;
     background: linear-gradient(90deg, transparent, rgba(241, 131, 34, 0.5), transparent) !important; /* LARANJA com fade */
-    margin: 0 auto !important; /* Centralizado */
+    margin: 0 auto !important;
   }
 }
 

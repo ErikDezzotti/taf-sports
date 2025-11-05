@@ -67,7 +67,9 @@ ini_set('error_reporting', E_ERROR);
 switch (ENVIRONMENT)
 {
 	case 'development':
-		error_reporting(-1);
+		// PHP 8.1+: Suprimir E_DEPRECATED para compatibilidade com CodeIgniter 3
+		// Mantém todos os outros erros visíveis (E_ERROR, E_WARNING, E_NOTICE)
+		error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
 		ini_set('display_errors', 1);
 	break;
 

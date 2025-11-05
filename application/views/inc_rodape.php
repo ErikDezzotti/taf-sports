@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <li class="taf-footer__nav-item">
             <a href="<?=base_url();?>clientes" class="taf-footer__nav-link">
               <span class="iconify" data-icon="mdi:account-group" aria-hidden="true"></span>
-              Jogadores
+              Clientes
             </a>
           </li>
           <li class="taf-footer__nav-item">
