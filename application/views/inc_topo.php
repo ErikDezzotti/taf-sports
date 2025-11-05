@@ -1,26 +1,25 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-foreach($config as $conf) { }
+// ✅ GAMBIARRA REMOVIDA: Loop vazio substituído por acesso direto
+$conf = !empty($config) ? $config[0] : new stdClass();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
-  <title><?php echo $titulo;?></title>
+  <title><?= html_escape($titulo) ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="<?php echo $descricao; ?>" />
+  <meta name="description" content="<?= html_escape($descricao) ?>" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="http://www.tafsports.com.br/<?php echo $this->uri->uri_string(); ?>">
-  <meta property="og:title" content="<?php echo $titulo; ?>">
+  <meta property="og:url" content="http://www.tafsports.com.br/<?= html_escape($this->uri->uri_string()) ?>">
+  <meta property="og:title" content="<?= html_escape($titulo) ?>">
   <meta property="og:site_name" content="Taf Sports">
 
-  <?php if(isset($imagem)) {
-      echo '<meta property="og:image" content="'.$imagem.'">
-      <meta name="twitter:image" content="'.$imagem.'" />
-      ';
-    }
-    ?>
+  <?php if(isset($imagem)): ?>
+  <meta property="og:image" content="<?= html_escape($imagem) ?>">
+  <meta name="twitter:image" content="<?= html_escape($imagem) ?>" />
+  <?php endif; ?>
   <link href="https://fonts.googleapis.com/css?family=Economica" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">

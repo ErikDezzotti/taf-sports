@@ -1,6 +1,7 @@
 <?php
-foreach ($config as $conf) {
-}
+defined('BASEPATH') OR exit('No direct script access allowed');
+// ✅ GAMBIARRA REMOVIDA: Loop vazio substituído por acesso direto
+$conf = !empty($config) ? $config[0] : new stdClass();
 ?>
 
 <!-- Inicio Banners -->
@@ -14,46 +15,40 @@ foreach ($config as $conf) {
             <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel" data-wrap="true" data-interval="5000">
 
                 <?php
-                // Filtrar apenas banners que TÊM arquivo de imagem
-                $banners_validos = array();
-                foreach ($banners as $banner) {
-                    $caminho_imagem = 'imagens/banners/' . $banner->imagem;
-                    if (file_exists($caminho_imagem)) {
-                        $banners_validos[] = $banner;
-                    }
-                }
+                // ✅ REFATORAÇÃO: Banners já vêm filtrados do model (sem file_exists na view)
+                // Antes: Lógica de negócio (file_exists) estava aqui
+                // Agora: Model retorna apenas banners válidos
                 ?>
 
                 <ol class="carousel-indicators">
                     <?php
                     $x = 0;
-                    foreach ($banners_validos as $banner) {
-                        if ($x == 0) {
-                            echo '<li data-target="#myCarousel" data-slide-to="0" class="active"></li>';
-                        } else {
-                            echo '<li data-target="#myCarousel" data-slide-to="' . $x . '"></li>';
-                        }
+                    foreach ($banners as $banner):
+                        $active = ($x == 0) ? 'class="active"' : '';
+                    ?>
+                        <li data-target="#myCarousel" data-slide-to="<?= $x ?>" <?= $active ?>></li>
+                    <?php
                         $x++;
-                    }
+                    endforeach;
                     ?>
                 </ol>
 
                 <div class="carousel-inner" role="listbox">
                     <?php
                     $x = 0;
-                    foreach ($banners_validos as $banner) {
-                        if ($x == 0) {
-                            echo '<div class="active item">
-                    <a href="' . $banner->link . '"><div class="fill" style="background-image:url(' . base_url() . 'imagens/banners/' . $banner->imagem . ');">
-                    </div></a></div>';
-                        } else {
-                            echo '<div class="item">
-                <a href="' . $banner->link . '"><div class="fill" style="background-image:url(' . base_url() . 'imagens/banners/' . $banner->imagem . ');">
-                </div></a>
-            </div>';
-                        }
+                    foreach ($banners as $banner):
+                        $active_class = ($x == 0) ? 'active ' : '';
+                        $link_safe = html_escape($banner->link);
+                        $img_safe = html_escape($banner->imagem);
+                    ?>
+                    <div class="<?= $active_class ?>item">
+                        <a href="<?= $link_safe ?>">
+                            <div class="fill" style="background-image:url(<?= base_url() ?>imagens/banners/<?= $img_safe ?>);"></div>
+                        </a>
+                    </div>
+                    <?php
                         $x++;
-                    }
+                    endforeach;
                     ?>
 
                 </div>
@@ -88,32 +83,19 @@ foreach ($config as $conf) {
 
         <div id="myCarouselMob" class="carousel slide carousel-fade" data-ride="carousel" data-wrap="true" data-interval="5000">
 
-            <?php
-            // Filtrar apenas banners mobile que TÊM arquivo de imagem
-            $banners_mob_validos = array();
-            foreach ($banners as $banner) {
-                $caminho_imagem_mob = 'imagens/banners/' . $banner->imagemMob;
-                if (file_exists($caminho_imagem_mob)) {
-                    $banners_mob_validos[] = $banner;
-                }
-            }
-            ?>
-
             <div class="carousel-inner" role="listbox">
                 <?php
                 $x = 0;
-                foreach ($banners_mob_validos as $banner) {
-                    if ($x == 0) {
-                        echo '<div class="active item">
-            <img src="' . base_url() . 'imagens/banners/' . $banner->imagemMob . '" class="img-responsive" alt="">
-        </div>';
-                    } else {
-                        echo '<div class="item">
-        <img src="' . base_url() . 'imagens/banners/' . $banner->imagemMob . '" class="img-responsive" alt="">
-    </div>';
-                    }
+                foreach ($banners as $banner):
+                    $active_class = ($x == 0) ? 'active ' : '';
+                    $img_mob_safe = html_escape($banner->imagemMob ?? $banner->imagem);
+                ?>
+                <div class="<?= $active_class ?>item">
+                    <img src="<?= base_url() ?>imagens/banners/<?= $img_mob_safe ?>" class="img-responsive" alt="">
+                </div>
+                <?php
                     $x++;
-                }
+                endforeach;
                 ?>
 
             </div>
@@ -204,39 +186,44 @@ foreach ($config as $conf) {
             <div class="row">
 
                 <?php
-						$x = 0;
-						foreach ($clientesP as $cliente) {
-							echo '
+				// ✅ OTIMIZAÇÃO: Loop N+1 eliminado usando clubes indexados
+				// Antes: Para cada atleta, loop em TODOS os clubes O(n²)
+				// Agora: Acesso direto ao clube por ID O(1)
+				foreach ($clientesP as $cliente):
+					$cliente_id_safe = html_escape($cliente->id);
+					$cliente_url_safe = html_escape($cliente->url);
+					$cliente_imagem_safe = html_escape($cliente->imagem);
+					$cliente_apelido_safe = html_escape($cliente->apelido);
+					$cliente_posicao_safe = html_escape($cliente->posicao);
 
-							<div class="col-md-3 col-xs-12 text-center">
+					// ✅ OTIMIZAÇÃO: Acesso direto O(1) em vez de loop O(n)
+					$clube = isset($clubes[$cliente->clube_atual]) ? $clubes[$cliente->clube_atual] : null;
+				?>
 
-							<div class="boxJogador">
-							<div class="borda">
-							<a href="' . base_url() . 'atleta/' . $cliente->id . '/' . $cliente->url . '"><img src="' . base_url() . 'imagens/atletas/' . $cliente->imagem . '" class="imgCliente" alt="' . $cliente->apelido . ' - ' . $cliente->posicao . '" loading="lazy"></a>
+				<div class="col-md-3 col-xs-12 text-center">
+					<div class="boxJogador">
+						<div class="borda">
+							<a href="<?= base_url() ?>atleta/<?= $cliente_id_safe ?>/<?= $cliente_url_safe ?>">
+								<img src="<?= base_url() ?>imagens/atletas/<?= $cliente_imagem_safe ?>"
+								     class="imgCliente"
+								     alt="<?= $cliente_apelido_safe ?> - <?= $cliente_posicao_safe ?>"
+								     loading="lazy">
+							</a>
 
-							<div class="posicao">' . $cliente->posicao . '</div>
-							<div class="nome" style="font-size:14px">' . $cliente->apelido . '</div>
+							<div class="posicao"><?= $cliente_posicao_safe ?></div>
+							<div class="nome" style="font-size:14px"><?= $cliente_apelido_safe ?></div>
 							<div class="escudo">
-
-							';
-
-							foreach ($clubes as $clube) {
-								if ($cliente->clube_atual == $clube->id) {
-									echo '<img src="' . base_url() . 'imagens/clubes/' . $clube->escudo . '" alt="Escudo ' . $clube->nome . '" loading="lazy">';
-								}
-							}
-
-							echo '</div>
+								<?php if ($clube): ?>
+									<img src="<?= base_url() ?>imagens/clubes/<?= html_escape($clube->escudo) ?>"
+									     alt="Escudo <?= html_escape($clube->nome) ?>"
+									     loading="lazy">
+								<?php endif; ?>
 							</div>
-							</div>
+						</div>
+					</div>
+				</div>
 
-							</div>
-
-
-							';
-							$x++;
-						}
-						?>
+				<?php endforeach; ?>
 
             </div>
             <div class="row">

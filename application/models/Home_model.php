@@ -88,6 +88,26 @@ class Home_model extends CI_Model {
 		return $this->db->get('site_clubes')->result();
 	}
 
+	/**
+	 * Retorna clubes indexados por ID
+	 *
+	 * ✅ OTIMIZAÇÃO: Previne problema N+1 na view
+	 * Antes: Loop aninhado O(n²) em home.php:222
+	 * Agora: Acesso direto O(1) usando $clubes_index[$id]
+	 *
+	 * @return array Array associativo [id => objeto_clube]
+	 */
+	public function clubes_indexados() {
+		$clubes = $this->clubes();
+		$clubes_index = array();
+
+		foreach ($clubes as $clube) {
+			$clubes_index[$clube->id] = $clube;
+		}
+
+		return $clubes_index;
+	}
+
 	public function historicoJogador($id) {
 		$this->db->where("id_jogador","$id");
 		$this->db->order_by("ano,id","DESC");
@@ -226,6 +246,32 @@ class Home_model extends CI_Model {
 		$this->db->order_by("ordem","ASC");
 		$this->db->where("status","Ativo");
 		return $this->db->get('site_banners')->result();
+	}
+
+	/**
+	 * Retorna apenas banners que possuem imagem válida
+	 *
+	 * ✅ REFATORAÇÃO: Lógica de negócio movida da view para o model
+	 * Antes: file_exists() era feito diretamente na view home.php
+	 * Agora: Model retorna apenas banners com imagens existentes
+	 *
+	 * @return array Array de objetos de banners com imagens válidas
+	 */
+	public function banners_validos() {
+		$banners = $this->banners();
+		$banners_validos = array();
+
+		foreach ($banners as $banner) {
+			// Verifica se a imagem desktop existe
+			$caminho_desktop = FCPATH . 'imagens/banners/' . $banner->imagem;
+
+			// Adiciona apenas se a imagem existir
+			if (file_exists($caminho_desktop)) {
+				$banners_validos[] = $banner;
+			}
+		}
+
+		return $banners_validos;
 	}
 
 	public function subbanners() {

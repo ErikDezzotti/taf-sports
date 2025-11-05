@@ -74,40 +74,36 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 // ============================================================================
-// DETECÇÃO INTELIGENTE DE AMBIENTE (3 Níveis de Prioridade)
+// CONFIGURAÇÃO DE BANCO DE DADOS COM VARIÁVEIS DE AMBIENTE
 // ============================================================================
-// Prioridade 1: Usar variáveis de ambiente diretas do servidor (XCloud.host)
-// Prioridade 2: Detectar por ENVIRONMENT (production/development)
-// Prioridade 3: Fallback para localhost (desenvolvimento local)
+// SEGURANÇA: Todas as credenciais agora vêm do arquivo .env
+// As senhas NÃO estão mais hardcoded no código
+//
+// Prioridade de configuração:
+// 1. Variáveis de ambiente do .env (recomendado)
+// 2. Variáveis de ambiente do servidor (XCloud.host)
+// 3. Fallback para valores padrão (desenvolvimento)
+// ============================================================================
 
-// AUTO-DETECÇÃO: Verifica se é localhost ou produção pelo hostname
+// Detecta se é ambiente local pelo hostname
 $host = $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'] ?? 'localhost';
 $is_local = (strpos($host, 'localhost') !== false || strpos($host, '127.0.0.1') !== false);
 
-// Verificar se existem variáveis de ambiente do banco
-$has_env_vars = isset($_SERVER['DB_HOST']) && !empty($_SERVER['DB_HOST']);
-
-if ($has_env_vars) {
-	// PRODUÇÃO: Usar variáveis de ambiente do XCloud.host
-	$db_hostname = $_SERVER['DB_HOST'];
-	$db_port = isset($_SERVER['DB_PORT']) ? $_SERVER['DB_PORT'] : 3306;
-	$db_username = $_SERVER['DB_USERNAME'];
-	$db_password = $_SERVER['DB_PASSWORD'];
-	$db_database = $_SERVER['DB_DATABASE'];
-} elseif ($is_local) {
-	// DESENVOLVIMENTO: Localhost (MySQL rodando na porta 3307 no projeto)
-	$db_hostname = '127.0.0.1';
-	$db_port = 3307;
-	$db_username = 'root';
-	$db_password = '';
-	$db_database = 'sitetaf';
+// Configuração usando variáveis de ambiente do .env com fallback inteligente
+if ($is_local) {
+	// DESENVOLVIMENTO: Usa .env ou valores padrão de desenvolvimento
+	$db_hostname = getenv('DB_HOST') ?: '127.0.0.1';
+	$db_port = getenv('DB_PORT') ?: 3307;
+	$db_username = getenv('DB_USERNAME') ?: 'root';
+	$db_password = getenv('DB_PASSWORD') ?: '';
+	$db_database = getenv('DB_DATABASE') ?: 'sitetaf';
 } else {
-	// PRODUÇÃO: XCloud.host ou qualquer servidor remoto
-	$db_hostname = 'localhost';  // Confirmado pelo debug: localhost funciona!
-	$db_port = 3306;
-	$db_username = 'tafdb';
-	$db_password = 'taf-db-pass2025';
-	$db_database = 'taf-database';
+	// PRODUÇÃO: Usa .env ou variáveis de ambiente do servidor
+	$db_hostname = getenv('DB_HOST') ?: 'localhost';
+	$db_port = getenv('DB_PORT') ?: 3306;
+	$db_username = getenv('DB_USERNAME') ?: 'tafdb';
+	$db_password = getenv('DB_PASSWORD') ?: '';  // ✅ NUNCA mais hardcoded!
+	$db_database = getenv('DB_DATABASE') ?: 'taf-database';
 }
 
 $db['default'] = array(

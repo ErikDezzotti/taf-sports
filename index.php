@@ -39,6 +39,36 @@ ini_set('error_reporting', E_ERROR);
 
 /*
  *---------------------------------------------------------------
+ * LOAD ENVIRONMENT VARIABLES FROM .env FILE
+ *---------------------------------------------------------------
+ *
+ * Carrega variáveis de ambiente do arquivo .env antes da aplicação iniciar
+ */
+	// Carrega .env se existir
+	$env_file = __DIR__ . DIRECTORY_SEPARATOR . '.env';
+	if (file_exists($env_file)) {
+		$lines = file($env_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+		foreach ($lines as $line) {
+			$line = trim($line);
+			if (empty($line) || strpos($line, '#') === 0) continue;
+			if (strpos($line, '=') !== false) {
+				list($key, $value) = explode('=', $line, 2);
+				$key = trim($key);
+				$value = trim($value);
+				if (preg_match('/^(["\'])(.*)\\1$/', $value, $matches)) {
+					$value = $matches[2];
+				}
+				if (!getenv($key)) {
+					putenv("$key=$value");
+					$_ENV[$key] = $value;
+					$_SERVER[$key] = $value;
+				}
+			}
+		}
+	}
+
+/*
+ *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
  *---------------------------------------------------------------
  *
@@ -54,7 +84,7 @@ ini_set('error_reporting', E_ERROR);
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+	define('ENVIRONMENT', getenv('ENVIRONMENT') ?: (isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development'));
 
 /*
  *---------------------------------------------------------------

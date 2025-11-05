@@ -116,7 +116,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="taf-footer__divider" aria-hidden="true"></div>
       <div class="taf-footer__copyright">
         <p class="taf-footer__copyright-line">
-          © <?=date('Y');?> TAF Sports. Todos os direitos reservados.
+          &copy; <?= html_escape(date('Y')) ?> TAF Sports. Todos os direitos reservados.
         </p>
         <div class="taf-footer__copyright-separator" aria-hidden="true"></div>
         <p class="taf-footer__copyright-line">

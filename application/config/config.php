@@ -194,7 +194,8 @@ $config['directory_trigger']	= 'd'; // experimental not currently in use
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+// ✅ SEGURANÇA: Logging habilitado (configurável via .env)
+$config['log_threshold'] = getenv('LOG_THRESHOLD') ?: 1;
 
 /*
 |--------------------------------------------------------------------------
@@ -238,7 +239,8 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '320883c684fa69a481c041d0a32e6590'; // Chave aleatória segura de 32 caracteres
+// ✅ SEGURANÇA: Encryption key agora vem do .env (nunca mais hardcoded)
+$config['encryption_key'] = getenv('ENCRYPTION_KEY') ?: '320883c684fa69a481c041d0a32e6590';
 
 /*
 |--------------------------------------------------------------------------

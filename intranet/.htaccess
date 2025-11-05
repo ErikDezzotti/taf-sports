@@ -1,5 +1,41 @@
-RewriteEngine On
-RewriteBase /intranet/
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php?/ [L]
+# ============================================================================
+# TAF SPORTS - PROTEÇÃO DO DIRETÓRIO INTRANET
+# ============================================================================
+# ✅ SEGURANÇA: Acesso restrito com autenticação básica HTTP
+# ============================================================================
+
+# Ativa autenticação básica
+AuthType Basic
+AuthName "Área Restrita - TAF Sports Intranet"
+
+# Arquivo de senhas (deve ser criado fora do webroot por segurança)
+# Use: htpasswd -c /caminho/seguro/.htpasswd usuario
+# Para adicionar usuário: htpasswd /caminho/seguro/.htpasswd novo_usuario
+# IMPORTANTE: Em produção, ajuste este caminho para fora do webroot!
+AuthUserFile /Users/erikdezzotti/Downloads/taf/.htpasswd
+
+# Exige usuário válido
+Require valid-user
+
+# Segurança adicional
+<IfModule mod_headers.c>
+    # Previne que páginas sejam carregadas em iframes (clickjacking)
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Força HTTPS (se disponível)
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+    # Proteção contra XSS
+    Header always set X-XSS-Protection "1; mode=block"
+
+    # Previne MIME sniffing
+    Header always set X-Content-Type-Options "nosniff"
+</IfModule>
+
+# Bloqueia acesso direto a arquivos sensíveis
+<FilesMatch "\\.(ini|log|conf|sql|bak|backup)$">
+    Require all denied
+</FilesMatch>
+
+# Desativa listagem de diretórios
+Options -Indexes

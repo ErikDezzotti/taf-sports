@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-foreach($config as $conf) { }
+// ✅ GAMBIARRA REMOVIDA: Loop vazio substituído por acesso direto
+$conf = !empty($config) ? $config[0] : new stdClass();
 ?>
 <div class="container-fluid">
 	<div class="row">
@@ -21,34 +22,53 @@ foreach($config as $conf) { }
 	</div>
 </div>
 <div class="container100h">
-	
+
 <div class="span5 contato">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 col-xs-12">
 					<div class="row">
 						<div class="col-md-8 col-xs-12">
+							<?php if (!empty($paginas)): ?>
 							<p><?php
-					foreach($paginas as $pg) {
-						echo $pg->conteudo;
-					}
-					?></p>
-<form method="POST" action="<?=base_url();?>enviar.php">
+								foreach($paginas as $pg) {
+									echo html_escape($pg->conteudo);
+								}
+							?></p>
+							<?php endif; ?>
+
+							<?php if ($this->session->flashdata('success')): ?>
+							<div class="alert alert-success" role="alert">
+								<strong>Sucesso!</strong> <?= html_escape($this->session->flashdata('success')) ?>
+							</div>
+							<?php endif; ?>
+
+							<?php if ($this->session->flashdata('error')): ?>
+							<div class="alert alert-danger" role="alert">
+								<strong>Erro!</strong> <?= $this->session->flashdata('error') ?>
+							</div>
+							<?php endif; ?>
+
+<form method="POST" action="<?=base_url();?>contato/enviar">
   <div class="form-group">
-    <label>Nome</label>
-    <input type="text" class="form-control" name="nome" placeholder="Digite seu nome..." required="required">
+    <label for="nome">Nome *</label>
+    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome..." value="<?= html_escape(set_value('nome')) ?>" required="required" maxlength="100">
   </div>
   <div class="form-group">
-    <label>Email</label>
-    <input type="email" class="form-control" name="email" placeholder="Digite seu email..." required="required">
+    <label for="email">Email *</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email..." value="<?= html_escape(set_value('email')) ?>" required="required" maxlength="100">
   </div>
   <div class="form-group">
-    <label>Telefone</label>
-    <input type="text" class="form-control" name="telefone" placeholder="Telefone com ddd..." required="required">
+    <label for="telefone">Telefone</label>
+    <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone com ddd..." value="<?= html_escape(set_value('telefone')) ?>" maxlength="20">
   </div>
- <div class="form-group">
-    <label>Mensagem</label><br>
-   <textarea name="mensagem" id="" cols="30" name="mensagem" rows="10" class="form-control" placeholder="Sua mensagem..." required="required"></textarea>
+  <div class="form-group">
+    <label for="assunto">Assunto *</label>
+    <input type="text" class="form-control" id="assunto" name="assunto" placeholder="Assunto da mensagem..." value="<?= html_escape(set_value('assunto')) ?>" required="required" maxlength="200">
+  </div>
+  <div class="form-group">
+    <label for="mensagem">Mensagem *</label>
+    <textarea name="mensagem" id="mensagem" cols="30" rows="10" class="form-control" placeholder="Sua mensagem..." required="required" maxlength="2000"><?= html_escape(set_value('mensagem')) ?></textarea>
   </div>
 
   <button type="submit" class="btn btn-lg btn-default">Enviar</button>
