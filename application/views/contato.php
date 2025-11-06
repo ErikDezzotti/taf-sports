@@ -29,14 +29,17 @@ $conf = !empty($config) ? $config[0] : new stdClass();
 
 <section class="taf-contact" aria-labelledby="contact-heading">
 
-	<!-- Intro Text (do banco de dados) -->
-	<?php if (!empty($paginas)): ?>
+	<!-- Intro Section (Título + Texto) - Russell Brunson Style -->
 	<div class="taf-contact__intro">
-		<?php foreach($paginas as $pg): ?>
-			<p class="taf-contact__intro-text"><?= strip_tags($pg->conteudo) ?></p>
-		<?php endforeach; ?>
+		<h2 class="taf-contact__intro-title">
+			Pronto para Transformar Sua Carreira?
+		</h2>
+		<p class="taf-contact__intro-text">
+			Estamos aqui para <strong>ouvir você</strong>. Se você é um atleta ou treinador em busca de <strong>gestão profissional</strong>,
+			um clube procurando talentos, ou simplesmente quer saber como a TAF Sports pode ajudar na sua trajetória,
+			<strong>entre em contato conosco</strong>. Responderemos em até 24 horas com toda a atenção que você merece.
+		</p>
 	</div>
-	<?php endif; ?>
 
 	<!-- Grid Layout: Form (Left) + Info (Right) -->
 	<div class="taf-contact__grid">
@@ -121,7 +124,7 @@ $conf = !empty($config) ? $config[0] : new stdClass();
 				<div class="taf-form__group">
 					<label for="telefone" class="taf-form__label">
 						<span class="iconify taf-form__label-icon" data-icon="mdi:phone" aria-hidden="true"></span>
-						Telefone <span class="taf-form__optional">(opcional)</span>
+						Telefone *
 					</label>
 					<input
 						type="tel"
@@ -130,12 +133,15 @@ $conf = !empty($config) ? $config[0] : new stdClass();
 						class="taf-form__input"
 						placeholder="(62) 99999-9999"
 						value="<?= html_escape(set_value('telefone')) ?>"
+						required
 						maxlength="20"
+						aria-required="true"
 						aria-describedby="telefone-helper"
 					>
 					<span id="telefone-helper" class="taf-form__helper">
 						Telefone com DDD
 					</span>
+					<span class="iconify taf-form__validation-icon" data-icon="mdi:check-circle" aria-hidden="true"></span>
 				</div>
 
 				<!-- Field Group: Assunto -->
