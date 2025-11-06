@@ -99,10 +99,11 @@ if ($is_local) {
 	$db_database = getenv('DB_DATABASE') ?: 'sitetaf';
 } else {
 	// PRODUÇÃO: Usa .env ou variáveis de ambiente do servidor
+	// Se não encontrar variáveis de ambiente, usa credenciais de produção XCloud
 	$db_hostname = getenv('DB_HOST') ?: 'localhost';
 	$db_port = getenv('DB_PORT') ?: 3306;
 	$db_username = getenv('DB_USERNAME') ?: 'tafdb';
-	$db_password = getenv('DB_PASSWORD') ?: '';  // ✅ NUNCA mais hardcoded!
+	$db_password = getenv('DB_PASSWORD') ?: 'taf-db-pass2025';  // Fallback produção XCloud
 	$db_database = getenv('DB_DATABASE') ?: 'taf-database';
 }
 
