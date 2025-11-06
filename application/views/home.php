@@ -229,8 +229,14 @@ $conf = !empty($config) ? $config[0] : new stdClass();
             <div class="row">
                 <div class="col-12">
                     <div class="text-center">
-                        <a href="<?=base_url();?>clientes" class="taf-btn-primary">Ver todos os jogadores</a>
-                        <a href="<?=base_url();?>contato" class="taf-btn-primary">Fale conosco</a>
+                        <a href="<?=base_url();?>clientes" class="taf-btn-primary">
+                            <span class="iconify" data-icon="ion:football" aria-hidden="true"></span>
+                            Ver todos os jogadores
+                        </a>
+                        <a href="<?=base_url();?>contato" class="taf-btn-primary">
+                            <span class="iconify" data-icon="mdi:email-outline" aria-hidden="true"></span>
+                            Fale conosco
+                        </a>
                     </div>
                 </div>
             </div>
@@ -248,7 +254,7 @@ $conf = !empty($config) ? $config[0] : new stdClass();
                     Pronto para decolar sua carreira?
                 </h2>
                 <p class="taf-cta-instagram__cta-text">
-                    Se você é jogador ou treinador e busca uma agência que alia experiência, seriedade e visão estratégica, a TAF Sports é a parceira certa para conduzir sua carreira com excelência. Nosso compromisso é oferecer suporte completo e gestão profissional, garantindo segurança e direcionamento em cada etapa da sua jornada dentro e fora de campo.
+                    Se você é jogador ou treinador e busca uma agência que alia <strong>experiência, seriedade e visão estratégica</strong>, a TAF Sports é a <strong>parceira certa</strong> para conduzir sua carreira com excelência. Nosso compromisso é oferecer <strong>suporte completo e gestão profissional</strong>, garantindo segurança e direcionamento em cada etapa da sua jornada dentro e fora de campo.
                 </p>
             </div>
 
