@@ -25,7 +25,7 @@ $conf = !empty($config) ? $config[0] : new stdClass();
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/stylesheets/base.css?v=<?=filemtime(FCPATH.'assets/stylesheets/base.css')?>">
   <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/stylesheets/taf-design-system.css?v=<?=filemtime(FCPATH.'assets/stylesheets/taf-design-system.css')?>">
-  <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/stylesheets/lightbox.min.css?v=<?=filemtime(FCPATH.'assets/stylesheets/lightbox.min.css')?>"
+  <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/stylesheets/lightbox.min.css?v=<?=filemtime(FCPATH.'assets/stylesheets/lightbox.min.css')?>">
   <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 
   <?php
