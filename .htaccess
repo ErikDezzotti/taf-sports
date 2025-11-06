@@ -10,3 +10,40 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule ^(.*)$ index.php?/ [L]
+
+# ============================================================================
+# CACHE CONTROL - PERFORMANCE + CACHE BUSTING
+# ============================================================================
+
+# CSS/JS com versão: Cache agressivo (1 ano)
+# Como usamos ?v=timestamp, browsers sempre pegam versão nova quando arquivo muda
+<FilesMatch "\.(css|js|woff|woff2|ttf|eot)$">
+    <IfModule mod_headers.c>
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </IfModule>
+</FilesMatch>
+
+# Imagens: Cache moderado (1 semana)
+<FilesMatch "\.(jpg|jpeg|png|gif|svg|ico|webp)$">
+    <IfModule mod_headers.c>
+        Header set Cache-Control "public, max-age=604800"
+    </IfModule>
+</FilesMatch>
+
+# HTML/PHP: Sempre revalidar
+<FilesMatch "\.(html|php)$">
+    <IfModule mod_headers.c>
+        Header set Cache-Control "no-cache, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </IfModule>
+</FilesMatch>
+
+# Prevenir cache de arquivos dinâmicos do CodeIgniter
+<IfModule mod_headers.c>
+    # Para index.php e rotas dinâmicas
+    <Files "index.php">
+        Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+        Header set Pragma "no-cache"
+    </Files>
+</IfModule>

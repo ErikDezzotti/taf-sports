@@ -23,35 +23,35 @@ $conf = !empty($config) ? $config[0] : new stdClass();
   <link href="https://fonts.googleapis.com/css?family=Economica" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/stylesheets/base.css">
-  <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/stylesheets/taf-design-system.css">
-  <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/stylesheets/lightbox.min.css">
+  <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/stylesheets/base.css?v=<?=filemtime(FCPATH.'assets/stylesheets/base.css')?>">
+  <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/stylesheets/taf-design-system.css?v=<?=filemtime(FCPATH.'assets/stylesheets/taf-design-system.css')?>">
+  <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/stylesheets/lightbox.min.css?v=<?=filemtime(FCPATH.'assets/stylesheets/lightbox.min.css')?>"
   <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 
   <?php
     if($pagina=="home") {
-    echo '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/stylesheets/home.css">';
+    echo '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/stylesheets/home.css?v='.filemtime(FCPATH.'assets/stylesheets/home.css').'">';
     }
     if($pagina=="empresa") {
-    echo '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/stylesheets/empresa.css">
-    <link rel="stylesheet" href="'.base_url().'assets/unitegallery/css/unite-gallery.css" type="text/css" />';
+    echo '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/stylesheets/empresa.css?v='.filemtime(FCPATH.'assets/stylesheets/empresa.css').'">
+    <link rel="stylesheet" href="'.base_url().'assets/unitegallery/css/unite-gallery.css?v='.filemtime(FCPATH.'assets/unitegallery/css/unite-gallery.css').'" type="text/css" />';
     }
- 
+
     if($pagina=="clientes" || $pagina=="home") {
-    echo '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/stylesheets/clientes.css">';
+    echo '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/stylesheets/clientes.css?v='.filemtime(FCPATH.'assets/stylesheets/clientes.css').'">';
     }
 
       if($pagina=="cliente") {
-    echo '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/stylesheets/cliente.css">';
+    echo '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/stylesheets/cliente.css?v='.filemtime(FCPATH.'assets/stylesheets/cliente.css').'">';
     }
     if($pagina=="contato") {
-    echo '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/stylesheets/contato.css">';
+    echo '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/stylesheets/contato.css?v='.filemtime(FCPATH.'assets/stylesheets/contato.css').'">';
     }
     if($pagina=="servicos") {
-    echo '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/stylesheets/servicos.css">';
+    echo '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/stylesheets/servicos.css?v='.filemtime(FCPATH.'assets/stylesheets/servicos.css').'">';
     }
     if($pagina=="erro404") {
-    echo '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/stylesheets/erro404.css">';
+    echo '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/stylesheets/erro404.css?v='.filemtime(FCPATH.'assets/stylesheets/erro404.css').'">';
     }
     ?>
 
