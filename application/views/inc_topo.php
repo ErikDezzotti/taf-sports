@@ -47,6 +47,9 @@ $conf = !empty($config) ? $config[0] : new stdClass();
     if($pagina=="contato") {
     echo '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/stylesheets/contato.css">';
     }
+    if($pagina=="servicos") {
+    echo '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/stylesheets/servicos.css">';
+    }
     if($pagina=="erro404") {
     echo '<link rel="stylesheet" type="text/css" href="'.base_url().'assets/stylesheets/erro404.css">';
     }
@@ -177,7 +180,7 @@ $conf = !empty($config) ? $config[0] : new stdClass();
             <a href="<?=base_url();?>empresa"
                class="taf-nav__link <?php if($pagina == "empresa") { echo 'active'; } ?>"
                aria-current="<?php if($pagina == "empresa") { echo 'page'; } ?>">
-              Empresa
+              Sobre Nós
             </a>
           </li>
           <li class="taf-nav__item">
@@ -238,19 +241,38 @@ $conf = !empty($config) ? $config[0] : new stdClass();
         </a>
       </div>
 
-      <!-- Mobile Menu Toggle -->
-      <button
-        class="taf-mobile-toggle"
-        id="tafMobileToggle"
-        aria-label="Abrir menu de navegação"
-        aria-expanded="false"
-        aria-controls="tafMobileMenu">
-        <div class="taf-hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
+      <!-- Mobile Header Actions: CTA + Bola + Hamburger -->
+      <div class="taf-mobile-header-actions">
+        <!-- CTA Fale Conosco -->
+        <a href="<?=base_url();?>contato" class="taf-mobile-header-cta">
+          Fale Conosco
+        </a>
+
+        <!-- Separador -->
+        <div class="taf-mobile-separator" aria-hidden="true"></div>
+
+        <!-- Bola de Futebol Animada -->
+        <div class="taf-mobile-football" aria-hidden="true">
+          <span class="iconify" data-icon="ion:football"></span>
         </div>
-      </button>
+
+        <!-- Separador -->
+        <div class="taf-mobile-separator" aria-hidden="true"></div>
+
+        <!-- Mobile Menu Toggle -->
+        <button
+          class="taf-mobile-toggle"
+          id="tafMobileToggle"
+          aria-label="Abrir menu de navegação"
+          aria-expanded="false"
+          aria-controls="tafMobileMenu">
+          <div class="taf-hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -264,11 +286,12 @@ $conf = !empty($config) ? $config[0] : new stdClass();
       </svg>
     </button>
 
-    <!-- Logo no Menu Mobile -->
+    <!-- Logo no Menu Mobile (Maior e mais impactante) -->
     <div class="taf-mobile-logo">
       <img src="<?=base_url();?>assets/img/taf.png" alt="TAF Sports Logo" />
     </div>
 
+    <!-- Navegação Principal -->
     <nav class="taf-mobile-nav" role="navigation" aria-label="Navegação Mobile">
       <ul class="taf-mobile-nav__list">
         <li class="taf-mobile-nav__item">
@@ -283,7 +306,7 @@ $conf = !empty($config) ? $config[0] : new stdClass();
           <a href="<?=base_url();?>empresa"
              class="taf-mobile-nav__link <?php if($pagina == "empresa") { echo 'active'; } ?>"
              aria-current="<?php if($pagina == "empresa") { echo 'page'; } ?>">
-            Empresa
+            Sobre Nós
             <span class="taf-mobile-nav__arrow" aria-hidden="true">→</span>
           </a>
         </li>
@@ -314,6 +337,39 @@ $conf = !empty($config) ? $config[0] : new stdClass();
       </ul>
     </nav>
 
+    <!-- CTA Button - Fale Conosco -->
+    <div class="taf-mobile-cta">
+      <a href="<?=base_url();?>contato" class="taf-mobile-cta__button">
+        <span class="iconify" data-icon="mdi:email-outline" aria-hidden="true"></span>
+        Fale Conosco
+      </a>
+    </div>
+
+    <!-- Instagram CTA -->
+    <div class="taf-mobile-instagram">
+      <a href="https://www.instagram.com/tafsportsbr/" target="_blank" rel="noopener noreferrer" class="taf-mobile-instagram__link">
+        <span class="iconify taf-mobile-instagram__icon" data-icon="mdi:instagram" aria-hidden="true"></span>
+        Siga-nos em @tafsportsbr
+      </a>
+    </div>
+
+    <!-- Redes Sociais -->
+    <div class="taf-mobile-social">
+      <a href="https://www.facebook.com/tafsportsbr/" target="_blank" rel="noopener noreferrer" class="taf-mobile-social__link" aria-label="Facebook">
+        <span class="iconify" data-icon="mdi:facebook" aria-hidden="true"></span>
+      </a>
+      <a href="https://www.instagram.com/tafsportsbr/" target="_blank" rel="noopener noreferrer" class="taf-mobile-social__link" aria-label="Instagram">
+        <span class="iconify" data-icon="mdi:instagram" aria-hidden="true"></span>
+      </a>
+      <a href="#" target="_blank" rel="noopener noreferrer" class="taf-mobile-social__link" aria-label="YouTube">
+        <span class="iconify" data-icon="mdi:youtube" aria-hidden="true"></span>
+      </a>
+      <a href="#" target="_blank" rel="noopener noreferrer" class="taf-mobile-social__link" aria-label="X (Twitter)">
+        <span class="iconify" data-icon="mdi:twitter" aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <!-- Footer -->
     <div class="taf-mobile-footer">
       <p class="taf-mobile-footer__text">TAF Sports - Gestão de Carreiras</p>
     </div>
