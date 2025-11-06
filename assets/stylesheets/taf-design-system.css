@@ -67,6 +67,14 @@ html {
   -moz-osx-font-smoothing: grayscale !important;
 }
 
+/* Garantir que body/html não bloqueiem sticky */
+html,
+body {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  position: relative !important;
+}
+
 /* Performance hints for animated elements */
 .taf-btn-primary,
 .taf-footer__social-icon,
@@ -94,18 +102,22 @@ html {
    ========================================= */
 
 .taf-header {
-  position: sticky;
-  top: 0;
-  z-index: var(--taf-z-header);
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: var(--taf-z-header) !important;
   background: var(--taf-black-pure);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all var(--taf-transition-fast);
+  transition: all var(--taf-transition-base);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  width: 100% !important;
 }
 
+/* Scroll compression - Design Council approved */
 .taf-header.scrolled {
   background: var(--taf-black-pure);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-bottom-color: rgba(241, 131, 34, 0.2);
 }
 
 .taf-header__container {
@@ -114,10 +126,34 @@ html {
   padding: 0 var(--taf-space-lg);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between; /* Mobile: logo esquerda, actions direita */
   gap: var(--taf-space-xl);
   height: 70px;
   position: relative;
+  transition: height var(--taf-transition-base);
+}
+
+/* Desktop: centraliza menu */
+@media (min-width: 992px) {
+  .taf-header__container {
+    justify-content: center;
+  }
+}
+
+/* Compressão no scroll: 70px → 60px */
+.taf-header.scrolled .taf-header__container {
+  height: 60px;
+}
+
+/* Logo também comprime suavemente */
+.taf-header__logo img {
+  height: 52px;
+  width: auto;
+  transition: height var(--taf-transition-base);
+}
+
+.taf-header.scrolled .taf-header__logo img {
+  height: 46px;
 }
 
 /* Logo - CLEAN (SEM efeitos!) */
@@ -129,12 +165,6 @@ html {
 
 .taf-header__logo:hover {
   opacity: 0.85;
-}
-
-.taf-header__logo img {
-  height: 52px;
-  width: auto;
-  /* SEM drop-shadow, SEM filtros! */
 }
 
 /* Desktop Navigation - CLEAN & MINIMAL */
@@ -191,46 +221,78 @@ html {
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* Active State - UNDERLINE CLEAN */
+/* Active State - 3 LISTRAS (TAF BRAND DNA) */
 .taf-nav__link.active {
   color: var(--taf-white);
   font-weight: var(--taf-font-bold);
 }
 
+/* 3 Listras Laranjas - DNA Visual TAF (inspirado na logo) */
+/* Matemática Refinada:
+   - 4px do texto (espaço perfeito)
+   - 3 linhas de 1.5px cada
+   - Gap uniforme de 1.5px entre linhas
+   - Total height: (1.5px × 3) + (1.5px × 2) = 7.5px
+*/
 .taf-nav__link.active::after {
   content: '';
   position: absolute;
-  bottom: 6px;
+  bottom: -1px;
   left: 50%;
   transform: translateX(-50%);
-  width: 20px;
-  height: 2px;
-  background: var(--taf-orange-brand);
-  border-radius: 2px;
+  width: 24px;
+  height: 7.5px;
+  background:
+    linear-gradient(to right, var(--taf-orange-brand) 0%, var(--taf-orange-brand) 100%) 0 0 / 100% 1.5px no-repeat,
+    linear-gradient(to right, var(--taf-orange-brand) 0%, var(--taf-orange-brand) 100%) 0 3px / 100% 1.5px no-repeat,
+    linear-gradient(to right, var(--taf-orange-brand) 0%, var(--taf-orange-brand) 100%) 0 6px / 100% 1.5px no-repeat;
+  opacity: 0;
+  animation: slideUpFade 400ms ease-out forwards;
 }
 
-/* CTA Button - CLEAN & PROFESSIONAL */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* CTA Button - ORANGE BRAND (TAF DNA) */
 .taf-nav__cta {
   margin-left: var(--taf-space-md);
   padding: var(--taf-space-sm) var(--taf-space-lg);
-  background: var(--taf-white);
-  color: var(--taf-black-pure);
+  background: var(--taf-orange-brand);
+  color: var(--taf-white);
   font-weight: var(--taf-font-bold);
   border-radius: var(--taf-radius-sm);
-  transition: all var(--taf-transition-fast);
-  border: 2px solid var(--taf-white);
+  transition: all var(--taf-transition-base);
+  border: 2px solid var(--taf-orange-brand);
+  box-shadow: 0 2px 8px rgba(241, 131, 34, 0.2);
 }
 
-/* Remove azul do CTA */
+/* Manter consistência de cor em todos estados de link */
 .taf-nav__cta:link,
 .taf-nav__cta:visited {
-  color: var(--taf-black-pure);
+  color: var(--taf-white);
 }
 
+/* Hover: Inverte cores (white bg + orange text) */
 .taf-nav__cta:hover {
-  background: transparent;
-  color: var(--taf-white);
-  transform: translateY(-1px);
+  background: var(--taf-white);
+  color: var(--taf-orange-brand);
+  border-color: var(--taf-orange-brand);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(241, 131, 34, 0.3);
+}
+
+/* Focus state para acessibilidade */
+.taf-nav__cta:focus-visible {
+  outline: 3px solid var(--taf-orange-brand);
+  outline-offset: 4px;
 }
 
 .taf-nav__cta::after {
@@ -248,13 +310,12 @@ html {
   width: 44px;
   height: 44px;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(241, 131, 34, 0.3);
   border-radius: var(--taf-radius-sm);
   cursor: pointer;
   z-index: calc(var(--taf-z-menu) + 10);
   transition: all var(--taf-transition-fast);
-  position: absolute;
-  right: var(--taf-space-lg);
+  flex-shrink: 0;
 }
 
 @media (min-width: 992px) {
@@ -264,36 +325,44 @@ html {
 }
 
 .taf-mobile-toggle:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(241, 131, 34, 0.1);
+  border-color: var(--taf-orange-brand);
 }
 
 .taf-mobile-toggle:active {
   transform: scale(0.95);
 }
 
-/* Hamburger Icon */
+/* Hamburger Icon - 3 LISTRAS (TAF BRAND DNA) */
 .taf-hamburger {
-  width: 22px;
-  height: 16px;
+  width: 24px;
+  height: 14px;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
+/* 3 Linhas Finas - LARANJA (TAF BRAND DNA) */
 .taf-hamburger span {
   display: block;
   width: 100%;
-  height: 2px;
-  background: var(--taf-white);
-  border-radius: 2px;
-  transition: all var(--taf-transition-fast);
+  height: 1.5px;
+  background: var(--taf-orange-brand); /* SEMPRE LARANJA */
+  border-radius: 1px;
+  transition: all var(--taf-transition-base);
 }
 
-/* Hamburger to X */
+/* Hover: Mais brilhante */
+.taf-mobile-toggle:hover .taf-hamburger span {
+  background: var(--taf-orange-brand);
+  opacity: 0.8;
+}
+
+/* Hamburger to X - Orange brand color when active */
 .taf-mobile-toggle.active .taf-hamburger span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
+  background: var(--taf-orange-brand);
 }
 
 .taf-mobile-toggle.active .taf-hamburger span:nth-child(2) {
@@ -302,6 +371,134 @@ html {
 
 .taf-mobile-toggle.active .taf-hamburger span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
+  background: var(--taf-orange-brand);
+}
+
+/* =========================================
+   MOBILE HEADER - CTA + FOOTBALL ICON
+   ========================================= */
+
+/* Container para CTA + Bola + Hamburger */
+.taf-mobile-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  /* Removed absolute positioning - usando flexbox natural agora */
+}
+
+@media (min-width: 992px) {
+  .taf-mobile-header-actions {
+    display: none;
+  }
+}
+
+/* Botão CTA - Fale Conosco (Mobile Header) */
+.taf-mobile-header-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--taf-orange-brand);
+  color: var(--taf-white);
+  font-family: var(--taf-font-primary);
+  font-size: 14px;
+  font-weight: var(--taf-font-bold);
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: var(--taf-radius-sm);
+  border: 2px solid var(--taf-orange-brand);
+  transition: all var(--taf-transition-base);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* Remove underline em TODOS os estados */
+.taf-mobile-header-cta:link,
+.taf-mobile-header-cta:visited,
+.taf-mobile-header-cta:hover,
+.taf-mobile-header-cta:active,
+.taf-mobile-header-cta:focus {
+  text-decoration: none !important;
+}
+
+.taf-mobile-header-cta:hover {
+  background: var(--taf-white);
+  color: var(--taf-orange-brand);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(241, 131, 34, 0.3);
+}
+
+.taf-mobile-header-cta:active {
+  transform: translateY(0);
+}
+
+/* Telas muito pequenas: reduz padding */
+@media (max-width: 380px) {
+  .taf-mobile-header-cta {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .taf-mobile-header-actions {
+    gap: 8px;
+  }
+
+  .taf-mobile-football {
+    width: 32px;
+    height: 32px;
+  }
+
+  .taf-mobile-football .iconify {
+    font-size: 24px;
+  }
+}
+
+/* Separador Vertical */
+.taf-mobile-separator {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(241, 131, 34, 0.3) 20%,
+    rgba(241, 131, 34, 0.6) 50%,
+    rgba(241, 131, 34, 0.3) 80%,
+    transparent
+  );
+}
+
+/* Bola de Futebol Animada */
+.taf-mobile-football {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: var(--taf-orange-brand);
+  animation: footballFloat 3s ease-in-out infinite;
+}
+
+.taf-mobile-football .iconify {
+  font-size: 28px;
+  animation: footballSpin 8s linear infinite;
+}
+
+@keyframes footballFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes footballSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* =========================================
@@ -319,8 +516,8 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: var(--taf-space-xl) var(--taf-space-lg);
+  justify-content: flex-start;
+  padding: 80px var(--taf-space-lg) var(--taf-space-xl) var(--taf-space-lg);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
@@ -335,6 +532,11 @@ html {
 }
 
 /* Mobile Navigation - CLEAN LIST */
+.taf-mobile-nav {
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 8px;
+}
 
 .taf-mobile-nav__list {
   list-style: none;
@@ -342,7 +544,7 @@ html {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--taf-space-xs);
+  gap: 0;
 }
 
 .taf-mobile-nav__item {
@@ -370,10 +572,10 @@ html {
 .taf-mobile-nav__link {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: var(--taf-space-md) var(--taf-space-lg);
+  justify-content: space-between; /* Seta no final, como antes */
+  padding: 14px var(--taf-space-lg);
   font-family: var(--taf-font-primary);
-  font-size: var(--taf-text-nav-mobile);
+  font-size: 20px;
   font-weight: var(--taf-font-semibold);
   color: var(--taf-white);
   text-decoration: none;
@@ -381,8 +583,8 @@ html {
   letter-spacing: 0.05em;
   border-radius: var(--taf-radius-md);
   background: transparent;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transition: all var(--taf-transition-fast);
+  position: relative;
 }
 
 /* Remove azul do navegador - MOBILE */
@@ -395,27 +597,62 @@ html {
   text-decoration: none;
 }
 
-/* Hover - CLEAN WHITE (não laranja!) */
+/* Hover - CLEAN WHITE (não laranja!) - SEM underline */
 .taf-mobile-nav__link:hover {
   background: rgba(255, 255, 255, 0.08);
   padding-left: calc(var(--taf-space-lg) + 8px);
+  text-decoration: none;
 }
 
 .taf-mobile-nav__link:active {
   transform: scale(0.98);
 }
 
-/* Active Link - CLEAN */
+/* Active Link - 3 LISTRAS VERTICAIS (TAF BRAND DNA) */
+/* Matemática Refinada - Mobile Vertical:
+   - 3 linhas verticais de 1.5px largura cada
+   - Gap uniforme de 1.5px entre linhas
+   - Total width: (1.5px × 3) + (1.5px × 2) = 7.5px
+   - Height: 24px (consistente com desktop width)
+   - Posicionado à esquerda
+*/
 .taf-mobile-nav__link.active {
   background: rgba(255, 255, 255, 0.12);
   color: var(--taf-white);
   font-weight: var(--taf-font-bold);
-  border-left: 3px solid var(--taf-orange-brand);
+  padding-left: calc(var(--taf-space-lg) + 20px); /* Espaço para as 3 linhas + gap */
+}
+
+.taf-mobile-nav__link.active::before {
+  content: '';
+  position: absolute;
+  left: 12px; /* Mais próximo do texto, não colado na parede */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7.5px;
+  height: 24px;
+  background:
+    linear-gradient(to bottom, var(--taf-orange-brand) 0%, var(--taf-orange-brand) 100%) 0 0 / 1.5px 100% no-repeat,
+    linear-gradient(to bottom, var(--taf-orange-brand) 0%, var(--taf-orange-brand) 100%) 3px 0 / 1.5px 100% no-repeat,
+    linear-gradient(to bottom, var(--taf-orange-brand) 0%, var(--taf-orange-brand) 100%) 6px 0 / 1.5px 100% no-repeat;
+  opacity: 0;
+  animation: slideInFade 400ms ease-out forwards;
+}
+
+@keyframes slideInFade {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
 }
 
 /* Arrow - SUBTLE */
 .taf-mobile-nav__arrow {
-  font-size: 1rem;
+  font-size: 1.25rem; /* 20px - número par, maior */
   opacity: 0.5;
   transition: all var(--taf-transition-fast);
 }
@@ -425,13 +662,177 @@ html {
   transform: translateX(4px);
 }
 
+/* CTA Button - Fale Conosco */
+.taf-mobile-cta {
+  width: 100%;
+  max-width: 320px;
+  margin: 32px 0 24px 0;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.taf-mobile-menu.active .taf-mobile-cta {
+  animation: fadeInUp 400ms 350ms forwards;
+}
+
+.taf-mobile-cta__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px 32px;
+  background: var(--taf-orange-brand);
+  color: var(--taf-white);
+  font-family: var(--taf-font-primary);
+  font-size: 18px;
+  font-weight: var(--taf-font-bold);
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: var(--taf-radius-sm);
+  border: 2px solid var(--taf-orange-brand);
+  box-shadow: 0 4px 12px rgba(241, 131, 34, 0.3);
+  transition: all var(--taf-transition-base);
+  letter-spacing: 0.5px;
+}
+
+.taf-mobile-cta__button:link,
+.taf-mobile-cta__button:visited {
+  color: var(--taf-white);
+  text-decoration: none;
+}
+
+.taf-mobile-cta__button:hover {
+  background: var(--taf-white);
+  color: var(--taf-orange-brand);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(241, 131, 34, 0.4);
+  text-decoration: none;
+}
+
+.taf-mobile-cta__button:active,
+.taf-mobile-cta__button:focus {
+  text-decoration: none;
+}
+
+.taf-mobile-cta__button .iconify {
+  font-size: 22px;
+}
+
+/* Instagram CTA */
+.taf-mobile-instagram {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 0 24px 0;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.taf-mobile-menu.active .taf-mobile-instagram {
+  animation: fadeInUp 400ms 400ms forwards;
+}
+
+.taf-mobile-instagram__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--taf-white);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--taf-radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all var(--taf-transition-base);
+}
+
+.taf-mobile-instagram__link:link,
+.taf-mobile-instagram__link:visited {
+  color: var(--taf-white);
+  text-decoration: none;
+}
+
+.taf-mobile-instagram__link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--taf-orange-brand);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.taf-mobile-instagram__link:active,
+.taf-mobile-instagram__link:focus {
+  text-decoration: none;
+}
+
+.taf-mobile-instagram__icon {
+  font-size: 24px;
+  color: var(--taf-orange-brand);
+}
+
+/* Redes Sociais */
+.taf-mobile-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 0 0 32px 0;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.taf-mobile-menu.active .taf-mobile-social {
+  animation: fadeInUp 400ms 450ms forwards;
+}
+
+.taf-mobile-social__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: var(--taf-white);
+  text-decoration: none;
+  transition: all var(--taf-transition-base);
+}
+
+.taf-mobile-social__link:link,
+.taf-mobile-social__link:visited {
+  text-decoration: none;
+}
+
+.taf-mobile-social__link:hover {
+  background: var(--taf-orange-brand);
+  border-color: var(--taf-orange-brand);
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 4px 12px rgba(241, 131, 34, 0.4);
+  text-decoration: none;
+}
+
+.taf-mobile-social__link:active,
+.taf-mobile-social__link:focus {
+  text-decoration: none;
+}
+
+.taf-mobile-social__link .iconify {
+  font-size: 24px;
+}
+
 /* Mobile Footer */
 .taf-mobile-footer {
-  position: absolute;
-  bottom: var(--taf-space-xl);
+  margin-top: auto;
+  padding-top: 24px;
   text-align: center;
   opacity: 0;
-  animation: fadeIn 400ms 300ms forwards;
+}
+
+.taf-mobile-menu.active .taf-mobile-footer {
+  animation: fadeIn 400ms 500ms forwards;
 }
 
 @keyframes fadeIn {
@@ -439,7 +840,7 @@ html {
 }
 
 .taf-mobile-footer__text {
-  font-size: 0.8125rem;
+  font-size: 14px; /* 14px - número par, maior e legível */
   color: rgba(255, 255, 255, 0.4);
   font-weight: var(--taf-font-medium);
   letter-spacing: 0.05em;
@@ -451,9 +852,12 @@ html {
 
 .taf-nav__link:focus-visible,
 .taf-mobile-nav__link:focus-visible,
-.taf-mobile-toggle:focus-visible {
-  outline: 2px solid var(--taf-white);
-  outline-offset: 2px;
+.taf-mobile-toggle:focus-visible,
+.taf-mobile-cta__button:focus-visible,
+.taf-mobile-instagram__link:focus-visible,
+.taf-mobile-social__link:focus-visible {
+  outline: 2px solid var(--taf-orange-brand);
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -568,12 +972,12 @@ html {
    9. MOBILE MENU - LOGO E CLOSE BUTTON
    ========================================= */
 
-/* Logo no Menu Mobile - GRANDE E ACIMA DO MENU */
+/* Logo no Menu Mobile - MAIOR E IMPACTANTE */
 .taf-mobile-logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--taf-space-xl);
+  margin-bottom: 40px;
   opacity: 0;
   transform: translateY(10px);
   transition: all var(--taf-transition-base);
@@ -584,7 +988,7 @@ html {
 }
 
 .taf-mobile-logo img {
-  height: 90px;
+  height: 110px;
   width: auto;
 }
 
@@ -1025,6 +1429,7 @@ html, body {
   margin: 0 0 24px 0 !important;
   letter-spacing: 1px !important;
   line-height: 1.2 !important;
+  text-align: left !important;
 }
 
 @media (min-width: 992px) {
@@ -1038,8 +1443,13 @@ html, body {
   font-size: 16px !important;
   font-weight: 400 !important;
   line-height: 1.7 !important;
-  color: #333333 !important;
+  color: var(--taf-gray-medium) !important;
   margin: 0 !important;
+}
+
+.taf-cta-instagram__cta-text strong {
+  font-weight: 700 !important;
+  color: var(--taf-black-pure) !important;
 }
 
 /* Right Side: Instagram Social Proof */
@@ -1126,18 +1536,12 @@ html, body {
 
 .taf-cta-instagram__social-text {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
-  font-size: 15px !important;
+  font-size: 16px !important;
   font-weight: 400 !important;
   line-height: 1.7 !important;
-  color: #555555 !important;
+  color: var(--taf-gray-medium) !important;
   margin: 0 !important;
   text-align: center !important;
-}
-
-@media (min-width: 992px) {
-  .taf-cta-instagram__social-text {
-    font-size: 16px !important;
-  }
 }
 
 /* =========================================
@@ -1165,15 +1569,9 @@ html, body {
   position: relative !important;
   overflow: hidden !important;
   cursor: pointer !important;
-  width: 100% !important; /* Full width on mobile */
-  max-width: 320px !important; /* Limit max width */
+  width: auto !important;
   text-align: center !important;
-}
-
-@media (min-width: 768px) {
-  .taf-btn-primary {
-    width: auto !important; /* Auto width on tablet+ */
-  }
+  white-space: nowrap !important;
 }
 
 @media (min-width: 992px) {
@@ -1234,6 +1632,24 @@ html, body {
   .taf-players-hero .text-center {
     margin-top: 50px !important;
   }
+}
+
+/* Botões da home - alinhamento e espaçamento dos ícones */
+.taf-players-hero .taf-btn-primary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+}
+
+.taf-players-hero .taf-btn-primary .iconify {
+  font-size: 20px !important;
+  line-height: 1 !important;
+  transition: transform 0.3s ease-out !important;
+}
+
+.taf-players-hero .taf-btn-primary:hover .iconify {
+  transform: translateX(4px) !important;
 }
 
 /* =========================================
