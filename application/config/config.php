@@ -14,18 +14,37 @@
 | path to your installation.
 |
 */
-$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-$host   = $_SERVER['HTTP_HOST'] ?? ($_SERVER['SERVER_NAME'] ?? 'localhost');
+// Detecta protocolo respeitando proxies (X-Forwarded-Proto)
+if (!empty($_SERVER['HTTP_X_FORWARDED_PROTO'])) {
+	$scheme = explode(',', $_SERVER['HTTP_X_FORWARDED_PROTO'])[0];
+} elseif (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') {
+	$scheme = 'https';
+} else {
+	$scheme = 'http';
+}
 
-// Complementa com a porta quando não for a padrão (ex.: localhost:8000)
-if (strpos($host, ':') === FALSE && isset($_SERVER['SERVER_PORT'])) {
-	$port = $_SERVER['SERVER_PORT'];
-	$needs_port = ($scheme === 'http'  && $port !== '80')
-		|| ($scheme === 'https' && $port !== '443');
+// Detecta host (prioriza cabeçalhos de proxy)
+$hostHeader = $_SERVER['HTTP_X_FORWARDED_HOST']
+	?? $_SERVER['HTTP_HOST']
+	?? $_SERVER['SERVER_NAME']
+	?? 'localhost';
 
-	if ($needs_port) {
-		$host .= ':' . $port;
-	}
+// Quando há múltiplos hosts no cabeçalho, usa o primeiro
+$hostHeader = trim(explode(',', $hostHeader)[0]);
+
+// Se já veio com porta, respeita. Caso contrário, calcula.
+if (strpos($hostHeader, ':') === FALSE) {
+	$port = $_SERVER['HTTP_X_FORWARDED_PORT']
+		?? $_SERVER['SERVER_PORT']
+		?? null;
+
+	$needs_port = $port
+		&& (($scheme === 'http'  && $port !== '80')
+			|| ($scheme === 'https' && $port !== '443'));
+
+	$host = $needs_port ? $hostHeader . ':' . $port : $hostHeader;
+} else {
+	$host = $hostHeader;
 }
 
 $config['base_url'] = $scheme . '://' . rtrim($host, '/') . '/';
