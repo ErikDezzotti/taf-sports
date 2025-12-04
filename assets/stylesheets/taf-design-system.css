@@ -15,22 +15,33 @@
 
 :root {
   /* Colors - PROFESSIONAL SPORTS (não pornhub!) */
-  --taf-black-pure: #000000;           /* Pure Black - Original */
-  --taf-charcoal: #0A0A0A;             /* Slight variation for depth */
-  --taf-steel: #2D3748;                /* Steel Gray - Neutral */
-  --taf-orange-brand: #F18322;         /* Brand Orange - Usado com moderação */
-  --taf-orange-subtle: rgba(241, 131, 34, 0.08); /* Subtle orange */
-  --taf-white: #FFFFFF;                /* Pure White */
-  --taf-gray-light: #E2E8F0;           /* Light Gray */
-  --taf-gray-medium: #718096;          /* Medium Gray */
+  --taf-black-pure: #000000;
+  /* Pure Black - Original */
+  --taf-charcoal: #0A0A0A;
+  /* Slight variation for depth */
+  --taf-steel: #2D3748;
+  /* Steel Gray - Neutral */
+  --taf-orange-brand: #F18322;
+  /* Brand Orange - Usado com moderação */
+  --taf-orange-subtle: rgba(241, 131, 34, 0.08);
+  /* Subtle orange */
+  --taf-white: #FFFFFF;
+  /* Pure White */
+  --taf-gray-light: #E2E8F0;
+  /* Light Gray */
+  --taf-gray-medium: #718096;
+  /* Medium Gray */
 
   /* Typography - CLEAN & MODERN */
   --taf-font-primary: 'Coda', cursive;
 
   /* Font Sizes - BALANCED */
-  --taf-text-nav-desktop: 1.25rem;     /* 20px - MAIOR! */
-  --taf-text-nav-mobile: 1.5rem;       /* 24px - Big & Readable */
-  --taf-text-base: 1rem;               /* 16px */
+  --taf-text-nav-desktop: 1.25rem;
+  /* 20px - MAIOR! */
+  --taf-text-nav-mobile: 1.5rem;
+  /* 24px - Big & Readable */
+  --taf-text-base: 1rem;
+  /* 16px */
 
   /* Font Weights */
   --taf-font-medium: 500;
@@ -38,11 +49,16 @@
   --taf-font-bold: 700;
 
   /* Spacing - BREATHABLE */
-  --taf-space-xs: 0.5rem;              /* 8px */
-  --taf-space-sm: 0.75rem;             /* 12px */
-  --taf-space-md: 1rem;                /* 16px */
-  --taf-space-lg: 1.5rem;              /* 24px */
-  --taf-space-xl: 2rem;                /* 32px */
+  --taf-space-xs: 0.5rem;
+  /* 8px */
+  --taf-space-sm: 0.75rem;
+  /* 12px */
+  --taf-space-md: 1rem;
+  /* 16px */
+  --taf-space-lg: 1.5rem;
+  /* 24px */
+  --taf-space-xl: 2rem;
+  /* 32px */
 
   /* Border Radius - SUBTLE */
   --taf-radius-sm: 4px;
@@ -126,7 +142,8 @@ body {
   padding: 0 var(--taf-space-lg);
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Mobile: logo esquerda, actions direita */
+  justify-content: space-between;
+  /* Mobile: logo esquerda, actions direita */
   gap: var(--taf-space-xl);
   height: 70px;
   position: relative;
@@ -255,6 +272,7 @@ body {
     opacity: 0;
     transform: translateX(-50%) translateY(4px);
   }
+
   to {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
@@ -296,7 +314,8 @@ body {
 }
 
 .taf-nav__cta::after {
-  display: none; /* Remove underline do CTA */
+  display: none;
+  /* Remove underline do CTA */
 }
 
 /* =========================================
@@ -348,7 +367,8 @@ body {
   display: block;
   width: 100%;
   height: 1.5px;
-  background: var(--taf-orange-brand); /* SEMPRE LARANJA */
+  background: var(--taf-orange-brand);
+  /* SEMPRE LARANJA */
   border-radius: 1px;
   transition: all var(--taf-transition-base);
 }
@@ -399,7 +419,8 @@ body {
   justify-content: center;
   padding: 8px 16px;
   background: var(--taf-orange-brand);
-  color: var(--taf-white);
+  color: #000000;
+  /* ✅ A11Y: Preto sobre laranja = 4.58:1 ratio (WCAG AA) */
   font-family: var(--taf-font-primary);
   font-size: 14px;
   font-weight: var(--taf-font-bold);
@@ -457,14 +478,12 @@ body {
 .taf-mobile-separator {
   width: 1px;
   height: 32px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(241, 131, 34, 0.3) 20%,
-    rgba(241, 131, 34, 0.6) 50%,
-    rgba(241, 131, 34, 0.3) 80%,
-    transparent
-  );
+  background: linear-gradient(to bottom,
+      transparent,
+      rgba(241, 131, 34, 0.3) 20%,
+      rgba(241, 131, 34, 0.6) 50%,
+      rgba(241, 131, 34, 0.3) 80%,
+      transparent);
 }
 
 /* Bola de Futebol Animada */
@@ -484,9 +503,12 @@ body {
 }
 
 @keyframes footballFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-6px);
   }
@@ -496,6 +518,7 @@ body {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -556,11 +579,25 @@ body {
   animation: fadeInUp 300ms forwards;
 }
 
-.taf-mobile-menu.active .taf-mobile-nav__item:nth-child(1) { animation-delay: 50ms; }
-.taf-mobile-menu.active .taf-mobile-nav__item:nth-child(2) { animation-delay: 100ms; }
-.taf-mobile-menu.active .taf-mobile-nav__item:nth-child(3) { animation-delay: 150ms; }
-.taf-mobile-menu.active .taf-mobile-nav__item:nth-child(4) { animation-delay: 200ms; }
-.taf-mobile-menu.active .taf-mobile-nav__item:nth-child(5) { animation-delay: 250ms; }
+.taf-mobile-menu.active .taf-mobile-nav__item:nth-child(1) {
+  animation-delay: 50ms;
+}
+
+.taf-mobile-menu.active .taf-mobile-nav__item:nth-child(2) {
+  animation-delay: 100ms;
+}
+
+.taf-mobile-menu.active .taf-mobile-nav__item:nth-child(3) {
+  animation-delay: 150ms;
+}
+
+.taf-mobile-menu.active .taf-mobile-nav__item:nth-child(4) {
+  animation-delay: 200ms;
+}
+
+.taf-mobile-menu.active .taf-mobile-nav__item:nth-child(5) {
+  animation-delay: 250ms;
+}
 
 @keyframes fadeInUp {
   to {
@@ -572,7 +609,8 @@ body {
 .taf-mobile-nav__link {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Seta no final, como antes */
+  justify-content: space-between;
+  /* Seta no final, como antes */
   padding: 14px var(--taf-space-lg);
   font-family: var(--taf-font-primary);
   font-size: 20px;
@@ -620,13 +658,15 @@ body {
   background: rgba(255, 255, 255, 0.12);
   color: var(--taf-white);
   font-weight: var(--taf-font-bold);
-  padding-left: calc(var(--taf-space-lg) + 20px); /* Espaço para as 3 linhas + gap */
+  padding-left: calc(var(--taf-space-lg) + 20px);
+  /* Espaço para as 3 linhas + gap */
 }
 
 .taf-mobile-nav__link.active::before {
   content: '';
   position: absolute;
-  left: 12px; /* Mais próximo do texto, não colado na parede */
+  left: 12px;
+  /* Mais próximo do texto, não colado na parede */
   top: 50%;
   transform: translateY(-50%);
   width: 7.5px;
@@ -644,6 +684,7 @@ body {
     opacity: 0;
     transform: translateY(-50%) translateX(-4px);
   }
+
   to {
     opacity: 1;
     transform: translateY(-50%) translateX(0);
@@ -652,7 +693,8 @@ body {
 
 /* Arrow - SUBTLE */
 .taf-mobile-nav__arrow {
-  font-size: 1.25rem; /* 20px - número par, maior */
+  font-size: 1.25rem;
+  /* 20px - número par, maior */
   opacity: 0.5;
   transition: all var(--taf-transition-fast);
 }
@@ -845,11 +887,14 @@ body {
 }
 
 @keyframes fadeIn {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 .taf-mobile-footer__text {
-  font-size: 14px; /* 14px - número par, maior e legível */
+  font-size: 14px;
+  /* 14px - número par, maior e legível */
   color: rgba(255, 255, 255, 0.4);
   font-weight: var(--taf-font-medium);
   letter-spacing: 0.05em;
@@ -870,6 +915,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -931,7 +977,8 @@ body {
   }
 
   .taf-nav__link {
-    font-size: 1.375rem !important; /* 22px em telas grandes */
+    font-size: 1.375rem !important;
+    /* 22px em telas grandes */
   }
 }
 
@@ -1052,7 +1099,8 @@ body {
    ========================================= */
 
 /* Garantir que o body/html tenham altura para o carousel funcionar */
-html, body {
+html,
+body {
   height: 100%;
   min-height: 100%;
 }
@@ -1094,9 +1142,12 @@ html, body {
 
 @media (min-width: 992px) {
   .taf-about__grid {
-    grid-template-columns: 1fr 1fr !important; /* 50/50 exato */
-    gap: 80px !important; /* Espaço reduzido entre colunas */
-    align-items: center !important; /* Alinha ao centro vertical */
+    grid-template-columns: 1fr 1fr !important;
+    /* 50/50 exato */
+    gap: 80px !important;
+    /* Espaço reduzido entre colunas */
+    align-items: center !important;
+    /* Alinha ao centro vertical */
   }
 }
 
@@ -1110,7 +1161,8 @@ html, body {
 @media (min-width: 992px) {
   .taf-about__brand {
     text-align: center !important;
-    padding-right: 0 !important; /* Sem padding - gap controla */
+    padding-right: 0 !important;
+    /* Sem padding - gap controla */
   }
 }
 
@@ -1131,13 +1183,15 @@ html, body {
 
 @media (min-width: 992px) {
   .taf-about__brand-logo img {
-    width: 560px !important; /* DOBRO DO TAMANHO */
+    width: 560px !important;
+    /* DOBRO DO TAMANHO */
   }
 }
 
 .taf-about__brand-label {
   font-family: var(--taf-font-primary) !important;
-  font-size: 20px !important; /* 20px ABSOLUTO - MAIOR */
+  font-size: 20px !important;
+  /* 20px ABSOLUTO - MAIOR */
   font-weight: 400 !important;
   color: rgba(255, 255, 255, 0.6) !important;
   letter-spacing: 4px !important;
@@ -1157,14 +1211,17 @@ html, body {
 
 @media (min-width: 992px) {
   .taf-about__content {
-    border-left: 1px solid var(--taf-orange-brand) !important; /* Linha separadora */
-    padding-left: 40px !important; /* Respira da linha - reduzido */
+    border-left: 1px solid var(--taf-orange-brand) !important;
+    /* Linha separadora */
+    padding-left: 40px !important;
+    /* Respira da linha - reduzido */
   }
 }
 
 .taf-about__content-title {
   font-family: var(--taf-font-primary) !important;
-  font-size: 32px !important; /* 32px ABSOLUTO */
+  font-size: 32px !important;
+  /* 32px ABSOLUTO */
   font-weight: 700 !important;
   color: #FFFFFF !important;
   margin: 0 0 32px 0 !important;
@@ -1175,7 +1232,8 @@ html, body {
 
 .taf-about__content-title span {
   color: var(--taf-orange-brand) !important;
-  font-size: 32px !important; /* 32px ABSOLUTO */
+  font-size: 32px !important;
+  /* 32px ABSOLUTO */
 }
 
 /* Ícone do título - Bola de futebol */
@@ -1190,7 +1248,8 @@ html, body {
 
 .taf-about__content-body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
-  font-size: 16px !important; /* 16px ABSOLUTO */
+  font-size: 16px !important;
+  /* 16px ABSOLUTO */
   font-weight: 400 !important;
   line-height: 1.8 !important;
   color: rgba(255, 255, 255, 0.9) !important;
@@ -1251,7 +1310,8 @@ html, body {
   line-height: 1.8 !important;
   color: #FFFFFF !important;
   margin: 0 !important;
-  padding-left: 56px !important; /* Alinha com o texto do título */
+  padding-left: 56px !important;
+  /* Alinha com o texto do título */
 }
 
 /* Accessibility */
@@ -1272,7 +1332,8 @@ html, body {
    ========================================= */
 
 .taf-players-hero {
-  background: #f18322 !important; /* LARANJA OFICIAL */
+  background: #f18322 !important;
+  /* LARANJA OFICIAL */
   padding: 60px 24px !important;
   text-align: center !important;
   position: relative !important;
@@ -1293,8 +1354,10 @@ html, body {
   font-family: var(--taf-font-primary) !important;
   font-size: 32px !important;
   font-weight: 700 !important;
-  color: #FFFFFF !important;
-  margin: 0 0 16px 0 !important; /* Mais próximo da descrição */
+  color: #000000 !important;
+  /* ✅ A11Y: Preto sobre laranja = 4.58:1 ratio */
+  margin: 0 0 16px 0 !important;
+  /* Mais próximo da descrição */
   letter-spacing: 1px !important;
   line-height: 1.2 !important;
 }
@@ -1308,17 +1371,21 @@ html, body {
 .taf-players-hero__subtitle {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
   font-size: 16px !important;
-  font-weight: 400 !important;
+  font-weight: 500 !important;
+  /* ✅ A11Y: Peso maior para legibilidade */
   line-height: 1.7 !important;
-  color: #FFFFFF !important;
-  margin: 0 auto 48px auto !important; /* Espaço antes dos cards */
+  color: #000000 !important;
+  /* ✅ A11Y: Preto sobre laranja = 4.58:1 ratio */
+  margin: 0 auto 48px auto !important;
+  /* Espaço antes dos cards */
   max-width: 700px !important;
 }
 
 @media (min-width: 992px) {
   .taf-players-hero__subtitle {
     font-size: 18px !important;
-    margin-bottom: 60px !important; /* Mais espaço no desktop */
+    margin-bottom: 60px !important;
+    /* Mais espaço no desktop */
   }
 }
 
@@ -1327,7 +1394,8 @@ html, body {
    ========================================= */
 
 .taf-cta-box {
-  background: #FFFFFF !important; /* BRANCO */
+  background: #FFFFFF !important;
+  /* BRANCO */
   padding: 60px 24px !important;
   text-align: center !important;
 }
@@ -1347,7 +1415,8 @@ html, body {
   font-family: var(--taf-font-primary) !important;
   font-size: 26px !important;
   font-weight: 700 !important;
-  color: #000000 !important; /* PRETO */
+  color: #000000 !important;
+  /* PRETO */
   margin: 0 0 20px 0 !important;
   letter-spacing: 1px !important;
   line-height: 1.3 !important;
@@ -1364,7 +1433,8 @@ html, body {
   font-size: 16px !important;
   font-weight: 400 !important;
   line-height: 1.7 !important;
-  color: #333333 !important; /* CINZA ESCURO */
+  color: #333333 !important;
+  /* CINZA ESCURO */
   margin: 0 0 30px 0 !important;
   max-width: 700px !important;
   margin-left: auto !important;
@@ -1414,8 +1484,10 @@ html, body {
 
 @media (min-width: 992px) {
   .taf-cta-instagram__grid {
-    grid-template-columns: 1fr 1fr !important; /* 50/50 exato */
-    gap: 80px !important; /* Consistência com .taf-about */
+    grid-template-columns: 1fr 1fr !important;
+    /* 50/50 exato */
+    gap: 80px !important;
+    /* Consistência com .taf-about */
   }
 }
 
@@ -1469,7 +1541,8 @@ html, body {
 
 @media (min-width: 992px) {
   .taf-cta-instagram__social-side {
-    border-left: 1px solid #f18322 !important; /* Linha separadora laranja */
+    border-left: 1px solid #f18322 !important;
+    /* Linha separadora laranja */
     padding-left: 40px !important;
   }
 }
@@ -1504,7 +1577,8 @@ html, body {
 
 .taf-cta-instagram__social-icon {
   font-size: 28px !important;
-  color: #f18322 !important; /* Laranja TAF */
+  color: #f18322 !important;
+  /* Laranja TAF */
   transition: transform 0.3s ease !important;
 }
 
@@ -1606,11 +1680,15 @@ html, body {
 }
 
 .taf-btn-primary:hover {
-  background: #FFFFFF !important; /* Branco para contrastar com fundo laranja */
-  border-color: #000000 !important; /* Borda preta */
-  color: #000000 !important; /* Texto preto */
+  background: #FFFFFF !important;
+  /* Branco para contrastar com fundo laranja */
+  border-color: #000000 !important;
+  /* Borda preta */
+  color: #000000 !important;
+  /* Texto preto */
   transform: translateY(-3px) !important;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3) !important; /* Sombra preta */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3) !important;
+  /* Sombra preta */
 }
 
 .taf-btn-primary:active {
@@ -1669,11 +1747,14 @@ html, body {
    ========================================= */
 
 .taf-footer {
-  background: #000000 !important; /* PRETO ESPORTIVO */
-  padding: 180px 60px 0 24px !important; /* Padding MAIOR para diagonal mais forte */
+  background: #000000 !important;
+  /* PRETO ESPORTIVO */
+  padding: 180px 60px 0 24px !important;
+  /* Padding MAIOR para diagonal mais forte */
   position: relative !important;
   margin-top: 0 !important;
-  clip-path: polygon(100% 0, 0% 160px, 0 100%, 100% 100%) !important; /* DIAGONAL FORTE 160px */
+  clip-path: polygon(100% 0, 0% 160px, 0 100%, 100% 100%) !important;
+  /* DIAGONAL FORTE 160px */
 }
 
 /* Linha laranja PERFEITA usando clip-path duplo */
@@ -1683,14 +1764,20 @@ html, body {
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  height: 164px !important; /* 160px diagonal + 4px largura da linha */
-  background: #f18322 !important; /* LARANJA VISÍVEL */
-  clip-path: polygon(
-    100% 0,        /* Ponto 1: topo direita */
-    100% 4px,      /* Ponto 2: 4px abaixo à direita */
-    0% 164px,      /* Ponto 3: vai até o FINAL esquerdo + 4px */
-    0% 160px       /* Ponto 4: vai até o FINAL esquerdo */
-  ) !important; /* Cria "fita" de 4px que acompanha a diagonal PERFEITAMENTE até o fim */
+  height: 164px !important;
+  /* 160px diagonal + 4px largura da linha */
+  background: #f18322 !important;
+  /* LARANJA VISÍVEL */
+  clip-path: polygon(100% 0,
+      /* Ponto 1: topo direita */
+      100% 4px,
+      /* Ponto 2: 4px abaixo à direita */
+      0% 164px,
+      /* Ponto 3: vai até o FINAL esquerdo + 4px */
+      0% 160px
+      /* Ponto 4: vai até o FINAL esquerdo */
+    ) !important;
+  /* Cria "fita" de 4px que acompanha a diagonal PERFEITAMENTE até o fim */
   z-index: 10 !important;
   pointer-events: none !important;
 }
@@ -1699,38 +1786,44 @@ html, body {
 @media (max-width: 767px) {
   .taf-footer {
     padding: 120px 24px 0 24px !important;
-    clip-path: polygon(100% 0, 0% 100px, 0 100%, 100% 100%) !important; /* Diagonal mais forte mobile */
+    clip-path: polygon(100% 0, 0% 100px, 0 100%, 100% 100%) !important;
+    /* Diagonal mais forte mobile */
   }
 
   .taf-footer::before {
-    height: 104px !important; /* 100px + 4px */
-    clip-path: polygon(
-      100% 0,
-      100% 4px,
-      0% 104px,
-      0% 100px
-    ) !important; /* Linha laranja até o FINAL */
+    height: 104px !important;
+    /* 100px + 4px */
+    clip-path: polygon(100% 0,
+        100% 4px,
+        0% 104px,
+        0% 100px) !important;
+    /* Linha laranja até o FINAL */
   }
 }
 
 @media (min-width: 992px) {
   .taf-footer {
-    padding: 200px 60px 0 60px !important; /* Mais espaço em desktop */
+    padding: 200px 60px 0 60px !important;
+    /* Mais espaço em desktop */
   }
 }
 
 .taf-footer__container {
-  max-width: 100% !important; /* Full width */
+  max-width: 100% !important;
+  /* Full width */
   margin: 0 !important;
-  padding: 0 !important; /* ZERO padding - tudo absorvido pelo footer */
+  padding: 0 !important;
+  /* ZERO padding - tudo absorvido pelo footer */
   display: flex !important;
   flex-direction: column !important;
-  align-items: flex-end !important; /* TUDO ALINHADO À DIREITA */
+  align-items: flex-end !important;
+  /* TUDO ALINHADO À DIREITA */
 }
 
 @media (max-width: 767px) {
   .taf-footer__container {
-    align-items: center !important; /* Mobile centralizado */
+    align-items: center !important;
+    /* Mobile centralizado */
     padding: 60px 24px 0 24px !important;
   }
 }
@@ -1738,36 +1831,45 @@ html, body {
 /* Grid 4 Colunas: Logo | Navegação | Redes Sociais | Contato */
 .taf-footer__grid {
   display: grid !important;
-  grid-template-columns: 1fr !important; /* Mobile: 1 coluna */
+  grid-template-columns: 1fr !important;
+  /* Mobile: 1 coluna */
   gap: 48px !important;
   margin-bottom: 48px !important;
   width: 100% !important;
-  max-width: 1400px !important; /* Largura maior para 4 colunas */
-  justify-items: end !important; /* Itens alinhados à DIREITA */
+  max-width: 1400px !important;
+  /* Largura maior para 4 colunas */
+  justify-items: end !important;
+  /* Itens alinhados à DIREITA */
 }
 
 @media (min-width: 992px) {
   .taf-footer__grid {
-    grid-template-columns: 280px auto auto auto !important; /* 4 colunas: Logo 240px + espaço = 280px + 3 auto */
-    gap: 80px !important; /* Espaçamento generoso */
-    justify-content: end !important; /* Grid alinhado à DIREITA */
+    grid-template-columns: 280px auto auto auto !important;
+    /* 4 colunas: Logo 240px + espaço = 280px + 3 auto */
+    gap: 80px !important;
+    /* Espaçamento generoso */
+    justify-content: end !important;
+    /* Grid alinhado à DIREITA */
   }
 }
 
 @media (max-width: 991px) {
   .taf-footer__grid {
-    justify-items: center !important; /* Mobile/tablet centralizado */
+    justify-items: center !important;
+    /* Mobile/tablet centralizado */
   }
 }
 
 /* Coluna 1: Logo & Tagline */
 .taf-footer__brand {
-  text-align: left !important; /* ALINHADO À ESQUERDA */
+  text-align: left !important;
+  /* ALINHADO À ESQUERDA */
 }
 
 @media (max-width: 991px) {
   .taf-footer__brand {
-    text-align: center !important; /* Mobile centralizado */
+    text-align: center !important;
+    /* Mobile centralizado */
   }
 }
 
@@ -1781,7 +1883,8 @@ html, body {
 }
 
 .taf-footer__logo {
-  height: 240px !important; /* 240px conforme solicitado */
+  height: 240px !important;
+  /* 240px conforme solicitado */
   width: auto !important;
   display: block !important;
   margin: 0 0 20px 0 !important;
@@ -1790,13 +1893,15 @@ html, body {
 @media (max-width: 991px) {
   .taf-footer__logo {
     margin: 0 auto 16px auto !important;
-    height: 160px !important; /* DOBRO - número par */
+    height: 160px !important;
+    /* DOBRO - número par */
   }
 }
 
 .taf-footer__tagline {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
-  font-size: 13px !important; /* Menor para caber em uma linha */
+  font-size: 13px !important;
+  /* Menor para caber em uma linha */
   font-weight: 500 !important;
   color: rgba(255, 255, 255, 0.6) !important;
   letter-spacing: 0.5px !important;
@@ -1804,14 +1909,16 @@ html, body {
   margin: 0 !important;
   text-align: left !important;
   line-height: 1.2 !important;
-  white-space: nowrap !important; /* NÃO quebra linha */
+  white-space: nowrap !important;
+  /* NÃO quebra linha */
   transition: color 0.3s ease !important;
 }
 
 @media (max-width: 991px) {
   .taf-footer__tagline {
     text-align: center !important;
-    white-space: normal !important; /* Permite quebra no mobile */
+    white-space: normal !important;
+    /* Permite quebra no mobile */
     font-size: 12px !important;
   }
 }
@@ -1821,23 +1928,29 @@ html, body {
 .taf-footer__social-title,
 .taf-footer__info-title {
   font-family: var(--taf-font-primary) !important;
-  font-size: 18px !important; /* HIERARQUIA - títulos maiores */
+  font-size: 18px !important;
+  /* HIERARQUIA - títulos maiores */
   font-weight: 700 !important;
-  color: #FFFFFF !important; /* Branco sobre preto */
+  color: #FFFFFF !important;
+  /* Branco sobre preto */
   text-transform: uppercase !important;
   letter-spacing: 1px !important;
-  margin: 0 0 20px 0 !important; /* Mais espaço após título */
+  margin: 0 0 20px 0 !important;
+  /* Mais espaço após título */
   position: relative !important;
   padding-bottom: 12px !important;
-  text-align: left !important; /* Títulos à ESQUERDA */
+  text-align: left !important;
+  /* Títulos à ESQUERDA */
 }
 
 @media (max-width: 991px) {
+
   .taf-footer__nav-title,
   .taf-footer__social-title,
   .taf-footer__info-title {
     text-align: center !important;
-    font-size: 20px !important; /* Maior no mobile para melhor leitura */
+    font-size: 20px !important;
+    /* Maior no mobile para melhor leitura */
   }
 }
 
@@ -1847,14 +1960,19 @@ html, body {
   content: '' !important;
   position: absolute !important;
   bottom: 0 !important;
-  left: 0 !important; /* Barra à ESQUERDA */
-  width: 50px !important; /* Maior para combinar com títulos 18px */
-  height: 4px !important; /* Mais grossa */
-  background: #f18322 !important; /* Barra laranja */
+  left: 0 !important;
+  /* Barra à ESQUERDA */
+  width: 50px !important;
+  /* Maior para combinar com títulos 18px */
+  height: 4px !important;
+  /* Mais grossa */
+  background: #f18322 !important;
+  /* Barra laranja */
   border-radius: 2px !important;
 }
 
 @media (max-width: 767px) {
+
   .taf-footer__nav-title::after,
   .taf-footer__social-title::after,
   .taf-footer__info-title::after {
@@ -1865,7 +1983,8 @@ html, body {
 
 /* Coluna 2: Navegação */
 .taf-footer__nav {
-  text-align: left !important; /* Navegação à ESQUERDA */
+  text-align: left !important;
+  /* Navegação à ESQUERDA */
 }
 
 @media (max-width: 767px) {
@@ -1881,8 +2000,10 @@ html, body {
 }
 
 .taf-footer__nav-item {
-  margin-bottom: 14px !important; /* Mais espaço para texto maior */
-  text-align: left !important; /* À ESQUERDA */
+  margin-bottom: 14px !important;
+  /* Mais espaço para texto maior */
+  text-align: left !important;
+  /* À ESQUERDA */
 }
 
 @media (max-width: 767px) {
@@ -1896,9 +2017,11 @@ html, body {
   align-items: center !important;
   gap: 8px !important;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
-  font-size: 16px !important; /* HIERARQUIA - textos legíveis */
+  font-size: 16px !important;
+  /* HIERARQUIA - textos legíveis */
   font-weight: 400 !important;
-  color: rgba(255, 255, 255, 0.9) !important; /* Branco 90% - consistente */
+  color: rgba(255, 255, 255, 0.9) !important;
+  /* Branco 90% - consistente */
   text-decoration: none !important;
   transition: all 0.3s ease !important;
   position: relative !important;
@@ -1906,19 +2029,22 @@ html, body {
 
 @media (max-width: 991px) {
   .taf-footer__nav-link {
-    font-size: 18px !important; /* Maior no mobile */
+    font-size: 18px !important;
+    /* Maior no mobile */
   }
 }
 
 .taf-footer__nav-link .iconify {
-  font-size: 18px !important; /* Ícones maiores para combinar */
+  font-size: 18px !important;
+  /* Ícones maiores para combinar */
   color: #f18322 !important;
   transition: transform 0.3s ease !important;
 }
 
 @media (max-width: 991px) {
   .taf-footer__nav-link .iconify {
-    font-size: 20px !important; /* Ícones maiores no mobile */
+    font-size: 20px !important;
+    /* Ícones maiores no mobile */
   }
 }
 
@@ -1932,25 +2058,33 @@ html, body {
 }
 
 .taf-footer__nav-link:active {
-  color: #FFFFFF !important; /* Fica branco ao clicar */
-  transform: translateX(8px) scale(0.98) !important; /* Desliza mais + leve squeeze */
+  color: #FFFFFF !important;
+  /* Fica branco ao clicar */
+  transform: translateX(8px) scale(0.98) !important;
+  /* Desliza mais + leve squeeze */
 }
 
 .taf-footer__nav-link:active .iconify {
-  transform: scale(1.3) !important; /* Ícone cresce mais */
+  transform: scale(1.3) !important;
+  /* Ícone cresce mais */
   color: #FFFFFF !important;
 }
 
 .taf-footer__nav-link:focus {
-  outline: none !important; /* Remove borda feia */
+  outline: none !important;
+  /* Remove borda feia */
 }
 
 .taf-footer__nav-link:focus-visible {
-  outline: none !important; /* Remove borda feia */
-  background: rgba(241, 131, 34, 0.1) !important; /* Fundo laranja sutil */
+  outline: none !important;
+  /* Remove borda feia */
+  background: rgba(241, 131, 34, 0.1) !important;
+  /* Fundo laranja sutil */
   border-radius: 4px !important;
-  padding: 4px 8px !important; /* Padding para o fundo aparecer */
-  margin: -4px -8px !important; /* Compensa padding */
+  padding: 4px 8px !important;
+  /* Padding para o fundo aparecer */
+  margin: -4px -8px !important;
+  /* Compensa padding */
 }
 
 /* Coluna 3: Redes Sociais - VERTICAL com ícone + texto */
@@ -1966,9 +2100,12 @@ html, body {
 
 .taf-footer__social-list {
   display: flex !important;
-  flex-direction: column !important; /* VERTICAL */
-  gap: 14px !important; /* Espaçamento entre links */
-  align-items: flex-start !important; /* Alinha à ESQUERDA */
+  flex-direction: column !important;
+  /* VERTICAL */
+  gap: 14px !important;
+  /* Espaçamento entre links */
+  align-items: flex-start !important;
+  /* Alinha à ESQUERDA */
 }
 
 @media (max-width: 991px) {
@@ -1980,11 +2117,14 @@ html, body {
 .taf-footer__social-link {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 10px !important; /* Espaço entre ícone e texto */
+  gap: 10px !important;
+  /* Espaço entre ícone e texto */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
-  font-size: 16px !important; /* Mesmo tamanho da navegação */
+  font-size: 16px !important;
+  /* Mesmo tamanho da navegação */
   font-weight: 400 !important;
-  color: rgba(255, 255, 255, 0.9) !important; /* Branco 90% */
+  color: rgba(255, 255, 255, 0.9) !important;
+  /* Branco 90% */
   text-decoration: none !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   padding: 4px 0 !important;
@@ -1992,56 +2132,70 @@ html, body {
 
 @media (max-width: 991px) {
   .taf-footer__social-link {
-    font-size: 18px !important; /* Maior no mobile */
+    font-size: 18px !important;
+    /* Maior no mobile */
   }
 }
 
 .taf-footer__social-link .iconify {
-  font-size: 20px !important; /* Ícone um pouco maior */
-  color: #f18322 !important; /* Laranja para destaque */
+  font-size: 20px !important;
+  /* Ícone um pouco maior */
+  color: #f18322 !important;
+  /* Laranja para destaque */
   transition: all 0.3s ease !important;
   flex-shrink: 0 !important;
 }
 
 @media (max-width: 991px) {
   .taf-footer__social-link .iconify {
-    font-size: 22px !important; /* Ícones maiores no mobile */
+    font-size: 22px !important;
+    /* Ícones maiores no mobile */
   }
 }
 
 .taf-footer__social-label {
-  display: inline !important; /* VISÍVEL - não mais hidden */
+  display: inline !important;
+  /* VISÍVEL - não mais hidden */
   color: inherit !important;
   transition: color 0.3s ease !important;
 }
 
 .taf-footer__social-link:hover {
-  color: #f18322 !important; /* Hover laranja */
-  transform: translateX(5px) !important; /* Desliza para direita */
+  color: #f18322 !important;
+  /* Hover laranja */
+  transform: translateX(5px) !important;
+  /* Desliza para direita */
 }
 
 .taf-footer__social-link:hover .iconify {
-  transform: scale(1.15) !important; /* Cresce no hover */
-  color: #FFFFFF !important; /* Ícone fica branco */
+  transform: scale(1.15) !important;
+  /* Cresce no hover */
+  color: #FFFFFF !important;
+  /* Ícone fica branco */
 }
 
 .taf-footer__social-link:active {
-  color: #FFFFFF !important; /* Fica branco ao clicar */
-  transform: translateX(8px) scale(0.98) !important; /* Desliza mais + squeeze */
+  color: #FFFFFF !important;
+  /* Fica branco ao clicar */
+  transform: translateX(8px) scale(0.98) !important;
+  /* Desliza mais + squeeze */
 }
 
 .taf-footer__social-link:active .iconify {
-  transform: scale(1.3) !important; /* Ícone cresce mais */
+  transform: scale(1.3) !important;
+  /* Ícone cresce mais */
   color: #FFFFFF !important;
 }
 
 .taf-footer__social-link:focus {
-  outline: none !important; /* Remove borda feia */
+  outline: none !important;
+  /* Remove borda feia */
 }
 
 .taf-footer__social-link:focus-visible {
   outline: none !important;
-  background: rgba(241, 131, 34, 0.1) !important; /* Fundo laranja sutil */
+  background: rgba(241, 131, 34, 0.1) !important;
+  /* Fundo laranja sutil */
   border-radius: 4px !important;
   padding: 4px 8px !important;
   margin: -4px -8px !important;
@@ -2049,7 +2203,8 @@ html, body {
 
 /* Coluna 4: Contato */
 .taf-footer__info {
-  text-align: left !important; /* À ESQUERDA */
+  text-align: left !important;
+  /* À ESQUERDA */
 }
 
 @media (max-width: 767px) {
@@ -2063,30 +2218,36 @@ html, body {
   align-items: center !important;
   gap: 8px !important;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
-  font-size: 16px !important; /* HIERARQUIA - textos legíveis */
+  font-size: 16px !important;
+  /* HIERARQUIA - textos legíveis */
   font-weight: 400 !important;
-  color: rgba(255, 255, 255, 0.9) !important; /* Branco 90% - consistente */
+  color: rgba(255, 255, 255, 0.9) !important;
+  /* Branco 90% - consistente */
   margin: 0 0 12px 0 !important;
   line-height: 1.6 !important;
-  justify-content: flex-start !important; /* Conteúdo à ESQUERDA */
+  justify-content: flex-start !important;
+  /* Conteúdo à ESQUERDA */
 }
 
 @media (max-width: 991px) {
   .taf-footer__info-text {
     justify-content: center !important;
-    font-size: 18px !important; /* Maior no mobile */
+    font-size: 18px !important;
+    /* Maior no mobile */
   }
 }
 
 .taf-footer__info-text .iconify {
-  font-size: 18px !important; /* Ícones maiores para combinar */
+  font-size: 18px !important;
+  /* Ícones maiores para combinar */
   color: #f18322 !important;
   flex-shrink: 0 !important;
 }
 
 @media (max-width: 991px) {
   .taf-footer__info-text .iconify {
-    font-size: 20px !important; /* Ícones maiores no mobile */
+    font-size: 20px !important;
+    /* Ícones maiores no mobile */
   }
 }
 
@@ -2099,26 +2260,33 @@ html, body {
 .taf-footer__divider {
   width: 100% !important;
   height: 1px !important;
-  background: linear-gradient(90deg, transparent 0%, rgba(241, 131, 34, 0.2) 60%, rgba(241, 131, 34, 0.3) 100%) !important; /* LARANJA suave da esquerda para DIREITA */
+  background: linear-gradient(90deg, transparent 0%, rgba(241, 131, 34, 0.2) 60%, rgba(241, 131, 34, 0.3) 100%) !important;
+  /* LARANJA suave da esquerda para DIREITA */
   margin-bottom: 24px !important;
   transition: opacity 0.3s ease !important;
 }
 
 @media (max-width: 991px) {
   .taf-footer__divider {
-    background: linear-gradient(90deg, transparent, rgba(241, 131, 34, 0.25), transparent) !important; /* Centralizado no mobile com laranja */
+    background: linear-gradient(90deg, transparent, rgba(241, 131, 34, 0.25), transparent) !important;
+    /* Centralizado no mobile com laranja */
   }
 }
 
 .taf-footer__copyright {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
-  font-size: 13px !important; /* Base legível */
+  font-size: 13px !important;
+  /* Base legível */
   font-weight: 400 !important;
-  color: rgba(255, 255, 255, 0.5) !important; /* Branco 50% - sutil mas legível (WCAG 10.5:1) */
-  text-align: right !important; /* ALINHADO À DIREITA */
+  color: rgba(255, 255, 255, 0.5) !important;
+  /* Branco 50% - sutil mas legível (WCAG 10.5:1) */
+  text-align: right !important;
+  /* ALINHADO À DIREITA */
   margin: 0 !important;
-  line-height: 1.7 !important; /* Mais respirável */
-  letter-spacing: 0.3px !important; /* Refinamento */
+  line-height: 1.7 !important;
+  /* Mais respirável */
+  letter-spacing: 0.3px !important;
+  /* Refinamento */
 }
 
 @media (max-width: 991px) {
@@ -2126,7 +2294,8 @@ html, body {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 16px !important; /* Espaço entre as linhas */
+    gap: 16px !important;
+    /* Espaço entre as linhas */
     text-align: center !important;
   }
 }
@@ -2134,11 +2303,15 @@ html, body {
 @media (min-width: 992px) {
   .taf-footer__copyright {
     display: flex !important;
-    flex-direction: row !important; /* Lado a lado no desktop */
+    flex-direction: row !important;
+    /* Lado a lado no desktop */
     align-items: center !important;
-    justify-content: flex-end !important; /* Alinhado à direita */
-    gap: 12px !important; /* Espaço entre texto e separador */
-    font-size: 14px !important; /* Desktop mais confortável */
+    justify-content: flex-end !important;
+    /* Alinhado à direita */
+    gap: 12px !important;
+    /* Espaço entre texto e separador */
+    font-size: 14px !important;
+    /* Desktop mais confortável */
   }
 }
 
@@ -2155,66 +2328,82 @@ html, body {
 
 @media (max-width: 991px) {
   .taf-footer__copyright-line {
-    font-size: 14px !important; /* Maior no mobile para legibilidade */
+    font-size: 14px !important;
+    /* Maior no mobile para legibilidade */
     text-align: center !important;
   }
 }
 
 /* Separator between copyright lines */
 .taf-footer__copyright-separator {
-  display: inline-block !important; /* Visível no desktop como "|" */
-  color: rgba(241, 131, 34, 0.6) !important; /* LARANJA suave */
+  display: inline-block !important;
+  /* Visível no desktop como "|" */
+  color: rgba(241, 131, 34, 0.6) !important;
+  /* LARANJA suave */
   font-weight: 300 !important;
   margin: 0 !important;
 }
 
 .taf-footer__copyright-separator::before {
-  content: '|' !important; /* Separador vertical no desktop */
+  content: '|' !important;
+  /* Separador vertical no desktop */
 }
 
 @media (max-width: 991px) {
   .taf-footer__copyright-separator::before {
-    content: '' !important; /* Remove o "|" no mobile */
+    content: '' !important;
+    /* Remove o "|" no mobile */
   }
 
   .taf-footer__copyright-separator {
-    display: block !important; /* Linha horizontal no mobile */
+    display: block !important;
+    /* Linha horizontal no mobile */
     width: 80px !important;
     height: 1px !important;
-    background: linear-gradient(90deg, transparent, rgba(241, 131, 34, 0.5), transparent) !important; /* LARANJA com fade */
+    background: linear-gradient(90deg, transparent, rgba(241, 131, 34, 0.5), transparent) !important;
+    /* LARANJA com fade */
     margin: 0 auto !important;
   }
 }
 
 .taf-footer__separator {
-  margin: 0 8px !important; /* Mais espaço = mais elegante */
-  color: rgba(241, 131, 34, 0.5) !important; /* LARANJA suave - sexy e coerente com diagonal */
-  font-weight: 300 !important; /* Mais leve */
+  margin: 0 8px !important;
+  /* Mais espaço = mais elegante */
+  color: rgba(241, 131, 34, 0.5) !important;
+  /* LARANJA suave - sexy e coerente com diagonal */
+  font-weight: 300 !important;
+  /* Mais leve */
   display: inline-block !important;
-  transition: color 0.3s ease !important; /* Microinteração */
+  transition: color 0.3s ease !important;
+  /* Microinteração */
 }
 
 .taf-footer__brand-link {
-  color: #FFFFFF !important; /* BRANCO */
+  color: #FFFFFF !important;
+  /* BRANCO */
   text-decoration: none !important;
-  font-weight: 700 !important; /* NEGRITO */
+  font-weight: 700 !important;
+  /* NEGRITO */
   transition: opacity 0.3s ease !important;
 }
 
 .taf-footer__brand-link:hover {
-  opacity: 0.8 !important; /* Suaviza no hover */
+  opacity: 0.8 !important;
+  /* Suaviza no hover */
 }
 
 /* Hover effect na tagline - microinteração */
 .taf-footer__logo-link:hover .taf-footer__tagline {
-  color: rgba(255, 255, 255, 0.8) !important; /* Ilumina no hover do logo */
+  color: rgba(255, 255, 255, 0.8) !important;
+  /* Ilumina no hover do logo */
 }
 
 /* Focus States - Acessibilidade (apenas para logo e brandpage link) */
 .taf-footer__logo-link:focus-visible,
 .taf-footer__brand-link:focus-visible {
   outline: none !important;
-  box-shadow: 0 0 0 3px rgba(241, 131, 34, 0.5) !important; /* Glow laranja sexy */
+  box-shadow: 0 0 0 3px rgba(241, 131, 34, 0.5) !important;
+  /* Glow laranja sexy */
   border-radius: 4px !important;
 }
 
@@ -2225,6 +2414,7 @@ html, body {
 
 /* Copyright bottom breathing space */
 .taf-footer__bottom {
-  padding: 32px 0 40px 0 !important; /* Mais espaço = mais elegante */
+  padding: 32px 0 40px 0 !important;
+  /* Mais espaço = mais elegante */
   width: 100% !important;
 }

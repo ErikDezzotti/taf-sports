@@ -9,6 +9,9 @@ $this->load->helper('image');
 
 <!-- Inicio Banners -->
 
+<!-- ✅ A11Y: H1 visualmente oculto mas acessível para screen readers -->
+<h1 class="sr-only">TAF Sports - Assessoria Esportiva e Gestão de Carreiras no Futebol</h1>
+
 <div class="container100h">
 
     <div class="span5 home1">
@@ -37,7 +40,7 @@ $this->load->helper('image');
                     ?>
                 </ol>
 
-                <div class="carousel-inner" role="listbox">
+                <div class="carousel-inner" role="group" aria-label="Banners promocionais">
                     <?php
                     $x = 0;
                     foreach ($banners as $banner):
@@ -89,7 +92,7 @@ $this->load->helper('image');
         <div id="myCarouselMob" class="carousel slide carousel-fade" data-ride="carousel" data-wrap="true"
             data-interval="5000">
 
-            <div class="carousel-inner" role="listbox">
+            <div class="carousel-inner" role="group" aria-label="Banners mobile">
                 <?php
                 $x = 0;
                 foreach ($banners as $banner):
@@ -118,19 +121,21 @@ $this->load->helper('image');
 
             </div>
 
-            <a class="left carousel-control" href="#myCarouselMob" role="button" data-slide="prev">
+            <a class="left carousel-control" href="#myCarouselMob" role="button" data-slide="prev"
+                aria-label="Banner anterior">
 
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 
-                <span class="sr-only">Previous</span>
+                <span class="sr-only">Anterior</span>
 
             </a>
 
-            <a class="right carousel-control" href="#myCarouselMob" role="button" data-slide="next">
+            <a class="right carousel-control" href="#myCarouselMob" role="button" data-slide="next"
+                aria-label="Próximo banner">
 
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 
-                <span class="sr-only">Next</span>
+                <span class="sr-only">Próximo</span>
 
             </a>
 
