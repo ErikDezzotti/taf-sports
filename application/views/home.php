@@ -2,6 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 // ✅ GAMBIARRA REMOVIDA: Loop vazio substituído por acesso direto
 $conf = !empty($config) ? $config[0] : new stdClass();
+
+// ✅ PERFORMANCE: Helper de imagens WebP
+$this->load->helper('image');
 ?>
 
 <!-- Inicio Banners -->
@@ -91,14 +94,22 @@ $conf = !empty($config) ? $config[0] : new stdClass();
                 $x = 0;
                 foreach ($banners as $banner):
                     $active_class = ($x == 0) ? 'active ' : '';
-                    $img_mob_safe = html_escape($banner->imagemMob ?? $banner->imagem);
-                    // ✅ PERFORMANCE: Primeiro banner = fetchpriority high, outros = lazy
+                    $img_mob = $banner->imagemMob ?? $banner->imagem;
+                    // ✅ WEBP: Usa versão otimizada (83% menor!)
+                    $img_webp = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $img_mob);
+                    $img_original = $img_mob;
+                    // Primeiro banner = fetchpriority high
                     $priority = ($x == 0) ? 'fetchpriority="high"' : 'loading="lazy"';
                     ?>
                     <div class="<?= $active_class ?>item">
-                        <!-- ✅ CLS FIX: width/height definidos, aspect-ratio via CSS -->
-                        <img src="<?= base_url() ?>imagens/banners/<?= $img_mob_safe ?>" class="img-responsive"
-                            alt="TAF Sports Banner" width="1080" height="1920" <?= $priority ?> decoding="async">
+                        <!-- ✅ PICTURE TAG: WebP com fallback JPEG -->
+                        <picture>
+                            <source srcset="<?= base_url() ?>imagens/banners/<?= html_escape($img_webp) ?>"
+                                type="image/webp">
+                            <img src="<?= base_url() ?>imagens/banners/<?= html_escape($img_original) ?>"
+                                class="img-responsive" alt="TAF Sports - Assessoria Esportiva" width="1080" height="1920"
+                                <?= $priority ?> decoding="async">
+                        </picture>
                     </div>
                     <?php
                     $x++;
