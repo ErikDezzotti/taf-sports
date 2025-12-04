@@ -717,6 +717,7 @@ body {
 
 .taf-mobile-cta__button .iconify {
   font-size: 22px;
+  color: inherit;
 }
 
 /* Instagram CTA */
@@ -797,12 +798,16 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   color: var(--taf-white);
+  fill: var(--taf-white);
+  -webkit-tap-highlight-color: transparent;
   text-decoration: none;
   transition: all var(--taf-transition-base);
 }
 
 .taf-mobile-social__link:link,
 .taf-mobile-social__link:visited {
+  color: var(--taf-white);
+  fill: var(--taf-white);
   text-decoration: none;
 }
 
@@ -811,6 +816,8 @@ body {
   border-color: var(--taf-orange-brand);
   transform: translateY(-4px) scale(1.1);
   box-shadow: 0 4px 12px rgba(241, 131, 34, 0.4);
+  color: var(--taf-white);
+  fill: var(--taf-white);
   text-decoration: none;
 }
 
@@ -821,6 +828,8 @@ body {
 
 .taf-mobile-social__link .iconify {
   font-size: 24px;
+  color: inherit;
+  transition: color var(--taf-transition-base);
 }
 
 /* Mobile Footer */
