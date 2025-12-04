@@ -59,9 +59,13 @@ $route['atleta/:num'] = 'home/cliente';
 
 $route['busca-cliente'] = 'home/buscaClientes';
 
+// ✅ CORREÇÃO: Contato usa controller dedicado
+$route['contato'] = 'contato';
+$route['contato/enviar'] = 'contato/enviar';
 
-$route['contato'] = 'home/contato';
-
+// ✅ SEO: Sitemap dinâmico
+$route['sitemap.xml'] = 'sitemap';
 
 $route['404_override'] = 'home/erro404';
 $route['translate_uri_dashes'] = FALSE;
+

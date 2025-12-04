@@ -18,7 +18,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!-- Hero Banner (Consistent with Contato/Serviços/Empresa) -->
 <div class="taf-players-banner">
-	<div class="taf-players-banner__image" style="background-image: url('<?=base_url();?>assets/img/Serra_Dourada_Lotado%20header.webp');">
+	<div class="taf-players-banner__image"
+		style="background-image: url('<?= base_url(); ?>assets/img/Serra_Dourada_Lotado%20header.webp');">
 		<div class="taf-players-banner__overlay">
 			<div class="taf-players-banner__content">
 				<h1 class="taf-players-banner__title">
@@ -50,22 +51,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<!-- Search Section -->
 	<div class="taf-players__search">
-		<form method="GET" action="<?=base_url();?>busca-cliente" class="taf-search-form">
+		<form method="GET" action="<?= base_url(); ?>busca-cliente" class="taf-search-form">
 			<div class="taf-search-form__group">
 				<label for="buscar" class="taf-search-form__label">
 					<span class="iconify" data-icon="mdi:magnify" aria-hidden="true"></span>
 					Buscar Atleta
 				</label>
 				<div class="taf-search-form__input-group">
-					<input
-						type="text"
-						id="buscar"
-						name="buscar"
-						class="taf-search-form__input"
+					<input type="text" id="buscar" name="buscar" class="taf-search-form__input"
 						placeholder="Digite o nome do atleta..."
-						value="<?=htmlspecialchars($this->input->GET('buscar') ?? '', ENT_QUOTES, 'UTF-8')?>"
-						aria-label="Buscar atleta por nome"
-					>
+						value="<?= htmlspecialchars($this->input->GET('buscar') ?? '', ENT_QUOTES, 'UTF-8') ?>"
+						aria-label="Buscar atleta por nome">
 					<button type="submit" class="taf-btn-primary taf-search-form__button">
 						<span class="iconify" data-icon="mdi:magnify" aria-hidden="true"></span>
 						Pesquisar
@@ -79,13 +75,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<?php
 	$buscar = $this->input->GET('buscar');
 	if ($linha != "" && !empty($buscar)):
-	?>
-	<div class="taf-players__result-message" id="search-result-message">
-		<button type="button" class="taf-players__result-close" onclick="document.getElementById('search-result-message').style.display='none'" aria-label="Fechar mensagem">
-			<span class="iconify" data-icon="mdi:close" aria-hidden="true"></span>
-		</button>
-		<p><?= htmlspecialchars($linha, ENT_QUOTES, 'UTF-8') ?></p>
-	</div>
+		?>
+		<div class="taf-players__result-message" id="search-result-message">
+			<button type="button" class="taf-players__result-close"
+				onclick="document.getElementById('search-result-message').style.display='none'" aria-label="Fechar mensagem">
+				<span class="iconify" data-icon="mdi:close" aria-hidden="true"></span>
+			</button>
+			<p><?= htmlspecialchars($linha, ENT_QUOTES, 'UTF-8') ?></p>
+		</div>
 	<?php endif; ?>
 
 	<!-- Players Grid Section -->
@@ -100,44 +97,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="taf-players__grid" id="boxProfissional">
 				<div class="row">
 					<?php
+					// ✅ CORREÇÃO SENIOR: Loop N+1 eliminado, html_escape adicionado
 					$x = 0;
-					foreach ($clientesP as $cliente) {
-						echo '
-
+					foreach ($clientesP as $cliente):
+						$cliente_id = html_escape($cliente->id);
+						$cliente_url = html_escape($cliente->url);
+						$cliente_imagem = html_escape($cliente->imagem);
+						$cliente_apelido = html_escape($cliente->apelido);
+						$cliente_posicao = html_escape($cliente->posicao);
+						// ✅ Acesso direto O(1) em vez de loop O(n)
+						$clube = isset($clubes[$cliente->clube_atual]) ? $clubes[$cliente->clube_atual] : null;
+						?>
 						<div class="col-md-3 col-xs-12 text-center">
-
-						<div class="boxJogador">
-						<div class="borda">
-						<a href="' . base_url() . 'atleta/' . $cliente->id . '/' . $cliente->url . '"><img src="' . base_url() . 'imagens/atletas/' . $cliente->imagem . '" class="imgCliente" alt=""></a>
-
-						<div class="posicao">' . $cliente->posicao . '</div>
-						<div class="nome" style="font-size:14px">' . $cliente->apelido . '</div>
-						<div class="escudo">
-
-						';
-
-						foreach ($clubes as $clube) {
-							if ($cliente->clube_atual == $clube->id) {
-								echo '<img src="' . base_url() . 'imagens/clubes/' . $clube->escudo . '" alt="">';
-							}
-						}
-
-						echo '</div>
+							<div class="boxJogador">
+								<div class="borda">
+									<a href="<?= base_url() ?>atleta/<?= $cliente_id ?>/<?= $cliente_url ?>">
+										<img src="<?= base_url() ?>imagens/atletas/<?= $cliente_imagem ?>" class="imgCliente"
+											alt="<?= $cliente_apelido ?>" loading="lazy">
+									</a>
+									<div class="posicao"><?= $cliente_posicao ?></div>
+									<div class="nome" style="font-size:14px"><?= $cliente_apelido ?></div>
+									<div class="escudo">
+										<?php if ($clube): ?>
+											<img src="<?= base_url() ?>imagens/clubes/<?= html_escape($clube->escudo) ?>"
+												alt="<?= html_escape($clube->nome) ?>" loading="lazy">
+										<?php endif; ?>
+									</div>
+								</div>
+							</div>
 						</div>
-						</div>
-
-						</div>
-
-
-						';
+						<?php
 						$x++;
-					}
-					if ($x == 0) {
-						echo '<div class="taf-players__empty">
-								<p>Nenhum atleta profissional encontrado.</p>
-							  </div>';
-					}
-					?>
+					endforeach;
+					if ($x == 0):
+						?>
+						<div class="taf-players__empty">
+							<p>Nenhum atleta profissional encontrado.</p>
+						</div>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>
@@ -151,44 +148,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="taf-players__grid" id="boxBase">
 				<div class="row">
 					<?php
+					// ✅ CORREÇÃO SENIOR: Loop N+1 eliminado, html_escape adicionado
 					$x = 0;
-					foreach ($clientesB as $cliente) {
-						echo '
-
+					foreach ($clientesB as $cliente):
+						$cliente_id = html_escape($cliente->id);
+						$cliente_url = html_escape($cliente->url);
+						$cliente_imagem = html_escape($cliente->imagem);
+						$cliente_apelido = html_escape($cliente->apelido);
+						$cliente_posicao = html_escape($cliente->posicao);
+						// ✅ Acesso direto O(1) em vez de loop O(n)
+						$clube = isset($clubes[$cliente->clube_atual]) ? $clubes[$cliente->clube_atual] : null;
+						?>
 						<div class="col-md-3 col-xs-12 text-center">
-
-						<div class="boxJogador">
-						<div class="borda">
-						<a href="' . base_url() . 'atleta/' . $cliente->id . '/' . $cliente->url . '"><img src="' . base_url() . 'imagens/atletas/' . $cliente->imagem . '" class="imgCliente" alt=""></a>
-
-						<div class="posicao">' . $cliente->posicao . '</div>
-						<div class="nome">' . $cliente->apelido . '</div>
-						<div class="escudo">
-
-						';
-
-						foreach ($clubes as $clube) {
-							if ($cliente->clube_atual == $clube->id) {
-								echo '<img src="' . base_url() . 'imagens/clubes/' . $clube->escudo . '" alt="">';
-							}
-						}
-
-						echo '</div>
+							<div class="boxJogador">
+								<div class="borda">
+									<a href="<?= base_url() ?>atleta/<?= $cliente_id ?>/<?= $cliente_url ?>">
+										<img src="<?= base_url() ?>imagens/atletas/<?= $cliente_imagem ?>" class="imgCliente"
+											alt="<?= $cliente_apelido ?>" loading="lazy">
+									</a>
+									<div class="posicao"><?= $cliente_posicao ?></div>
+									<div class="nome"><?= $cliente_apelido ?></div>
+									<div class="escudo">
+										<?php if ($clube): ?>
+											<img src="<?= base_url() ?>imagens/clubes/<?= html_escape($clube->escudo) ?>"
+												alt="<?= html_escape($clube->nome) ?>" loading="lazy">
+										<?php endif; ?>
+									</div>
+								</div>
+							</div>
 						</div>
-						</div>
-
-						</div>
-
-
-						';
+						<?php
 						$x++;
-					}
-					if ($x == 0) {
-						echo '<div class="taf-players__empty">
-								<p>Nenhum atleta de base encontrado.</p>
-							  </div>';
-					}
-					?>
+					endforeach;
+					if ($x == 0):
+						?>
+						<div class="taf-players__empty">
+							<p>Nenhum atleta de base encontrado.</p>
+						</div>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>
@@ -206,11 +203,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				transformar sua carreira no futebol. Junte-se aos atletas que já confiam no nosso trabalho.
 			</p>
 			<div class="taf-players__cta-buttons">
-				<a href="<?=base_url();?>contato" class="taf-btn-primary">
+				<a href="<?= base_url(); ?>contato" class="taf-btn-primary">
 					<span class="iconify" data-icon="mdi:email-outline" aria-hidden="true"></span>
 					Fale Conosco
 				</a>
-				<a href="<?=base_url();?>servicos" class="taf-btn-primary">
+				<a href="<?= base_url(); ?>servicos" class="taf-btn-primary">
 					<span class="iconify" data-icon="ion:football" aria-hidden="true"></span>
 					Nossos Serviços
 				</a>
@@ -224,189 +221,188 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!-- Real-Time Search JavaScript - Decision Council Approved ✅ -->
 <script>
-(function() {
-	'use strict';
+	(function () {
+		'use strict';
 
-	// =========================================================================
-	// REAL-TIME SEARCH - $850k Decision Council Implementation
-	// Steve Jobs: "MAGIA, não reload"
-	// Jony Ive: "Smooth, elegante, sem fricção"
-	// Luke Wroblewski: "Debounce 300ms, loading indicator"
-	// =========================================================================
+		// =========================================================================
+		// REAL-TIME SEARCH - $850k Decision Council Implementation
+		// Steve Jobs: "MAGIA, não reload"
+		// Jony Ive: "Smooth, elegante, sem fricção"
+		// Luke Wroblewski: "Debounce 300ms, loading indicator"
+		// =========================================================================
 
-	const searchInput = document.getElementById('buscar');
-	const searchForm = document.querySelector('.taf-search-form');
-	const searchButton = document.querySelector('.taf-search-form__button');
-	const allCards = document.querySelectorAll('.boxJogador');
-	const categoryProfessional = document.getElementById('boxProfissional');
-	const categoryBase = document.getElementById('boxBase');
-	let debounceTimer;
+		const searchInput = document.getElementById('buscar');
+		const searchForm = document.querySelector('.taf-search-form');
+		const searchButton = document.querySelector('.taf-search-form__button');
+		const allCards = document.querySelectorAll('.boxJogador');
+		const categoryProfessional = document.getElementById('boxProfissional');
+		const categoryBase = document.getElementById('boxBase');
+		let debounceTimer;
 
-	// Normalize string function (Dieter Rams: "ÚTIL")
-	function normalizeString(str) {
-		if (!str) return '';
-		return str
-			.toLowerCase()
-			.normalize('NFD')
-			.replace(/[\u0300-\u036f]/g, '') // Remove acentos
-			.replace(/ç/g, 'c')
-			.replace(/[^a-z0-9\s]/g, '')
-			.trim();
-	}
-
-	// Loading state (Paul Rand: "Bola de futebol girando")
-	function setLoadingState(isLoading) {
-		if (isLoading) {
-			searchButton.classList.add('is-loading');
-			searchButton.innerHTML = '<span class="iconify loading-ball" data-icon="ion:football" aria-hidden="true"></span>Buscando...';
-		} else {
-			searchButton.classList.remove('is-loading');
-			searchButton.innerHTML = '<span class="iconify" data-icon="mdi:magnify" aria-hidden="true"></span>Pesquisar';
+		// Normalize string function (Dieter Rams: "ÚTIL")
+		function normalizeString(str) {
+			if (!str) return '';
+			return str
+				.toLowerCase()
+				.normalize('NFD')
+				.replace(/[\u0300-\u036f]/g, '') // Remove acentos
+				.replace(/ç/g, 'c')
+				.replace(/[^a-z0-9\s]/g, '')
+				.trim();
 		}
-	}
 
-	// Real-time filter function (Don Norman: "Feedback imediato")
-	function filterPlayers(query) {
-		const normalized = normalizeString(query);
-		let visibleCountP = 0;
-		let visibleCountB = 0;
-
-		// Filter all cards
-		allCards.forEach(card => {
-			const cardWrapper = card.closest('.col-md-3');
-			const nameElement = card.querySelector('.nome');
-			const positionElement = card.querySelector('.posicao');
-
-			if (!nameElement) return;
-
-			const name = normalizeString(nameElement.textContent);
-			const position = normalizeString(positionElement ? positionElement.textContent : '');
-
-			const matches = name.includes(normalized) || position.includes(normalized);
-
-			if (query === '' || matches) {
-				cardWrapper.style.display = 'block';
-				cardWrapper.style.opacity = '0';
-				setTimeout(() => {
-					cardWrapper.style.transition = 'opacity 300ms ease-out';
-					cardWrapper.style.opacity = '1';
-				}, 10);
-
-				// Count by category
-				if (cardWrapper.closest('#boxProfissional')) visibleCountP++;
-				if (cardWrapper.closest('#boxBase')) visibleCountB++;
+		// Loading state (Paul Rand: "Bola de futebol girando")
+		function setLoadingState(isLoading) {
+			if (isLoading) {
+				searchButton.classList.add('is-loading');
+				searchButton.innerHTML = '<span class="iconify loading-ball" data-icon="ion:football" aria-hidden="true"></span>Buscando...';
 			} else {
-				cardWrapper.style.transition = 'opacity 200ms ease-out';
-				cardWrapper.style.opacity = '0';
-				setTimeout(() => {
-					cardWrapper.style.display = 'none';
-				}, 200);
+				searchButton.classList.remove('is-loading');
+				searchButton.innerHTML = '<span class="iconify" data-icon="mdi:magnify" aria-hidden="true"></span>Pesquisar';
 			}
-		});
-
-		// Show/hide categories (Milton Glaser: "Emoção nos detalhes")
-		const categoryTitleP = categoryProfessional.closest('.taf-players__category').querySelector('.taf-players__category-title');
-		const categoryTitleB = categoryBase.closest('.taf-players__category').querySelector('.taf-players__category-title');
-
-		if (visibleCountP === 0) {
-			categoryProfessional.closest('.taf-players__category').style.display = 'none';
-		} else {
-			categoryProfessional.closest('.taf-players__category').style.display = 'block';
 		}
 
-		if (visibleCountB === 0) {
-			categoryBase.closest('.taf-players__category').style.display = 'none';
-		} else {
-			categoryBase.closest('.taf-players__category').style.display = 'block';
+		// Real-time filter function (Don Norman: "Feedback imediato")
+		function filterPlayers(query) {
+			const normalized = normalizeString(query);
+			let visibleCountP = 0;
+			let visibleCountB = 0;
+
+			// Filter all cards
+			allCards.forEach(card => {
+				const cardWrapper = card.closest('.col-md-3');
+				const nameElement = card.querySelector('.nome');
+				const positionElement = card.querySelector('.posicao');
+
+				if (!nameElement) return;
+
+				const name = normalizeString(nameElement.textContent);
+				const position = normalizeString(positionElement ? positionElement.textContent : '');
+
+				const matches = name.includes(normalized) || position.includes(normalized);
+
+				if (query === '' || matches) {
+					cardWrapper.style.display = 'block';
+					cardWrapper.style.opacity = '0';
+					setTimeout(() => {
+						cardWrapper.style.transition = 'opacity 300ms ease-out';
+						cardWrapper.style.opacity = '1';
+					}, 10);
+
+					// Count by category
+					if (cardWrapper.closest('#boxProfissional')) visibleCountP++;
+					if (cardWrapper.closest('#boxBase')) visibleCountB++;
+				} else {
+					cardWrapper.style.transition = 'opacity 200ms ease-out';
+					cardWrapper.style.opacity = '0';
+					setTimeout(() => {
+						cardWrapper.style.display = 'none';
+					}, 200);
+				}
+			});
+
+			// Show/hide categories (Milton Glaser: "Emoção nos detalhes")
+			const categoryTitleP = categoryProfessional.closest('.taf-players__category').querySelector('.taf-players__category-title');
+			const categoryTitleB = categoryBase.closest('.taf-players__category').querySelector('.taf-players__category-title');
+
+			if (visibleCountP === 0) {
+				categoryProfessional.closest('.taf-players__category').style.display = 'none';
+			} else {
+				categoryProfessional.closest('.taf-players__category').style.display = 'block';
+			}
+
+			if (visibleCountB === 0) {
+				categoryBase.closest('.taf-players__category').style.display = 'none';
+			} else {
+				categoryBase.closest('.taf-players__category').style.display = 'block';
+			}
+
+			// Show empty state (Russell Brunson: "Copy emocional")
+			const totalVisible = visibleCountP + visibleCountB;
+			showSearchResultMessage(query, totalVisible);
 		}
 
-		// Show empty state (Russell Brunson: "Copy emocional")
-		const totalVisible = visibleCountP + visibleCountB;
-		showSearchResultMessage(query, totalVisible);
-	}
+		// Show search result message (Mark Wheeler: "Reduzir ansiedade")
+		function showSearchResultMessage(query, count) {
+			let existingMessage = document.getElementById('search-result-message-js');
 
-	// Show search result message (Mark Wheeler: "Reduzir ansiedade")
-	function showSearchResultMessage(query, count) {
-		let existingMessage = document.getElementById('search-result-message-js');
+			// Remove existing message
+			if (existingMessage) {
+				existingMessage.remove();
+			}
 
-		// Remove existing message
-		if (existingMessage) {
-			existingMessage.remove();
-		}
+			// Don't show if no query
+			if (!query || query.trim() === '') return;
 
-		// Don't show if no query
-		if (!query || query.trim() === '') return;
+			// Create message
+			const gridSection = document.querySelector('.taf-players__grid-section');
+			const message = document.createElement('div');
+			message.id = 'search-result-message-js';
+			message.className = 'taf-players__result-message';
 
-		// Create message
-		const gridSection = document.querySelector('.taf-players__grid-section');
-		const message = document.createElement('div');
-		message.id = 'search-result-message-js';
-		message.className = 'taf-players__result-message';
-
-		if (count === 0) {
-			message.innerHTML = `
+			if (count === 0) {
+				message.innerHTML = `
 				<button type="button" class="taf-players__result-close" onclick="this.parentElement.remove()" aria-label="Fechar mensagem">
 					<span class="iconify" data-icon="mdi:close" aria-hidden="true"></span>
 				</button>
 				<p><span class="iconify" data-icon="mdi:alert-circle-outline" style="margin-right: 8px; font-size: 20px; vertical-align: middle;"></span>Ops! Nenhum atleta encontrado para "<strong>${query}</strong>". Tente outro nome.</p>
 			`;
-		} else {
-			message.innerHTML = `
+			} else {
+				message.innerHTML = `
 				<button type="button" class="taf-players__result-close" onclick="this.parentElement.remove()" aria-label="Fechar mensagem">
 					<span class="iconify" data-icon="mdi:close" aria-hidden="true"></span>
 				</button>
 				<p><span class="iconify" data-icon="mdi:check-circle" style="margin-right: 8px; font-size: 20px; vertical-align: middle; color: var(--taf-orange);"></span>Encontramos <strong>${count}</strong> ${count === 1 ? 'atleta' : 'atletas'} para você!</p>
 			`;
-		}
-
-		gridSection.insertBefore(message, gridSection.firstChild);
-
-		// Auto-hide after 5s if found results
-		if (count > 0) {
-			setTimeout(() => {
-				if (message && message.parentElement) {
-					message.style.transition = 'opacity 300ms ease-out';
-					message.style.opacity = '0';
-					setTimeout(() => message.remove(), 300);
-				}
-			}, 5000);
-		}
-	}
-
-	// Debounced search (Luke Wroblewski: "300ms debounce")
-	function handleSearch() {
-		clearTimeout(debounceTimer);
-		setLoadingState(true);
-
-		debounceTimer = setTimeout(() => {
-			const query = searchInput.value;
-			filterPlayers(query);
-			setLoadingState(false);
-		}, 300);
-	}
-
-	// Event listeners
-	if (searchInput) {
-		searchInput.addEventListener('input', handleSearch);
-
-		// Prevent form submission if JS enabled (Alan Fletcher: "Progressive enhancement")
-		searchForm.addEventListener('submit', function(e) {
-			e.preventDefault();
-			handleSearch();
-		});
-
-		// Clear button (UX enhancement)
-		searchInput.addEventListener('keydown', function(e) {
-			if (e.key === 'Escape') {
-				searchInput.value = '';
-				filterPlayers('');
 			}
-		});
-	}
 
-	// Initial state
-	console.log('✅ Real-Time Search initialized - $850k Decision Council');
-})();
+			gridSection.insertBefore(message, gridSection.firstChild);
+
+			// Auto-hide after 5s if found results
+			if (count > 0) {
+				setTimeout(() => {
+					if (message && message.parentElement) {
+						message.style.transition = 'opacity 300ms ease-out';
+						message.style.opacity = '0';
+						setTimeout(() => message.remove(), 300);
+					}
+				}, 5000);
+			}
+		}
+
+		// Debounced search (Luke Wroblewski: "300ms debounce")
+		function handleSearch() {
+			clearTimeout(debounceTimer);
+			setLoadingState(true);
+
+			debounceTimer = setTimeout(() => {
+				const query = searchInput.value;
+				filterPlayers(query);
+				setLoadingState(false);
+			}, 300);
+		}
+
+		// Event listeners
+		if (searchInput) {
+			searchInput.addEventListener('input', handleSearch);
+
+			// Prevent form submission if JS enabled (Alan Fletcher: "Progressive enhancement")
+			searchForm.addEventListener('submit', function (e) {
+				e.preventDefault();
+				handleSearch();
+			});
+
+			// Clear button (UX enhancement)
+			searchInput.addEventListener('keydown', function (e) {
+				if (e.key === 'Escape') {
+					searchInput.value = '';
+					filterPlayers('');
+				}
+			});
+		}
+
+		// ✅ CORREÇÃO SENIOR: Removido console.log de produção
+	})();
 </script>
 
 <!--

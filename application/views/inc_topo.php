@@ -14,7 +14,7 @@ $seo_description = taf_seo_description($pagina, isset($descricao) ? $descricao :
 
 <head>
   <meta charset="UTF-8">
-  <title><?= html_escape($titulo) ?> | TAF Sports - Assessoria Esportiva</title>
+  <title>TAF - Assessoria Esportiva</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
 
   <!-- ========== SEO META TAGS ESSENCIAIS ========== -->
@@ -60,7 +60,8 @@ $seo_description = taf_seo_description($pagina, isset($descricao) ? $descricao :
   <meta name="twitter:creator" content="@tafsportsbr" />
   <meta name="twitter:title" content="<?= html_escape($titulo) ?> | TAF Sports" />
   <meta name="twitter:description" content="<?= html_escape($seo_description) ?>" />
-  <meta name="twitter:image" content="<?= isset($imagem) ? html_escape($imagem) : base_url() . 'assets/img/taf.png' ?>" />
+  <meta name="twitter:image"
+    content="<?= isset($imagem) ? html_escape($imagem) : base_url() . 'assets/img/taf.png' ?>" />
   <meta name="twitter:image:alt" content="TAF Sports - Assessoria Esportiva" />
 
   <!-- ========== SCHEMA.ORG JSON-LD STRUCTURED DATA ========== -->
@@ -255,53 +256,46 @@ $seo_description = taf_seo_description($pagina, isset($descricao) ? $descricao :
         <ul class="taf-nav__list">
           <li class="taf-nav__item">
             <a href="<?= base_url(); ?>" class="taf-nav__link <?php if ($pagina == "home") {
-              echo 'active';
-            } ?>"
-              aria-current="<?php if ($pagina == "home") {
-                echo 'page';
-              } ?>">
+                echo 'active';
+              } ?>" aria-current="<?php if ($pagina == "home") {
+                 echo 'page';
+               } ?>">
               Home
             </a>
           </li>
           <li class="taf-nav__item">
             <a href="<?= base_url(); ?>empresa" class="taf-nav__link <?php if ($pagina == "empresa") {
-              echo 'active';
-            } ?>"
-              aria-current="<?php if ($pagina == "empresa") {
-                echo 'page';
-              } ?>">
+                echo 'active';
+              } ?>" aria-current="<?php if ($pagina == "empresa") {
+                 echo 'page';
+               } ?>">
               Sobre Nós
             </a>
           </li>
           <li class="taf-nav__item">
-            <a href="<?= base_url(); ?>servicos"
-              class="taf-nav__link <?php if ($pagina == "servicos") {
+            <a href="<?= base_url(); ?>servicos" class="taf-nav__link <?php if ($pagina == "servicos") {
                 echo 'active';
-              } ?>"
-              aria-current="<?php if ($pagina == "servicos") {
-                echo 'page';
-              } ?>">
+              } ?>" aria-current="<?php if ($pagina == "servicos") {
+                 echo 'page';
+               } ?>">
               Serviços
             </a>
           </li>
           <li class="taf-nav__item">
-            <a href="<?= base_url(); ?>clientes"
-              class="taf-nav__link <?php if ($pagina == "clientes") {
+            <a href="<?= base_url(); ?>clientes" class="taf-nav__link <?php if ($pagina == "clientes") {
                 echo 'active';
-              } ?>"
-              aria-current="<?php if ($pagina == "clientes") {
-                echo 'page';
-              } ?>">
+              } ?>" aria-current="<?php if ($pagina == "clientes") {
+                 echo 'page';
+               } ?>">
               Clientes
             </a>
           </li>
           <li class="taf-nav__item">
             <a href="<?= base_url(); ?>contato" class="taf-nav__link <?php if ($pagina == "contato") {
-              echo 'active';
-            } ?>"
-              aria-current="<?php if ($pagina == "contato") {
-                echo 'page';
-              } ?>">
+                echo 'active';
+              } ?>" aria-current="<?php if ($pagina == "contato") {
+                 echo 'page';
+               } ?>">
               Contato
             </a>
           </li>
@@ -399,59 +393,50 @@ $seo_description = taf_seo_description($pagina, isset($descricao) ? $descricao :
       <ul class="taf-mobile-nav__list">
         <li class="taf-mobile-nav__item">
           <a href="<?= base_url(); ?>" class="taf-mobile-nav__link <?php if ($pagina == "home") {
-            echo 'active';
-          } ?>"
-            aria-current="<?php if ($pagina == "home") {
-              echo 'page';
-            } ?>">
+              echo 'active';
+            } ?>" aria-current="<?php if ($pagina == "home") {
+               echo 'page';
+             } ?>">
             Home
             <span class="taf-mobile-nav__arrow" aria-hidden="true">→</span>
           </a>
         </li>
         <li class="taf-mobile-nav__item">
-          <a href="<?= base_url(); ?>empresa"
-            class="taf-mobile-nav__link <?php if ($pagina == "empresa") {
+          <a href="<?= base_url(); ?>empresa" class="taf-mobile-nav__link <?php if ($pagina == "empresa") {
               echo 'active';
-            } ?>"
-            aria-current="<?php if ($pagina == "empresa") {
-              echo 'page';
-            } ?>">
+            } ?>" aria-current="<?php if ($pagina == "empresa") {
+               echo 'page';
+             } ?>">
             Sobre Nós
             <span class="taf-mobile-nav__arrow" aria-hidden="true">→</span>
           </a>
         </li>
         <li class="taf-mobile-nav__item">
-          <a href="<?= base_url(); ?>servicos"
-            class="taf-mobile-nav__link <?php if ($pagina == "servicos") {
+          <a href="<?= base_url(); ?>servicos" class="taf-mobile-nav__link <?php if ($pagina == "servicos") {
               echo 'active';
-            } ?>"
-            aria-current="<?php if ($pagina == "servicos") {
-              echo 'page';
-            } ?>">
+            } ?>" aria-current="<?php if ($pagina == "servicos") {
+               echo 'page';
+             } ?>">
             Serviços
             <span class="taf-mobile-nav__arrow" aria-hidden="true">→</span>
           </a>
         </li>
         <li class="taf-mobile-nav__item">
-          <a href="<?= base_url(); ?>clientes"
-            class="taf-mobile-nav__link <?php if ($pagina == "clientes") {
+          <a href="<?= base_url(); ?>clientes" class="taf-mobile-nav__link <?php if ($pagina == "clientes") {
               echo 'active';
-            } ?>"
-            aria-current="<?php if ($pagina == "clientes") {
-              echo 'page';
-            } ?>">
+            } ?>" aria-current="<?php if ($pagina == "clientes") {
+               echo 'page';
+             } ?>">
             Clientes
             <span class="taf-mobile-nav__arrow" aria-hidden="true">→</span>
           </a>
         </li>
         <li class="taf-mobile-nav__item">
-          <a href="<?= base_url(); ?>contato"
-            class="taf-mobile-nav__link <?php if ($pagina == "contato") {
+          <a href="<?= base_url(); ?>contato" class="taf-mobile-nav__link <?php if ($pagina == "contato") {
               echo 'active';
-            } ?>"
-            aria-current="<?php if ($pagina == "contato") {
-              echo 'page';
-            } ?>">
+            } ?>" aria-current="<?php if ($pagina == "contato") {
+               echo 'page';
+             } ?>">
             Contato
             <span class="taf-mobile-nav__arrow" aria-hidden="true">→</span>
           </a>

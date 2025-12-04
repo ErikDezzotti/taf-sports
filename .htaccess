@@ -12,11 +12,46 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?/ [L]
 
 # ============================================================================
+# SECURITY HEADERS - PROTEÇÃO CONTRA ATAQUES
+# ============================================================================
+<IfModule mod_headers.c>
+    # Prevenir Clickjacking (frame injection)
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Prevenir MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Habilitar filtro XSS do navegador
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Referrer Policy - Controla informações enviadas
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Permissions Policy - Desabilitar features desnecessárias
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    
+    # Content Security Policy básico (ajustar conforme necessidade)
+    # Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://code.jquery.com https://use.fontawesome.com https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;"
+</IfModule>
+
+# ============================================================================
+# BLOQUEAR ACESSO A ARQUIVOS SENSÍVEIS
+# ============================================================================
+<FilesMatch "(^\.env|\.git|\.sql|composer\.(json|lock)|package\.json)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Bloquear acesso direto a diretórios do CodeIgniter
+<IfModule mod_rewrite.c>
+    RewriteRule ^(application|system)/ - [F,L]
+</IfModule>
+
+# ============================================================================
 # CACHE CONTROL - PERFORMANCE + CACHE BUSTING
 # ============================================================================
 
 # CSS/JS com versão: Cache agressivo (1 ano)
-# Como usamos ?v=timestamp, browsers sempre pegam versão nova quando arquivo muda
 <FilesMatch "\.(css|js|woff|woff2|ttf|eot)$">
     <IfModule mod_headers.c>
         Header set Cache-Control "public, max-age=31536000, immutable"
@@ -41,9 +76,9 @@ RewriteRule ^(.*)$ index.php?/ [L]
 
 # Prevenir cache de arquivos dinâmicos do CodeIgniter
 <IfModule mod_headers.c>
-    # Para index.php e rotas dinâmicas
     <Files "index.php">
         Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
         Header set Pragma "no-cache"
     </Files>
 </IfModule>
+
