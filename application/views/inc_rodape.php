@@ -11,7 +11,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <!-- Coluna 1: Logo & Tagline -->
       <div class="taf-footer__brand">
         <a href="<?= base_url(); ?>" class="taf-footer__logo-link" aria-label="Voltar para home">
-          <img src="<?= base_url(); ?>assets/img/taf.png" alt="TAF Sports Logo" class="taf-footer__logo" />
+          <img src="<?= base_url(); ?>assets/img/taf.png" alt="TAF Sports Logo" class="taf-footer__logo" width="379"
+            height="280" />
         </a>
         <p class="taf-footer__tagline">Gestão de Carreiras no Futebol</p>
       </div>

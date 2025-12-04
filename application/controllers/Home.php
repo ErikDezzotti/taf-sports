@@ -12,7 +12,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  * @package TAF Sports
  */
-class Home extends CI_Controller {
+class Home extends CI_Controller
+{
 
 	/**
 	 * Dados base que aparecem em todas as páginas
@@ -23,7 +24,8 @@ class Home extends CI_Controller {
 	/**
 	 * Construtor - Inicializa dependências e dados base
 	 */
-	public function __construct() {
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->model('Home_model', 'banco');
 		$this->load->library('session');  // ✅ Session para flashdata
@@ -44,7 +46,8 @@ class Home extends CI_Controller {
 	/**
 	 * Página inicial
 	 */
-	public function index() {
+	public function index()
+	{
 		$dados = array_merge($this->base_data, array(
 			'titulo' => 'TAF Sports - Assessoria Esportiva',
 			'pagina' => 'home',
@@ -62,7 +65,8 @@ class Home extends CI_Controller {
 	/**
 	 * Página da empresa
 	 */
-	public function empresa() {
+	public function empresa()
+	{
 		$dados = array_merge($this->base_data, array(
 			'titulo' => 'Empresa - TAF Sports',
 			'pagina' => 'empresa',
@@ -78,7 +82,8 @@ class Home extends CI_Controller {
 	/**
 	 * Página de serviços
 	 */
-	public function servicos() {
+	public function servicos()
+	{
 		$dados = array_merge($this->base_data, array(
 			'titulo' => 'Serviços - TAF Sports',
 			'pagina' => 'servicos',
@@ -91,7 +96,8 @@ class Home extends CI_Controller {
 	/**
 	 * Lista de clientes (atletas)
 	 */
-	public function clientes() {
+	public function clientes()
+	{
 		$dados = array_merge($this->base_data, array(
 			'titulo' => 'Clientes - TAF Sports',
 			'pagina' => 'clientes',
@@ -109,7 +115,8 @@ class Home extends CI_Controller {
 	/**
 	 * Busca de clientes
 	 */
-	public function buscaClientes() {
+	public function buscaClientes()
+	{
 		$termo = $this->input->get('buscar', TRUE);
 		$tipo = $this->input->get('tipo', TRUE);
 
@@ -140,7 +147,8 @@ class Home extends CI_Controller {
 	/**
 	 * Perfil individual do cliente (atleta)
 	 */
-	public function cliente() {
+	public function cliente()
+	{
 		$id = $this->uri->segment(2);
 		$client = $this->banco->cliente($id);
 
@@ -178,7 +186,8 @@ class Home extends CI_Controller {
 	 * NOTA: Este método existe por compatibilidade com rotas antigas
 	 * O formulário de contato agora é gerenciado pelo controller Contato.php
 	 */
-	public function contato() {
+	public function contato()
+	{
 		$dados = array_merge($this->base_data, array(
 			'titulo' => 'Contato - TAF Sports',
 			'pagina' => 'contato',
@@ -191,7 +200,8 @@ class Home extends CI_Controller {
 	/**
 	 * Página de erro 404
 	 */
-	public function erro404() {
+	public function erro404()
+	{
 		// Define cabeçalho HTTP 404
 		$this->output->set_status_header('404');
 
@@ -214,7 +224,8 @@ class Home extends CI_Controller {
 	 * @param string $view Nome da view principal
 	 * @param array $data Dados para passar à view
 	 */
-	private function _render($view, $data = array()) {
+	private function _render($view, $data = array())
+	{
 		$this->load->view('inc_topo', $data);
 		$this->load->view($view, $data);
 		$this->load->view('inc_rodape', $data);
@@ -235,7 +246,8 @@ class Home extends CI_Controller {
 	 * @param array $clientes
 	 * @return array
 	 */
-	private function priorizarClientesProfissionais($clientes) {
+	private function priorizarClientesProfissionais($clientes)
+	{
 		if (empty($clientes)) {
 			return $clientes;
 		}
@@ -247,7 +259,7 @@ class Home extends CI_Controller {
 			'higo-magalhaes',
 		);
 
-		$remover = array('emerson-avila');
+		$remover = array('emerson-avila'); // Cliente pediu para não exibir
 
 		$mapPrioritarios = array_fill_keys($prioritarios, null);
 		$restantes = array();

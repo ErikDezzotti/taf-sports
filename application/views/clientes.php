@@ -103,6 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						$cliente_id = html_escape($cliente->id);
 						$cliente_url = html_escape($cliente->url);
 						$cliente_imagem = html_escape($cliente->imagem);
+						$cliente_imagem_webp = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $cliente_imagem);
 						$cliente_apelido = html_escape($cliente->apelido);
 						$cliente_posicao = html_escape($cliente->posicao);
 						// ✅ Acesso direto O(1) em vez de loop O(n)
@@ -112,8 +113,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<div class="boxJogador">
 								<div class="borda">
 									<a href="<?= base_url() ?>atleta/<?= $cliente_id ?>/<?= $cliente_url ?>">
-										<img src="<?= base_url() ?>imagens/atletas/<?= $cliente_imagem ?>" class="imgCliente"
-											alt="<?= $cliente_apelido ?>" loading="lazy">
+										<picture>
+											<source srcset="<?= base_url() ?>imagens/atletas/<?= $cliente_imagem_webp ?>" type="image/webp">
+											<img src="<?= base_url() ?>imagens/atletas/<?= $cliente_imagem ?>" class="imgCliente"
+												alt="<?= $cliente_apelido ?> - <?= $cliente_posicao ?>" width="490" height="613" loading="lazy"
+												decoding="async">
+										</picture>
 									</a>
 									<div class="posicao"><?= $cliente_posicao ?></div>
 									<div class="nome" style="font-size:14px"><?= $cliente_apelido ?></div>
@@ -154,6 +159,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						$cliente_id = html_escape($cliente->id);
 						$cliente_url = html_escape($cliente->url);
 						$cliente_imagem = html_escape($cliente->imagem);
+						$cliente_imagem_webp = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $cliente_imagem);
 						$cliente_apelido = html_escape($cliente->apelido);
 						$cliente_posicao = html_escape($cliente->posicao);
 						// ✅ Acesso direto O(1) em vez de loop O(n)
@@ -163,8 +169,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<div class="boxJogador">
 								<div class="borda">
 									<a href="<?= base_url() ?>atleta/<?= $cliente_id ?>/<?= $cliente_url ?>">
-										<img src="<?= base_url() ?>imagens/atletas/<?= $cliente_imagem ?>" class="imgCliente"
-											alt="<?= $cliente_apelido ?>" loading="lazy">
+										<picture>
+											<source srcset="<?= base_url() ?>imagens/atletas/<?= $cliente_imagem_webp ?>" type="image/webp">
+											<img src="<?= base_url() ?>imagens/atletas/<?= $cliente_imagem ?>" class="imgCliente"
+												alt="<?= $cliente_apelido ?> - <?= $cliente_posicao ?>" width="490" height="613" loading="lazy"
+												decoding="async">
+										</picture>
 									</a>
 									<div class="posicao"><?= $cliente_posicao ?></div>
 									<div class="nome"><?= $cliente_apelido ?></div>
@@ -274,14 +284,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				const nameElement = card.querySelector('.nome');
 				const positionElement = card.querySelector('.posicao');
 
-				if (!nameElement) return;
+				// ✅ SENIOR FIX: Ignora cards sem nome ou vazios
+				if (!nameElement || !nameElement.textContent.trim()) return;
 
 				const name = normalizeString(nameElement.textContent);
 				const position = normalizeString(positionElement ? positionElement.textContent : '');
 
-				const matches = name.includes(normalized) || position.includes(normalized);
+				// ✅ FIX: Query vazia = mostra todos, senão verifica match
+				const matches = !normalized || name.includes(normalized) || position.includes(normalized);
 
-				if (query === '' || matches) {
+				if (matches) {
 					cardWrapper.style.display = 'block';
 					cardWrapper.style.opacity = '0';
 					setTimeout(() => {
@@ -289,7 +301,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						cardWrapper.style.opacity = '1';
 					}, 10);
 
-					// Count by category
+					// ✅ FIX: Conta apenas se realmente fez match
 					if (cardWrapper.closest('#boxProfissional')) visibleCountP++;
 					if (cardWrapper.closest('#boxBase')) visibleCountB++;
 				} else {

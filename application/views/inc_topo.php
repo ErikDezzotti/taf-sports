@@ -262,7 +262,7 @@ $seo_description = taf_seo_description($pagina, isset($descricao) ? $descricao :
     <div class="taf-header__container">
       <!-- Logo -->
       <a href="<?= base_url(); ?>" class="taf-header__logo" aria-label="TAF Sports - Página Inicial">
-        <img src="<?= base_url(); ?>assets/img/taf.png" alt="TAF Sports Logo" />
+        <img src="<?= base_url(); ?>assets/img/taf.png" alt="TAF Sports Logo" width="150" height="111" />
       </a>
 
       <!-- Desktop Navigation -->
@@ -399,7 +399,7 @@ $seo_description = taf_seo_description($pagina, isset($descricao) ? $descricao :
 
     <!-- Logo no Menu Mobile (Maior e mais impactante) -->
     <div class="taf-mobile-logo">
-      <img src="<?= base_url(); ?>assets/img/taf.png" alt="TAF Sports Logo" />
+      <img src="<?= base_url(); ?>assets/img/taf.png" alt="TAF Sports Logo" width="200" height="148" />
     </div>
 
     <!-- Navegação Principal -->
