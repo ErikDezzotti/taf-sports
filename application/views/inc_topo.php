@@ -102,16 +102,30 @@ $seo_description = taf_seo_description($pagina, isset($descricao) ? $descricao :
     echo taf_schema_athlete($cli, $clube);
     ?>
   <?php endif; ?>
-  <link href="https://fonts.googleapis.com/css?family=Economica" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet">
+
+  <!-- ========== PERFORMANCE: PRECONNECT ========== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://code.jquery.com">
+  <link rel="preconnect" href="https://use.fontawesome.com">
+  <link rel="preconnect" href="https://code.iconify.design">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+  <!-- ========== FONTS: DISPLAY SWAP (FCP) ========== -->
+  <link href="https://fonts.googleapis.com/css?family=Economica&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Coda&display=swap" rel="stylesheet">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+  <!-- ========== CSS CRÍTICO ========== -->
   <link rel="stylesheet" type="text/css"
     href="<?= base_url(); ?>assets/stylesheets/base.css?v=<?= filemtime(FCPATH . 'assets/stylesheets/base.css') ?>">
   <link rel="stylesheet" type="text/css"
     href="<?= base_url(); ?>assets/stylesheets/taf-design-system.css?v=<?= filemtime(FCPATH . 'assets/stylesheets/taf-design-system.css') ?>">
   <link rel="stylesheet" type="text/css"
     href="<?= base_url(); ?>assets/stylesheets/lightbox.min.css?v=<?= filemtime(FCPATH . 'assets/stylesheets/lightbox.min.css') ?>">
-  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
+  <!-- Iconify: defer para não bloquear render -->
+  <script defer src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 
   <?php
   if ($pagina == "home") {

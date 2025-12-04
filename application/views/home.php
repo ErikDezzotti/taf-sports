@@ -12,7 +12,8 @@ $conf = !empty($config) ? $config[0] : new stdClass();
 
         <div class="container fill" style="padding-left:0px; padding-right:0px;">
 
-            <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel" data-wrap="true" data-interval="5000">
+            <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel" data-wrap="true"
+                data-interval="5000">
 
                 <?php
                 // ✅ REFATORAÇÃO: Banners já vêm filtrados do model (sem file_exists na view)
@@ -25,9 +26,9 @@ $conf = !empty($config) ? $config[0] : new stdClass();
                     $x = 0;
                     foreach ($banners as $banner):
                         $active = ($x == 0) ? 'class="active"' : '';
-                    ?>
+                        ?>
                         <li data-target="#myCarousel" data-slide-to="<?= $x ?>" <?= $active ?>></li>
-                    <?php
+                        <?php
                         $x++;
                     endforeach;
                     ?>
@@ -40,13 +41,14 @@ $conf = !empty($config) ? $config[0] : new stdClass();
                         $active_class = ($x == 0) ? 'active ' : '';
                         $link_safe = html_escape($banner->link);
                         $img_safe = html_escape($banner->imagem);
-                    ?>
-                    <div class="<?= $active_class ?>item">
-                        <a href="<?= $link_safe ?>">
-                            <div class="fill" style="background-image:url(<?= base_url() ?>imagens/banners/<?= $img_safe ?>);"></div>
-                        </a>
-                    </div>
-                    <?php
+                        ?>
+                        <div class="<?= $active_class ?>item">
+                            <a href="<?= $link_safe ?>">
+                                <div class="fill"
+                                    style="background-image:url(<?= base_url() ?>imagens/banners/<?= $img_safe ?>);"></div>
+                            </a>
+                        </div>
+                        <?php
                         $x++;
                     endforeach;
                     ?>
@@ -81,7 +83,8 @@ $conf = !empty($config) ? $config[0] : new stdClass();
 
     <div class="bannerMob">
 
-        <div id="myCarouselMob" class="carousel slide carousel-fade" data-ride="carousel" data-wrap="true" data-interval="5000">
+        <div id="myCarouselMob" class="carousel slide carousel-fade" data-ride="carousel" data-wrap="true"
+            data-interval="5000">
 
             <div class="carousel-inner" role="listbox">
                 <?php
@@ -89,11 +92,15 @@ $conf = !empty($config) ? $config[0] : new stdClass();
                 foreach ($banners as $banner):
                     $active_class = ($x == 0) ? 'active ' : '';
                     $img_mob_safe = html_escape($banner->imagemMob ?? $banner->imagem);
-                ?>
-                <div class="<?= $active_class ?>item">
-                    <img src="<?= base_url() ?>imagens/banners/<?= $img_mob_safe ?>" class="img-responsive" alt="">
-                </div>
-                <?php
+                    // ✅ PERFORMANCE: Primeiro banner = fetchpriority high, outros = lazy
+                    $priority = ($x == 0) ? 'fetchpriority="high"' : 'loading="lazy"';
+                    ?>
+                    <div class="<?= $active_class ?>item">
+                        <!-- ✅ CLS FIX: width/height definidos, aspect-ratio via CSS -->
+                        <img src="<?= base_url() ?>imagens/banners/<?= $img_mob_safe ?>" class="img-responsive"
+                            alt="TAF Sports Banner" width="1080" height="1920" <?= $priority ?> decoding="async">
+                    </div>
+                    <?php
                     $x++;
                 endforeach;
                 ?>
@@ -126,7 +133,7 @@ $conf = !empty($config) ? $config[0] : new stdClass();
             <!-- Brand Side - Logo + Label -->
             <div class="taf-about__brand">
                 <div class="taf-about__brand-logo">
-                    <img src="<?=base_url();?>assets/img/taf.png" alt="TAF Sports - Gestão de Carreiras no Futebol" />
+                    <img src="<?= base_url(); ?>assets/img/taf.png" alt="TAF Sports - Gestão de Carreiras no Futebol" />
                 </div>
                 <p class="taf-about__brand-label">SOBRE NÓS</p>
             </div>
@@ -138,7 +145,7 @@ $conf = !empty($config) ? $config[0] : new stdClass();
                     Conheça a <span>TAF Sports</span>
                 </h2>
                 <?php
-                foreach($paginas as $pg) {
+                foreach ($paginas as $pg) {
                     // Parse o conteúdo em parágrafos
                     $conteudo = strip_tags($pg->conteudo, '<p><br>');
                     $conteudo = preg_replace('/<p[^>]*>/', '', $conteudo);
@@ -149,7 +156,7 @@ $conf = !empty($config) ? $config[0] : new stdClass();
 
                     // Separar último parágrafo (missão) dos demais
                     $mission_paragraph = array_pop($paragraphs); // Remove último
-
+                
                     // Imprimir parágrafos normais
                     foreach ($paragraphs as $paragraph) {
                         echo '<p class="taf-about__content-body">' . $paragraph . '</p>';
@@ -177,7 +184,8 @@ $conf = !empty($config) ? $config[0] : new stdClass();
         <div class="taf-players-hero__container">
             <h2 class="taf-players-hero__title" id="players-heading">Conheça nossos craques</h2>
             <p class="taf-players-hero__subtitle">
-                De jovens talentos a estrelas consagradas, gerenciamos carreiras de atletas que brilham dentro e fora de campo com excelência e dedicação.
+                De jovens talentos a estrelas consagradas, gerenciamos carreiras de atletas que brilham dentro e fora de
+                campo com excelência e dedicação.
             </p>
         </div>
 
@@ -186,54 +194,52 @@ $conf = !empty($config) ? $config[0] : new stdClass();
             <div class="row">
 
                 <?php
-				// ✅ OTIMIZAÇÃO: Loop N+1 eliminado usando clubes indexados
-				// Antes: Para cada atleta, loop em TODOS os clubes O(n²)
-				// Agora: Acesso direto ao clube por ID O(1)
-				foreach ($clientesP as $cliente):
-					$cliente_id_safe = html_escape($cliente->id);
-					$cliente_url_safe = html_escape($cliente->url);
-					$cliente_imagem_safe = html_escape($cliente->imagem);
-					$cliente_apelido_safe = html_escape($cliente->apelido);
-					$cliente_posicao_safe = html_escape($cliente->posicao);
+                // ✅ OTIMIZAÇÃO: Loop N+1 eliminado usando clubes indexados
+                // Antes: Para cada atleta, loop em TODOS os clubes O(n²)
+                // Agora: Acesso direto ao clube por ID O(1)
+                foreach ($clientesP as $cliente):
+                    $cliente_id_safe = html_escape($cliente->id);
+                    $cliente_url_safe = html_escape($cliente->url);
+                    $cliente_imagem_safe = html_escape($cliente->imagem);
+                    $cliente_apelido_safe = html_escape($cliente->apelido);
+                    $cliente_posicao_safe = html_escape($cliente->posicao);
 
-					// ✅ OTIMIZAÇÃO: Acesso direto O(1) em vez de loop O(n)
-					$clube = isset($clubes[$cliente->clube_atual]) ? $clubes[$cliente->clube_atual] : null;
-				?>
+                    // ✅ OTIMIZAÇÃO: Acesso direto O(1) em vez de loop O(n)
+                    $clube = isset($clubes[$cliente->clube_atual]) ? $clubes[$cliente->clube_atual] : null;
+                    ?>
 
-				<div class="col-md-3 col-xs-12 text-center">
-					<div class="boxJogador">
-						<div class="borda">
-							<a href="<?= base_url() ?>atleta/<?= $cliente_id_safe ?>/<?= $cliente_url_safe ?>">
-								<img src="<?= base_url() ?>imagens/atletas/<?= $cliente_imagem_safe ?>"
-								     class="imgCliente"
-								     alt="<?= $cliente_apelido_safe ?> - <?= $cliente_posicao_safe ?>"
-								     loading="lazy">
-							</a>
+                    <div class="col-md-3 col-xs-12 text-center">
+                        <div class="boxJogador">
+                            <div class="borda">
+                                <a href="<?= base_url() ?>atleta/<?= $cliente_id_safe ?>/<?= $cliente_url_safe ?>">
+                                    <img src="<?= base_url() ?>imagens/atletas/<?= $cliente_imagem_safe ?>"
+                                        class="imgCliente" alt="<?= $cliente_apelido_safe ?> - <?= $cliente_posicao_safe ?>"
+                                        loading="lazy">
+                                </a>
 
-							<div class="posicao"><?= $cliente_posicao_safe ?></div>
-							<div class="nome" style="font-size:14px"><?= $cliente_apelido_safe ?></div>
-							<div class="escudo">
-								<?php if ($clube): ?>
-									<img src="<?= base_url() ?>imagens/clubes/<?= html_escape($clube->escudo) ?>"
-									     alt="Escudo <?= html_escape($clube->nome) ?>"
-									     loading="lazy">
-								<?php endif; ?>
-							</div>
-						</div>
-					</div>
-				</div>
+                                <div class="posicao"><?= $cliente_posicao_safe ?></div>
+                                <div class="nome" style="font-size:14px"><?= $cliente_apelido_safe ?></div>
+                                <div class="escudo">
+                                    <?php if ($clube): ?>
+                                        <img src="<?= base_url() ?>imagens/clubes/<?= html_escape($clube->escudo) ?>"
+                                            alt="Escudo <?= html_escape($clube->nome) ?>" loading="lazy">
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-				<?php endforeach; ?>
+                <?php endforeach; ?>
 
             </div>
             <div class="row">
                 <div class="col-12">
                     <div class="text-center">
-                        <a href="<?=base_url();?>clientes" class="taf-btn-primary">
+                        <a href="<?= base_url(); ?>clientes" class="taf-btn-primary">
                             <span class="iconify" data-icon="ion:football" aria-hidden="true"></span>
                             Ver todos os jogadores
                         </a>
-                        <a href="<?=base_url();?>contato" class="taf-btn-primary">
+                        <a href="<?= base_url(); ?>contato" class="taf-btn-primary">
                             <span class="iconify" data-icon="mdi:email-outline" aria-hidden="true"></span>
                             Fale conosco
                         </a>
@@ -254,30 +260,38 @@ $conf = !empty($config) ? $config[0] : new stdClass();
                     Pronto para decolar sua carreira?
                 </h2>
                 <p class="taf-cta-instagram__cta-text">
-                    Se você é jogador ou treinador e busca uma agência que alia <strong>experiência, seriedade e visão estratégica</strong>, a TAF Sports é a <strong>parceira certa</strong> para conduzir sua carreira com excelência. Nosso compromisso é oferecer <strong>suporte completo e gestão profissional</strong>, garantindo segurança e direcionamento em cada etapa da sua jornada dentro e fora de campo.
+                    Se você é jogador ou treinador e busca uma agência que alia <strong>experiência, seriedade e visão
+                        estratégica</strong>, a TAF Sports é a <strong>parceira certa</strong> para conduzir sua
+                    carreira com excelência. Nosso compromisso é oferecer <strong>suporte completo e gestão
+                        profissional</strong>, garantindo segurança e direcionamento em cada etapa da sua jornada dentro
+                    e fora de campo.
                 </p>
             </div>
 
             <!-- Right Side: Instagram Social Proof -->
             <div class="taf-cta-instagram__social-side">
                 <h3 class="taf-cta-instagram__social-title">
-                    <a href="https://www.instagram.com/tafsportsbr/" target="_blank" rel="noopener noreferrer" class="taf-cta-instagram__social-link">
-                        <span class="iconify taf-cta-instagram__social-icon" data-icon="mdi:instagram" aria-hidden="true"></span>
+                    <a href="https://www.instagram.com/tafsportsbr/" target="_blank" rel="noopener noreferrer"
+                        class="taf-cta-instagram__social-link">
+                        <span class="iconify taf-cta-instagram__social-icon" data-icon="mdi:instagram"
+                            aria-hidden="true"></span>
                         Siga-nos em @tafsportsbr
                     </a>
                 </h3>
 
                 <div class="taf-cta-instagram__image-wrapper">
                     <a href="https://www.instagram.com/tafsportsbr/" target="_blank" rel="noopener noreferrer">
-                        <img src="<?=base_url();?>assets/img/insta.png"
-                             alt="Feed do Instagram da TAF Sports mostrando nossos atletas em ação"
-                             class="taf-cta-instagram__image"
-                             loading="lazy" />
+                        <img src="<?= base_url(); ?>assets/img/insta.png"
+                            alt="Feed do Instagram da TAF Sports mostrando nossos atletas em ação"
+                            class="taf-cta-instagram__image" loading="lazy" />
                     </a>
                 </div>
 
                 <p class="taf-cta-instagram__social-text">
-                    Acompanhe os bastidores da TAF Sports e veja de perto a trajetória dos nossos atletas. No Instagram, você confere momentos exclusivos, conquistas, treinos e tudo que acontece na vida de quem é gerenciado por uma das agências mais sérias do futebol brasileiro. Se você respira futebol, vem com a gente!
+                    Acompanhe os bastidores da TAF Sports e veja de perto a trajetória dos nossos atletas. No Instagram,
+                    você confere momentos exclusivos, conquistas, treinos e tudo que acontece na vida de quem é
+                    gerenciado por uma das agências mais sérias do futebol brasileiro. Se você respira futebol, vem com
+                    a gente!
                 </p>
             </div>
 
