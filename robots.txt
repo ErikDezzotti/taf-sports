@@ -1,0 +1,36 @@
+# Robots.txt - TAF Sports
+# Gestão de Carreiras de Atletas e Treinadores de Futebol
+# https://www.tafsportsbr.com
+
+User-agent: *
+Allow: /
+Disallow: /intranet/
+Disallow: /system/
+Disallow: /application/
+Disallow: /phpmailer/
+Disallow: /.mysql-data/
+Disallow: /cgi-local/
+Disallow: /dockerizer/
+Disallow: /*.sql$
+Disallow: /*.env$
+
+# Sitemap
+Sitemap: https://www.tafsportsbr.com/sitemap.xml
+
+# Crawl-delay para evitar sobrecarga
+Crawl-delay: 1
+
+# Google específico
+User-agent: Googlebot
+Allow: /
+Disallow: /intranet/
+
+# Google Images
+User-agent: Googlebot-Image
+Allow: /imagens/
+Allow: /assets/img/
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
