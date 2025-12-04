@@ -88,11 +88,8 @@
 .taf-contact-banner__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.7) 0%,
-    rgba(241, 131, 34, 0.3) 100%
-  );
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%),
+              linear-gradient(135deg, rgba(0, 0, 0, 0.65) 0%, rgba(241, 131, 34, 0.88) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -749,12 +746,20 @@
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   color: var(--taf-white);
+  fill: var(--taf-white);
+  -webkit-tap-highlight-color: transparent;
   text-decoration: none;
   transition: all var(--transition-base);
 }
 
+.taf-contact-social__link:visited {
+  color: var(--taf-white);
+}
+
 .taf-contact-social__link .iconify {
   font-size: 24px;
+  color: inherit;
+  transition: color var(--transition-base);
 }
 
 .taf-contact-social__link:hover {
@@ -762,6 +767,8 @@
   border-color: var(--taf-orange);
   transform: translateY(-4px) scale(1.1);
   box-shadow: 0 8px 20px rgba(241, 131, 34, 0.4);
+  color: var(--taf-white);
+  fill: var(--taf-white);
 }
 
 /* =========================================================================

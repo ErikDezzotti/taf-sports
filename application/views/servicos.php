@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!-- Hero Banner (Consistent with Contact Page) -->
 <div class="taf-services-banner">
-	<div class="taf-services-banner__image" style="background-image: url('<?=base_url();?>assets/img/header.png');">
+	<div class="taf-services-banner__image" style="background-image: url('<?=base_url();?>assets/img/Serra_Dourada_Lotado%20header.webp');">
 		<div class="taf-services-banner__overlay">
 			<div class="taf-services-banner__content">
 				<h1 class="taf-services-banner__title">

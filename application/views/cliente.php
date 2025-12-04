@@ -5,7 +5,7 @@ foreach($clientes as $cliente) { }
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-12">
-			<div class="banner_header" style="background-image: url('<?=base_url();?>assets/img/header.png'); background-size: cover; background-position: center center; height: 300px;">
+			<div class="banner_header" style="background-image: url('<?=base_url();?>assets/img/Serra_Dourada_Lotado%20header.webp'); background-size: cover; background-position: center center; height: 300px;">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12 text-center">

@@ -97,15 +97,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <h3 class="taf-footer__info-title">Contato</h3>
         <p class="taf-footer__info-text">
           <span class="iconify" data-icon="mdi:email-outline" aria-hidden="true"></span>
-          contato@tafsports.com.br
+          contato@tafsportsbr.com
         </p>
         <p class="taf-footer__info-text">
           <span class="iconify" data-icon="mdi:phone-outline" aria-hidden="true"></span>
-          +55 (11) 99999-9999
+          +55 (62) 3300-1229
         </p>
         <p class="taf-footer__info-text">
           <span class="iconify" data-icon="mdi:map-marker-outline" aria-hidden="true"></span>
-          São Paulo, SP - Brasil
+          Edifício Lozandes - Av. Olinda, 960 - Business Tower, Sala 310<br>
+          Alphaville Araguaia, Goiânia - GO, 74884-120
         </p>
       </div>
 

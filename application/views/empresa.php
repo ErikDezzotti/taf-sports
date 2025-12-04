@@ -17,15 +17,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!-- Hero Banner (Consistent with Contact/Services) -->
 <div class="taf-about-banner">
-	<div class="taf-about-banner__image" style="background-image: url('<?=base_url();?>assets/img/header.png');">
+	<div class="taf-about-banner__image" style="background-image: url('<?=base_url();?>assets/img/Serra_Dourada_Lotado%20header.webp');">
 		<div class="taf-about-banner__overlay">
 			<div class="taf-about-banner__content">
 				<h1 class="taf-about-banner__title">
 					<span class="iconify taf-about-banner__icon" data-icon="mdi:office-building" aria-hidden="true"></span>
-					SOBRE A TAF SPORTS
+					CONHEÇA A TAF SPORTS
 				</h1>
 				<p class="taf-about-banner__subtitle">
-					Gestão de carreiras esportivas com experiência, credibilidade e proximidade
+					Gestão, credibilidade e estratégia em cada carreira.
 				</p>
 			</div>
 		</div>
@@ -62,7 +62,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="taf-about__intro-divider"></div>
 		<div class="taf-about__intro-content">
 			<p class="taf-about__intro-text">
-				Com <strong>anos de experiência</strong> no mercado esportivo, cuidamos de <strong>cada detalhe</strong> da sua trajetória profissional, do primeiro contrato até a transição pós-carreira, para que você se concentre no que realmente importa: <strong>jogar e evoluir</strong>.
+				A TAF Sports é liderada pelo <strong>Agente FIFA Thiago Sampaio</strong>, profissional com 19 anos de atuação no futebol, construindo uma das redes de relacionamento mais sólidas e respeitadas do mercado.<br><br>
+				Sua experiência acumulada passa por clubes, executivos, treinadores, atletas e dirigentes de todos os níveis, do futebol de base às principais competições nacionais e internacionais.
+			</p>
+			<p class="taf-about__intro-text">
+				Existimos para elevar o padrão da gestão de carreira no Brasil.<br><br>
+				Nosso propósito é oferecer aos atletas e treinadores <strong>estrutura, direcionamento e estratégia real</strong>, indo muito além da simples intermediação de contratos. Cada carreira é tratada com profundidade, inteligência de mercado e presença absoluta, com acompanhamento diário, planejamento de longo prazo e suporte completo dentro e fora de campo.
+			</p>
+			<p class="taf-about__intro-text">
+				A TAF Sports nasceu para ser diferente: <strong>profissional, técnica, transparente e próxima</strong>.<br><br>
+				É isso que garante que cada cliente seja acompanhado por alguém que não apenas conhece o futebol, mas vive o futebol há quase duas décadas e construiu credibilidade onde ela mais importa: no vestiário, no campo e na mesa da negociação.
 			</p>
 		</div>
 	</div>
@@ -73,20 +82,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="taf-about__section-icon">
 				<span class="iconify" data-icon="ion:football" aria-hidden="true"></span>
 			</div>
-			<h2 class="taf-about__section-title">Missão</h2>
+			<h2 class="taf-about__section-title">MISSÃO</h2>
 		</div>
 		<div class="taf-about__section-divider"></div>
 		<div class="taf-about__section-content">
 			<div class="taf-about__section-text">
 				<p>
-					Cuidar da carreira de quem vive o esporte, com <strong>seriedade, dedicação e visão estratégica</strong>,
-					proporcionando suporte em todas as fases da trajetória profissional, do primeiro contrato até a
-					transição pós-carreira.
+					Profissionalizar, proteger e potencializar <strong>carreiras no futebol</strong>.
 				</p>
 				<p>
-					Acreditamos que cada atleta ou treinador merece uma gestão <strong>profissional, transparente e humanizada</strong>,
-					onde decisões estratégicas são tomadas com base em dados, experiência e, acima de tudo, <strong>cuidado genuíno</strong>
-					com o futuro de quem confiou em nós.
+					Nossa missão é conduzir atletas e treinadores com <strong>estratégia</strong>, <strong>visão</strong> e <strong>presença real</strong>, oferecendo suporte total nas áreas esportiva, financeira, contratual, de imagem e de mercado.
+				</p>
+				<p>
+					Transformamos talento em ativo, oportunidade em carreira e carreira em legado, sempre com <strong>ética</strong>, <strong>transparência</strong> e <strong>gestão de alto nível</strong>.
 				</p>
 			</div>
 		</div>
@@ -104,18 +112,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="taf-about__section-content">
 			<div class="taf-about__section-text">
 				<p>
-					<strong>Gestão de Carreira:</strong> planejamento estratégico e acompanhamento individualizado.
+					Realizamos <strong>gestão de carreira 360°</strong>, unindo planejamento, inteligência de mercado e acompanhamento diário.
 				</p>
 				<p>
-					<strong>Assessoria Esportiva:</strong> suporte administrativo, jurídico e de imagem.
+					Atuamos com análises de performance, scouting nacional e internacional, uso de plataformas globais como o TransferRoom, intermediação de contratos, assessoria jurídica, financeira e de imagem.
 				</p>
 				<p>
-					<strong>Apoio Integral:</strong> presença ativa em todas as etapas, garantindo segurança e
-					tranquilidade dentro e fora de campo.
-				</p>
-				<p>
-					Não somos apenas uma agência, somos <strong>parceiros estratégicos</strong> que entendem o universo
-					do futebol e trabalham incansavelmente para que cada atleta ou treinador alcance seu <strong>máximo potencial</strong>.
+					Entregamos direção, segurança e estratégia em todas as fases da trajetória, da base ao profissional.
 				</p>
 			</div>
 		</div>
@@ -133,19 +136,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="taf-about__section-content">
 			<div class="taf-about__section-text">
 				<p>
-					Acreditamos que o talento precisa ser <strong>bem direcionado</strong>. Por isso, unimos
-					<strong>experiência, credibilidade e proximidade</strong> para que cada profissional tenha
-					condições de alcançar todo o seu potencial.
+					Nosso diferencial é a união de <strong>experiência, credibilidade e presença</strong>.
 				</p>
 				<p>
-					Nossa estrutura física, equipe especializada e network consolidado no mercado esportivo nos
-					permitem oferecer uma <strong>gestão 360° de verdade</strong>, não apenas palavras, mas
-					<strong>resultados concretos</strong> que transformam carreiras.
+					Temos network global com clubes, agentes FIFA e executivos, utilizamos ferramentas de análise e scouting de padrão internacional e operamos com metodologia corporativa séria e transparente.
 				</p>
 				<p>
-					<strong>Você não é só mais um atleta ou treinador.</strong> Aqui, cada cliente é tratado com a atenção e o
-					cuidado que merece, porque entendemos que por trás de cada contrato existe uma <strong>história,
-					um sonho e uma família</strong> que confia no nosso trabalho.
+					Cada cliente recebe atenção individualizada, decisões estratégicas e suporte contínuo, dentro e fora de campo, porque resultados consistentes são fruto de gestão real, não de promessas.
 				</p>
 			</div>
 		</div>

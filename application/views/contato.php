@@ -3,6 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // ✅ REFATORAÇÃO COMPLETA v2.0 - Design System TAF
 // Following: Jobs, Ive, Natsume, Wroblewski principles
 $conf = !empty($config) ? $config[0] : new stdClass();
+$telefonePadrao = '(62) 3300-1229';
+$emailPadrao = 'contato@tafsportsbr.com';
+$telefone = (isset($conf->telefone) && !empty($conf->telefone)) ? $conf->telefone : $telefonePadrao;
+$emailContato = (isset($conf->email) && !empty($conf->email)) ? $conf->email : $emailPadrao;
 ?>
 
 <!-- ============================================
@@ -12,7 +16,7 @@ $conf = !empty($config) ? $config[0] : new stdClass();
 
 <!-- Banner Header com Imagem (pedido do cliente) -->
 <div class="taf-contact-banner">
-	<div class="taf-contact-banner__image" style="background-image: url('<?=base_url();?>assets/img/header.png');">
+			<div class="taf-contact-banner__image" style="background-image: url('<?=base_url();?>assets/img/Serra_Dourada_Lotado%20header.webp');">
 		<div class="taf-contact-banner__overlay">
 			<div class="taf-contact-banner__content">
 				<h1 id="contact-heading" class="taf-contact-banner__title">
@@ -131,7 +135,7 @@ $conf = !empty($config) ? $config[0] : new stdClass();
 						id="telefone"
 						name="telefone"
 						class="taf-form__input"
-						placeholder="(62) 99999-9999"
+						placeholder="(62) 3300-1229"
 						value="<?= html_escape(set_value('telefone')) ?>"
 						required
 						maxlength="20"
@@ -219,8 +223,8 @@ $conf = !empty($config) ? $config[0] : new stdClass();
 				<div class="taf-contact-card__content">
 					<h3 class="taf-contact-card__title">Telefone</h3>
 					<p class="taf-contact-card__text">
-						<a href="tel:<?= preg_replace('/[^0-9]/', '', $conf->telefone) ?>" class="taf-contact-card__link">
-							<?= html_escape($conf->telefone) ?>
+						<a href="tel:<?= preg_replace('/[^0-9]/', '', $telefone) ?>" class="taf-contact-card__link">
+							<?= html_escape($telefone) ?>
 						</a>
 					</p>
 					<span class="taf-contact-card__helper">Atendemos de segunda a sexta, 9h às 18h</span>
@@ -235,8 +239,8 @@ $conf = !empty($config) ? $config[0] : new stdClass();
 				<div class="taf-contact-card__content">
 					<h3 class="taf-contact-card__title">Email</h3>
 					<p class="taf-contact-card__text">
-						<a href="mailto:<?= html_escape($conf->email) ?>" class="taf-contact-card__link">
-							<?= html_escape($conf->email) ?>
+						<a href="mailto:<?= html_escape($emailContato) ?>" class="taf-contact-card__link">
+							<?= html_escape($emailContato) ?>
 						</a>
 					</p>
 					<span class="taf-contact-card__helper">Resposta em até 24 horas úteis</span>
@@ -251,13 +255,13 @@ $conf = !empty($config) ? $config[0] : new stdClass();
 				<div class="taf-contact-card__content">
 					<h3 class="taf-contact-card__title">Endereço</h3>
 					<p class="taf-contact-card__text">
-						Edifício Lozandes (Business Tower)<br>
-						Av. Olinda, 960 - Bloco I, Sala 310<br>
-						Park Lozandes<br>
+						Edifício Lozandes - Business Tower<br>
+						Av. Olinda, 960 - Sala 310<br>
+						Alphaville Araguaia<br>
 						Goiânia - GO, 74884-120
 					</p>
 					<a
-						href="https://www.google.com/maps/search/?api=1&query=Av.+Olinda+960+Goiania+GO"
+						href="https://www.google.com/maps/search/?api=1&query=Edif%C3%ADcio+Lozandes+Av.+Olinda+960+Goi%C3%A2nia+GO+74884-120"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="taf-contact-card__link taf-contact-card__link--map"

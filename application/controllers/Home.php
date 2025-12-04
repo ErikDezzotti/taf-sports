@@ -98,7 +98,7 @@ class Home extends CI_Controller {
 			'tipo' => 'Masculino',
 			// ✅ OTIMIZAÇÃO: Usa clubes indexados
 			'clubes' => $this->banco->clubes_indexados(),
-			'clientesP' => $this->banco->clientesMP(250),
+			'clientesP' => $this->priorizarClientesProfissionais($this->banco->clientesMP(250)),
 			'clientesB' => $this->banco->clientesMB(150),
 			'linha' => ''
 		));
@@ -129,7 +129,7 @@ class Home extends CI_Controller {
 			'pagina' => 'clientes',
 			// ✅ OTIMIZAÇÃO: Usa clubes indexados
 			'clubes' => $this->banco->clubes_indexados(),
-			'clientesP' => $this->banco->buscaCliente($termo, 'Profissional'),
+			'clientesP' => $this->priorizarClientesProfissionais($this->banco->buscaCliente($termo, 'Profissional')),
 			'clientesB' => $this->banco->buscaCliente($termo, 'Base'),
 			'linha' => $linha
 		));
@@ -218,5 +218,64 @@ class Home extends CI_Controller {
 		$this->load->view('inc_topo', $data);
 		$this->load->view($view, $data);
 		$this->load->view('inc_rodape', $data);
+	}
+
+	/**
+	 * Reordena lista de profissionais para destacar clientes específicos e remover itens despriorizados.
+	 *
+	 * Ordem fixa solicitada pelo cliente:
+	 *  - Enzo Bizzotto (Vila Nova)
+	 *  - Wellington Jr (Saojoseense-PR)
+	 *  - Maguinho (América-MG)
+	 *  - Higo Magalhães (Brusque-SC)
+	 *
+	 * Remoções:
+	 *  - Emerson Ávila (não exibir)
+	 *
+	 * @param array $clientes
+	 * @return array
+	 */
+	private function priorizarClientesProfissionais($clientes) {
+		if (empty($clientes)) {
+			return $clientes;
+		}
+
+		$prioritarios = array(
+			'enzo-bizzotto',
+			'wellington-jr',
+			'maguinho',
+			'higo-magalhaes',
+		);
+
+		$remover = array('emerson-avila');
+
+		$mapPrioritarios = array_fill_keys($prioritarios, null);
+		$restantes = array();
+
+		foreach ($clientes as $cli) {
+			$slug = isset($cli->url) ? $cli->url : '';
+
+			// Filtra removidos
+			if (in_array($slug, $remover, true)) {
+				continue;
+			}
+
+			// Guarda prioritários na posição correta
+			if ($slug && array_key_exists($slug, $mapPrioritarios)) {
+				$mapPrioritarios[$slug] = $cli;
+			} else {
+				$restantes[] = $cli;
+			}
+		}
+
+		// Concatena prioridades (na ordem) + demais
+		$ordenado = array();
+		foreach ($mapPrioritarios as $item) {
+			if ($item !== null) {
+				$ordenado[] = $item;
+			}
+		}
+
+		return array_merge($ordenado, $restantes);
 	}
 }

@@ -135,7 +135,7 @@ class Contato extends CI_Controller {
         $this->email->initialize($config);
 
         // Define remetente e destinatário
-        $from_email = getenv('SMTP_FROM_EMAIL') ?: 'contato@tafsports.com.br';
+        $from_email = getenv('SMTP_FROM_EMAIL') ?: 'contato@tafsportsbr.com';
         $from_name = getenv('SMTP_FROM_NAME') ?: 'TAF Sports - Formulário de Contato';
 
         $this->email->from($from_email, $from_name);
