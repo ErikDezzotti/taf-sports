@@ -98,18 +98,12 @@ if ($is_local) {
 	$db_password = getenv('DB_PASSWORD') ?: '';
 	$db_database = getenv('DB_DATABASE') ?: 'sitetaf';
 } else {
-	// PRODUÇÃO: OBRIGATÓRIO usar variáveis de ambiente (.env ou servidor)
-	// NÃO há fallback de senha para segurança máxima
+	// PRODUÇÃO: Usa .env ou fallback para credenciais XCloud
 	$db_hostname = getenv('DB_HOST') ?: 'localhost';
 	$db_port = getenv('DB_PORT') ?: 3306;
-	$db_username = getenv('DB_USERNAME');  // ✅ SEGURANÇA: Sem fallback
-	$db_password = getenv('DB_PASSWORD');  // ✅ SEGURANÇA: Sem fallback (obriga .env)
+	$db_username = getenv('DB_USERNAME') ?: 'tafdb';
+	$db_password = getenv('DB_PASSWORD') ?: 'taf-db-pass2025';
 	$db_database = getenv('DB_DATABASE') ?: 'taf-database';
-
-	// Verifica se credenciais foram carregadas
-	if (empty($db_username) || empty($db_password)) {
-		log_message('error', 'CRÍTICO: Credenciais de banco não configuradas. Defina DB_USERNAME e DB_PASSWORD no .env');
-	}
 }
 
 $db['default'] = array(
