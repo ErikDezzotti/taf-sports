@@ -174,6 +174,12 @@ if (!function_exists('taf_schema_organization')) {
         '@type' => 'Country',
         'name' => 'Brasil'
       ),
+      'openingHoursSpecification' => array(
+        '@type' => 'OpeningHoursSpecification',
+        'dayOfWeek' => array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'),
+        'opens' => '09:00',
+        'closes' => '18:00'
+      ),
       'knowsAbout' => array(
         'Assessoria Esportiva',
         'Gestão de Carreiras',
